@@ -7,7 +7,7 @@ export class Child extends React.Component {
   render() {
     return (
       <div>
-        and this is she <b>{this.props.name}</b>.
+        and this is the <b>{this.props.name}</b>.
       </div>
     )
   }

@@ -20760,7 +20760,7 @@ var Child = exports.Child = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        'and this is she ',
+        'and this is the ',
         _react2.default.createElement(
           'b',
           null,
@@ -20812,13 +20812,28 @@ var Parent = exports.Parent = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'main' },
         _react2.default.createElement(
           'div',
-          null,
-          ' This is the parent. '
+          { className: 'mountain-range' },
+          _react2.default.createElement('div', { className: 'mountain' }),
+          _react2.default.createElement('div', { className: 'mountain' })
         ),
-        _react2.default.createElement(_child.Child, { name: 'child' })
+        _react2.default.createElement(
+          'div',
+          { className: 'main__container' },
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Darren Lim'
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            ' This is the parent. '
+          ),
+          _react2.default.createElement(_child.Child, { name: 'Kind' })
+        )
       );
     }
   }]);

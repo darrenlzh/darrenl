@@ -8,9 +8,16 @@ export class Parent extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div> This is the parent. </div>
-        <Child name="child"/>
+      <div className="main">
+        <div className="mountain-range">
+          <div className="mountain"/>
+          <div className="mountain"/>
+        </div>
+        <div className="main__container">
+          <h1>Darren Lim</h1>
+          <div> This is the parent. </div>
+          <Child name="Kind"/>
+        </div>
       </div>
     )
   }
