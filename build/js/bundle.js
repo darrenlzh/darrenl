@@ -20717,13 +20717,80 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _parent = require('./parent.js');
+var _app = require('./components/app.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_parent.Parent, null), document.getElementById('app'));
+_reactDom2.default.render(_react2.default.createElement(_app.App, null), document.getElementById('app'));
 
-},{"./parent.js":180,"react":177,"react-dom":26}],179:[function(require,module,exports){
+},{"./components/app.js":179,"react":177,"react-dom":26}],179:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.App = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _child = require('./child.js');
+
+var _shapes = require('./shapes.js');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var App = exports.App = function (_React$Component) {
+  _inherits(App, _React$Component);
+
+  function App(props) {
+    _classCallCheck(this, App);
+
+    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+  }
+
+  _createClass(App, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'main' },
+        _react2.default.createElement(
+          'div',
+          { className: 'main-hero' },
+          _react2.default.createElement(_shapes.Shapes, null),
+          _react2.default.createElement(
+            'div',
+            { className: 'main-hero__container' },
+            _react2.default.createElement(
+              'h1',
+              null,
+              'Darren Lim'
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              ' engineer . developer . designer '
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return App;
+}(_react2.default.Component);
+
+},{"./child.js":180,"./shapes.js":181,"react":177}],180:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20774,21 +20841,19 @@ var Child = exports.Child = function (_React$Component) {
   return Child;
 }(_react2.default.Component);
 
-},{"react":177}],180:[function(require,module,exports){
+},{"react":177}],181:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Parent = undefined;
+exports.Shapes = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
-
-var _child = require('./child.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20798,49 +20863,65 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Parent = exports.Parent = function (_React$Component) {
-  _inherits(Parent, _React$Component);
+var Shapes = exports.Shapes = function (_React$Component) {
+  _inherits(Shapes, _React$Component);
 
-  function Parent(props) {
-    _classCallCheck(this, Parent);
+  function Shapes(props) {
+    _classCallCheck(this, Shapes);
 
-    return _possibleConstructorReturn(this, (Parent.__proto__ || Object.getPrototypeOf(Parent)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Shapes.__proto__ || Object.getPrototypeOf(Shapes)).call(this, props));
+
+    _this.handleMove = _this.handleMove.bind(_this);
+    _this.state = {
+      shapers: [60, 20, -45, 30, 45],
+      rotate: 0
+    };
+    return _this;
   }
 
-  _createClass(Parent, [{
+  _createClass(Shapes, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      window.addEventListener('mousemove', this.handleMove);
+      console.log(this.state.test);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      window.removeEventListener('mousemove', this.handleMove);
+    }
+  }, {
+    key: 'handleMove',
+    value: function handleMove(e) {
+      var x = e.clientX,
+          mid = window.innerWidth / 2;
+      if (x < mid) {
+        this.setState({ rotate: -(mid - x) / 100 });
+      } else {
+        this.setState({ rotate: (x - mid) / 100 });
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var shapes = [];
+      for (var i = 0, len = this.state.shapers.length; i < len; i++) {
+        var style = {
+          transform: 'rotate(' + (this.state.shapers[i] + this.state.rotate) + 'deg)'
+        };
+        shapes.push(_react2.default.createElement('div', { className: 'shape', key: i, style: style }));
+      }
       return _react2.default.createElement(
         'div',
-        { className: 'main' },
-        _react2.default.createElement(
-          'div',
-          { className: 'mountain-range' },
-          _react2.default.createElement('div', { className: 'mountain' }),
-          _react2.default.createElement('div', { className: 'mountain' })
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'main__container' },
-          _react2.default.createElement(
-            'h1',
-            null,
-            'Darren Lim'
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            ' This is the parent. '
-          ),
-          _react2.default.createElement(_child.Child, { name: 'Kind' })
-        )
+        { className: 'graphic-group' },
+        shapes
       );
     }
   }]);
 
-  return Parent;
+  return Shapes;
 }(_react2.default.Component);
 
-},{"./child.js":179,"react":177}]},{},[178])
+},{"react":177}]},{},[178])
 
 //# sourceMappingURL=bundle.js.map

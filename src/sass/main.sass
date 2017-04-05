@@ -4,31 +4,49 @@ body
   margin: 0
   font-family: 'Work Sans', sans-serif
   color: $base-font-color
-  display: flex
-  justify-content: center
-  align-items: center
-  height: 100vh
-  width: 100vw
 
 h1
   font-family: 'Source Code Pro', monospace
   color: $heading-font-color
 
 .main
-  .mountain-range
-    display: flex
-    width: 100%
+.main-hero
+  width: 100vw
+  height: 100vh
+  .graphic-group
     position: fixed
-    z-index: -1
-    left: 0
-    right: 0
-  .mountain
-    background: $mountain-color
-    width: 250px
-    height: 250px
-    transform: rotate(45deg)
+    width: 100%
+    height: 100%
+    .shape
+      position: fixed
+      width: 60vw
+      height: 60vh
+      transition: transform .5s ease
+      &:nth-child(1)
+        right: -30%
+        background: lighten($shape-color, 70%)
+      &:nth-child(2)
+        bottom: -15%
+        right: -40%
+        background: lighten($shape-color, 55%)
+      &:nth-child(3)
+        bottom: -35%
+        left: 30%
+        background: lighten($shape-color, 35%)
+      &:nth-child(4)
+        bottom: -30%
+        left: 10%
+        background: lighten($shape-color, 15%)
+      &:nth-child(5)
+        bottom: -40%
+        left: -10%
+        background: $shape-color
   &__container
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
+    transform: translateY(20vh)
+.content
+  height: 100vh
+  background: white
