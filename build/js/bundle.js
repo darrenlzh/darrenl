@@ -20737,7 +20737,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _child = require('./child.js');
+var _nav = require('./nav.js');
 
 var _shapes = require('./shapes.js');
 
@@ -20755,31 +20755,68 @@ var App = exports.App = function (_React$Component) {
   function App(props) {
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.handleNavClick = _this.handleNavClick.bind(_this);
+    _this.handleCloseClick = _this.handleCloseClick.bind(_this);
+    _this.state = {
+      myname: 'Darren Lim',
+      tagline: 'engineer . developer . designer',
+      navlist: ['portfolio', 'about', 'contact'],
+      current: -1,
+      movec: false
+    };
+    return _this;
   }
 
   _createClass(App, [{
+    key: 'handleNavClick',
+    value: function handleNavClick(i) {
+      this.setState({ current: i, movec: true });
+    }
+  }, {
+    key: 'handleCloseClick',
+    value: function handleCloseClick() {
+      this.setState({ movec: false });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'main' },
+        null,
         _react2.default.createElement(
           'div',
-          { className: 'main-hero' },
+          { className: 'main' },
           _react2.default.createElement(_shapes.Shapes, null),
           _react2.default.createElement(
             'div',
-            { className: 'main-hero__container' },
+            { className: 'main__container ' + (this.state.movec ? 'move' : 'center') },
             _react2.default.createElement(
-              'h1',
-              null,
-              'Darren Lim'
+              'div',
+              { className: 'main__container__inner' },
+              _react2.default.createElement(
+                'h1',
+                null,
+                this.state.myname
+              ),
+              _react2.default.createElement(
+                'div',
+                null,
+                this.state.tagline
+              ),
+              _react2.default.createElement(_nav.Nav, { navlist: this.state.navlist,
+                current: this.state.current,
+                click: this.handleNavClick.bind(this) })
             ),
             _react2.default.createElement(
               'div',
-              null,
-              ' engineer . developer . designer '
+              { className: 'main__container__content' },
+              _react2.default.createElement(
+                'button',
+                { onClick: this.handleCloseClick },
+                'close'
+              )
             )
           )
         )
@@ -20790,13 +20827,13 @@ var App = exports.App = function (_React$Component) {
   return App;
 }(_react2.default.Component);
 
-},{"./child.js":180,"./shapes.js":181,"react":177}],180:[function(require,module,exports){
+},{"./nav.js":180,"./shapes.js":181,"react":177}],180:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Child = undefined;
+exports.Nav = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -20812,33 +20849,49 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Child = exports.Child = function (_React$Component) {
-  _inherits(Child, _React$Component);
+var Nav = exports.Nav = function (_React$Component) {
+  _inherits(Nav, _React$Component);
 
-  function Child(props) {
-    _classCallCheck(this, Child);
+  function Nav(props) {
+    _classCallCheck(this, Nav);
 
-    return _possibleConstructorReturn(this, (Child.__proto__ || Object.getPrototypeOf(Child)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
+
+    _this.handleClick = _this.handleClick.bind(_this);
+    return _this;
   }
 
-  _createClass(Child, [{
+  _createClass(Nav, [{
+    key: 'handleClick',
+    value: function handleClick(i) {
+      this.props.click(i);
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
-        'div',
+        'nav',
         null,
-        'and this is the ',
         _react2.default.createElement(
-          'b',
+          'ul',
           null,
-          this.props.name
-        ),
-        '.'
+          this.props.navlist.map(function (item, i) {
+            return _react2.default.createElement(
+              'li',
+              {
+                key: i, className: _this2.props.current === i ? 'active' : '',
+                onClick: _this2.handleClick.bind(_this2, i) },
+              item
+            );
+          })
+        )
       );
     }
   }]);
 
-  return Child;
+  return Nav;
 }(_react2.default.Component);
 
 },{"react":177}],181:[function(require,module,exports){
@@ -20883,7 +20936,6 @@ var Shapes = exports.Shapes = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       window.addEventListener('mousemove', this.handleMove);
-      console.log(this.state.test);
     }
   }, {
     key: 'componentWillUnmount',
@@ -20904,17 +20956,17 @@ var Shapes = exports.Shapes = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var shapes = [];
-      for (var i = 0, len = this.state.shapers.length; i < len; i++) {
-        var style = {
-          transform: 'rotate(' + (this.state.shapers[i] + this.state.rotate) + 'deg)'
-        };
-        shapes.push(_react2.default.createElement('div', { className: 'shape', key: i, style: style }));
-      }
+      var _this2 = this;
+
       return _react2.default.createElement(
         'div',
         { className: 'graphic-group' },
-        shapes
+        this.state.shapers.map(function (shaper, i) {
+          var style = {
+            transform: 'rotate(' + (shaper + _this2.state.rotate) + 'deg)'
+          };
+          return _react2.default.createElement('div', { className: 'shape', key: i, style: style });
+        })
       );
     }
   }]);

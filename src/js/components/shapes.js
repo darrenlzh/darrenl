@@ -12,7 +12,6 @@ export class Shapes extends React.Component {
    }
    componentDidMount() {
      window.addEventListener('mousemove', this.handleMove)
-     console.log(this.state.test)
    }
    componentWillUnmount() {
      window.removeEventListener('mousemove', this.handleMove)
@@ -27,16 +26,18 @@ export class Shapes extends React.Component {
      }
    }
    render() {
-     let shapes = []
-     for(let i=0, len=this.state.shapers.length; i<len; i++) {
-       let style = {
-         transform: `rotate(${this.state.shapers[i]+this.state.rotate}deg)`
-       }
-       shapes.push( <div className="shape" key={i} style={style}/> )
-     }
      return (
        <div className="graphic-group">
-        {shapes}
+        {
+          this.state.shapers.map((shaper, i) => {
+            let style = {
+              transform: `rotate(${shaper+this.state.rotate}deg)`
+            }
+            return (
+              <div className="shape" key={i} style={style}/>
+            )
+          })
+        }
        </div>
      )
    }
