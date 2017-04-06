@@ -20777,7 +20777,7 @@ var App = exports.App = function (_React$Component) {
   }, {
     key: 'handleCloseClick',
     value: function handleCloseClick() {
-      this.setState({ movec: false });
+      this.setState({ current: -1, movec: false });
     }
   }, {
     key: 'render',
@@ -20813,9 +20813,10 @@ var App = exports.App = function (_React$Component) {
               'div',
               { className: 'main__container__content' },
               _react2.default.createElement(
-                'button',
-                { onClick: this.handleCloseClick },
-                'close'
+                'div',
+                { className: 'close',
+                  onClick: this.handleCloseClick },
+                cancelsvg
               )
             )
           )
@@ -20826,6 +20827,16 @@ var App = exports.App = function (_React$Component) {
 
   return App;
 }(_react2.default.Component);
+
+var cancelsvg = _react2.default.createElement(
+  'svg',
+  { height: '64', width: '64', version: '1.1', viewBox: '0 0 64 64' },
+  _react2.default.createElement(
+    'g',
+    null,
+    _react2.default.createElement('path', { d: 'M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z', fill: '#1D1D1B' })
+  )
+);
 
 },{"./nav.js":180,"./shapes.js":181,"react":177}],180:[function(require,module,exports){
 'use strict';
@@ -20927,7 +20938,8 @@ var Shapes = exports.Shapes = function (_React$Component) {
     _this.handleMove = _this.handleMove.bind(_this);
     _this.state = {
       shapers: [60, 20, -45, 30, 45],
-      rotate: 0
+      translatex: 0,
+      translatey: 0
     };
     return _this;
   }
@@ -20946,11 +20958,18 @@ var Shapes = exports.Shapes = function (_React$Component) {
     key: 'handleMove',
     value: function handleMove(e) {
       var x = e.clientX,
-          mid = window.innerWidth / 2;
-      if (x < mid) {
-        this.setState({ rotate: -(mid - x) / 100 });
+          y = e.clientY,
+          midx = window.innerWidth / 2,
+          midy = window.innerHeight / 2;
+      if (x < midx) {
+        this.setState({ translatex: (midx - x) / 30 });
       } else {
-        this.setState({ rotate: (x - mid) / 100 });
+        this.setState({ translatex: -(x - midx) / 30 });
+      }
+      if (y < midy) {
+        this.setState({ translatey: (midy - y) / 30 });
+      } else {
+        this.setState({ translatey: -(y - midy) / 30 });
       }
     }
   }, {
@@ -20963,7 +20982,7 @@ var Shapes = exports.Shapes = function (_React$Component) {
         { className: 'graphic-group' },
         this.state.shapers.map(function (shaper, i) {
           var style = {
-            transform: 'rotate(' + (shaper + _this2.state.rotate) + 'deg)'
+            transform: 'translateX(' + _this2.state.translatex + 'px) translateY(' + _this2.state.translatey + 'px) rotate(' + shaper + 'deg)'
           };
           return _react2.default.createElement('div', { className: 'shape', key: i, style: style });
         })

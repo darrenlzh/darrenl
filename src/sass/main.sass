@@ -22,6 +22,7 @@ nav
     li
       margin: .5rem
       border-bottom: 1px solid transparent
+      transition: .25s ease
       &:hover
         cursor: pointer
       &:hover, &.active
@@ -40,7 +41,7 @@ nav
       position: fixed
       width: 60vw
       height: 60vh
-      transition: transform .5s ease
+      transition: transform .1s ease
       &:nth-child(1)
         right: -30%
         background: lighten($shape-color, 70%)
@@ -64,6 +65,7 @@ nav
     position: relative
     width: 100%
     height: 100%
+    overflow: hidden
     &__inner
       display: flex
       flex-direction: column
@@ -71,21 +73,38 @@ nav
       align-items: center
       transform: translateY(20vh)
       position: absolute
-      transition: .3s cubic-bezier(.87,.04,.31,.87)
+      transition: .5s cubic-bezier(.66,.1,.39,.91)
+      // transition: .5s ease-in-out
     &__content
-      width: 60vw
+      width: 65vw
       height: 80vh
       background: white
       position: absolute
       margin: auto
+      padding: 20px
       top: 0
       bottom: 0
-      transition: .3s cubic-bezier(.87,.04,.31,.87)
+      background: darken(white, 1%)
+      transition: .5s cubic-bezier(.66,.1,.39,.91)
+      // transition: .5s ease-in-out
     &.center &__inner
       left: 40%
     &.move &__inner
       left: 5vw
     &.center &__content
       right: -100vw
+      opacity: 0
     &.move &__content
       right: 5vw
+      opacity: 1
+  .close
+    position: absolute
+    svg
+      width: 30px
+      height: 30px
+      path
+        fill: lighten($base-font-color, 20%)
+    &:hover
+      cursor: pointer
+      path
+        fill: $base-font-color

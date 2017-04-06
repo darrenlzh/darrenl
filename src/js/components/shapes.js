@@ -7,7 +7,8 @@ export class Shapes extends React.Component {
      this.handleMove = this.handleMove.bind(this)
      this.state = {
        shapers: [60, 20, -45, 30, 45],
-       rotate: 0
+       translatex: 0,
+       translatey: 0
      }
    }
    componentDidMount() {
@@ -18,11 +19,18 @@ export class Shapes extends React.Component {
    }
    handleMove(e) {
      let x = e.clientX,
-         mid = window.innerWidth/2
-     if (x < mid) {
-       this.setState({ rotate: -(mid-x)/100 })
+         y = e.clientY,
+         midx = window.innerWidth/2,
+         midy = window.innerHeight/2
+     if (x < midx) {
+       this.setState({ translatex: (midx-x)/30 })
      } else {
-       this.setState({ rotate: (x-mid)/100 })
+       this.setState({ translatex: -(x-midx)/30 })
+     }
+     if (y < midy) {
+       this.setState({ translatey: (midy-y)/30 })
+     } else {
+       this.setState({ translatey: -(y-midy)/30 })
      }
    }
    render() {
@@ -31,7 +39,7 @@ export class Shapes extends React.Component {
         {
           this.state.shapers.map((shaper, i) => {
             let style = {
-              transform: `rotate(${shaper+this.state.rotate}deg)`
+              transform: `translateX(${this.state.translatex}px) translateY(${this.state.translatey}px) rotate(${shaper}deg)`
             }
             return (
               <div className="shape" key={i} style={style}/>
