@@ -20723,7 +20723,56 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _reactDom2.default.render(_react2.default.createElement(_app.App, null), document.getElementById('app'));
 
-},{"./components/app.js":179,"react":177,"react-dom":26}],179:[function(require,module,exports){
+},{"./components/app.js":180,"react":177,"react-dom":26}],179:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.About = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var About = exports.About = function (_React$Component) {
+  _inherits(About, _React$Component);
+
+  function About(props) {
+    _classCallCheck(this, About);
+
+    return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).call(this, props));
+  }
+
+  _createClass(About, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h2',
+          null,
+          this.props.name
+        )
+      );
+    }
+  }]);
+
+  return About;
+}(_react2.default.Component);
+
+},{"react":177}],180:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20740,6 +20789,12 @@ var _react2 = _interopRequireDefault(_react);
 var _nav = require('./nav.js');
 
 var _shapes = require('./shapes.js');
+
+var _portfolio = require('./portfolio.js');
+
+var _about = require('./about.js');
+
+var _contact = require('./contact.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20759,10 +20814,8 @@ var App = exports.App = function (_React$Component) {
 
     _this.handleNavClick = _this.handleNavClick.bind(_this);
     _this.handleCloseClick = _this.handleCloseClick.bind(_this);
+    _this.renderContent = _this.renderContent.bind(_this);
     _this.state = {
-      myname: 'Darren Lim',
-      tagline: 'engineer . developer . designer',
-      navlist: ['portfolio', 'about', 'contact'],
       current: -1,
       movec: false
     };
@@ -20780,45 +20833,49 @@ var App = exports.App = function (_React$Component) {
       this.setState({ current: -1, movec: false });
     }
   }, {
+    key: 'renderContent',
+    value: function renderContent() {
+      if (this.state.current >= 0 && this.state.movec == true) {
+        return NAV_LIST[this.state.current].content;
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'main' },
+        _react2.default.createElement(_shapes.Shapes, null),
         _react2.default.createElement(
           'div',
-          { className: 'main' },
-          _react2.default.createElement(_shapes.Shapes, null),
+          { className: 'main__container ' + (this.state.movec ? 'move' : 'center') },
           _react2.default.createElement(
             'div',
-            { className: 'main__container ' + (this.state.movec ? 'move' : 'center') },
+            { className: 'main__container__inner' },
             _react2.default.createElement(
-              'div',
-              { className: 'main__container__inner' },
-              _react2.default.createElement(
-                'h1',
-                null,
-                this.state.myname
-              ),
-              _react2.default.createElement(
-                'div',
-                null,
-                this.state.tagline
-              ),
-              _react2.default.createElement(_nav.Nav, { navlist: this.state.navlist,
-                current: this.state.current,
-                click: this.handleNavClick.bind(this) })
+              'h1',
+              null,
+              MY_NAME
             ),
             _react2.default.createElement(
               'div',
-              { className: 'main__container__content' },
-              _react2.default.createElement(
-                'div',
-                { className: 'close',
-                  onClick: this.handleCloseClick },
-                cancelsvg
-              )
-            )
+              null,
+              TAG_LINE
+            ),
+            _react2.default.createElement(_nav.Nav, { navlist: NAV_LIST,
+              current: this.state.current,
+              click: this.handleNavClick.bind(this) })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'main__container__content' },
+            _react2.default.createElement(
+              'div',
+              { className: 'close',
+                onClick: this.handleCloseClick },
+              CANCEL_SVG
+            ),
+            this.renderContent()
           )
         )
       );
@@ -20828,7 +20885,20 @@ var App = exports.App = function (_React$Component) {
   return App;
 }(_react2.default.Component);
 
-var cancelsvg = _react2.default.createElement(
+var MY_NAME = 'Darren Lim',
+    TAG_LINE = 'engineer . developer . designer',
+    NAV_LIST = [{
+  name: 'portfolio',
+  content: _react2.default.createElement(_portfolio.Portfolio, { name: 'Portfolio' })
+}, {
+  name: 'about',
+  content: _react2.default.createElement(_about.About, { name: 'About me' })
+}, {
+  name: 'contact',
+  content: _react2.default.createElement(_contact.Contact, { name: 'Contact' })
+}];
+
+var CANCEL_SVG = _react2.default.createElement(
   'svg',
   { height: '64', width: '64', version: '1.1', viewBox: '0 0 64 64' },
   _react2.default.createElement(
@@ -20838,7 +20908,56 @@ var cancelsvg = _react2.default.createElement(
   )
 );
 
-},{"./nav.js":180,"./shapes.js":181,"react":177}],180:[function(require,module,exports){
+},{"./about.js":179,"./contact.js":181,"./nav.js":182,"./portfolio.js":183,"./shapes.js":184,"react":177}],181:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Contact = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Contact = exports.Contact = function (_React$Component) {
+  _inherits(Contact, _React$Component);
+
+  function Contact(props) {
+    _classCallCheck(this, Contact);
+
+    return _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).call(this, props));
+  }
+
+  _createClass(Contact, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h2',
+          null,
+          this.props.name
+        )
+      );
+    }
+  }]);
+
+  return Contact;
+}(_react2.default.Component);
+
+},{"react":177}],182:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20894,7 +21013,7 @@ var Nav = exports.Nav = function (_React$Component) {
               {
                 key: i, className: _this2.props.current === i ? 'active' : '',
                 onClick: _this2.handleClick.bind(_this2, i) },
-              item
+              item.name
             );
           })
         )
@@ -20905,7 +21024,56 @@ var Nav = exports.Nav = function (_React$Component) {
   return Nav;
 }(_react2.default.Component);
 
-},{"react":177}],181:[function(require,module,exports){
+},{"react":177}],183:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Portfolio = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Portfolio = exports.Portfolio = function (_React$Component) {
+  _inherits(Portfolio, _React$Component);
+
+  function Portfolio(props) {
+    _classCallCheck(this, Portfolio);
+
+    return _possibleConstructorReturn(this, (Portfolio.__proto__ || Object.getPrototypeOf(Portfolio)).call(this, props));
+  }
+
+  _createClass(Portfolio, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { id: "portfolio", className: "main__container__content__inner" },
+        _react2.default.createElement(
+          "h2",
+          null,
+          this.props.name
+        )
+      );
+    }
+  }]);
+
+  return Portfolio;
+}(_react2.default.Component);
+
+},{"react":177}],184:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20937,7 +21105,6 @@ var Shapes = exports.Shapes = function (_React$Component) {
 
     _this.handleMove = _this.handleMove.bind(_this);
     _this.state = {
-      shapers: [60, 20, -45, 30, 45],
       translatex: 0,
       translatey: 0
     };
@@ -20957,19 +21124,20 @@ var Shapes = exports.Shapes = function (_React$Component) {
   }, {
     key: 'handleMove',
     value: function handleMove(e) {
+      var F_CONST = 30;
       var x = e.clientX,
           y = e.clientY,
           midx = window.innerWidth / 2,
           midy = window.innerHeight / 2;
       if (x < midx) {
-        this.setState({ translatex: (midx - x) / 30 });
+        this.setState({ translatex: (midx - x) / F_CONST });
       } else {
-        this.setState({ translatex: -(x - midx) / 30 });
+        this.setState({ translatex: -(x - midx) / F_CONST });
       }
       if (y < midy) {
-        this.setState({ translatey: (midy - y) / 30 });
+        this.setState({ translatey: (midy - y) / F_CONST });
       } else {
-        this.setState({ translatey: -(y - midy) / 30 });
+        this.setState({ translatey: -(y - midy) / F_CONST });
       }
     }
   }, {
@@ -20980,7 +21148,7 @@ var Shapes = exports.Shapes = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'graphic-group' },
-        this.state.shapers.map(function (shaper, i) {
+        SHAPE_RS.map(function (shaper, i) {
           var style = {
             transform: 'translateX(' + _this2.state.translatex + 'px) translateY(' + _this2.state.translatey + 'px) rotate(' + shaper + 'deg)'
           };
@@ -20992,6 +21160,8 @@ var Shapes = exports.Shapes = function (_React$Component) {
 
   return Shapes;
 }(_react2.default.Component);
+
+var SHAPE_RS = [60, 20, -45, 30, 45];
 
 },{"react":177}]},{},[178])
 

@@ -18,7 +18,7 @@ export class Nav extends React.Component {
                 <li
                   key={i} className={this.props.current===i?'active':''}
                   onClick={this.handleClick.bind(this, i)}>
-                  {item}
+                  {item.name}
                 </li>
               )
             })
