@@ -21065,6 +21065,37 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
           "h2",
           null,
           this.props.name
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "portfolio" },
+          _react2.default.createElement(
+            "article",
+            { className: "portfolio__item" },
+            _react2.default.createElement(
+              "div",
+              { className: "image-wrap" },
+              _react2.default.createElement("img", { src: "src/img/student-success.png" })
+            )
+          ),
+          _react2.default.createElement(
+            "article",
+            { className: "portfolio__item" },
+            _react2.default.createElement(
+              "div",
+              { className: "image-wrap" },
+              _react2.default.createElement("img", { src: "src/img/student-success.png" })
+            )
+          ),
+          _react2.default.createElement(
+            "article",
+            { className: "portfolio__item" },
+            _react2.default.createElement(
+              "div",
+              { className: "image-wrap" },
+              _react2.default.createElement("img", { src: "src/img/student-success.png" })
+            )
+          )
         )
       );
     }
@@ -21124,7 +21155,7 @@ var Shapes = exports.Shapes = function (_React$Component) {
   }, {
     key: 'handleMove',
     value: function handleMove(e) {
-      var F_CONST = 30;
+      var F_CONST = 10;
       var x = e.clientX,
           y = e.clientY,
           midx = window.innerWidth / 2,
@@ -21150,7 +21181,7 @@ var Shapes = exports.Shapes = function (_React$Component) {
         { className: 'graphic-group' },
         SHAPE_RS.map(function (shaper, i) {
           var style = {
-            transform: 'translateX(' + _this2.state.translatex + 'px) translateY(' + _this2.state.translatey + 'px) rotate(' + shaper + 'deg)'
+            transform: 'translateX(' + _this2.state.translatex / SHAPE_POS[i] + 'px) translateY(' + _this2.state.translatey / SHAPE_POS[i] + 'px) rotate(' + shaper + 'deg)'
           };
           return _react2.default.createElement('div', { className: 'shape', key: i, style: style });
         })
@@ -21161,7 +21192,8 @@ var Shapes = exports.Shapes = function (_React$Component) {
   return Shapes;
 }(_react2.default.Component);
 
-var SHAPE_RS = [60, 20, -45, 30, 45];
+var SHAPE_RS = [60, 20, -45, 30, 45],
+    SHAPE_POS = [16, 8, 4, 2, 1];
 
 },{"react":177}]},{},[178])
 

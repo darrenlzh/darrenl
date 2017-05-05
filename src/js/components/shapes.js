@@ -17,7 +17,7 @@ export class Shapes extends React.Component {
      window.removeEventListener('mousemove', this.handleMove)
    }
    handleMove(e) {
-     const F_CONST = 30
+     const F_CONST = 10
      let x = e.clientX,
          y = e.clientY,
          midx = window.innerWidth/2,
@@ -39,7 +39,7 @@ export class Shapes extends React.Component {
         {
           SHAPE_RS.map((shaper, i) => {
             let style = {
-              transform: `translateX(${this.state.translatex}px) translateY(${this.state.translatey}px) rotate(${shaper}deg)`
+              transform: `translateX(${this.state.translatex/SHAPE_POS[i]}px) translateY(${this.state.translatey/SHAPE_POS[i]}px) rotate(${shaper}deg)`
             }
             return (
               <div className="shape" key={i} style={style}/>
@@ -51,4 +51,5 @@ export class Shapes extends React.Component {
    }
  }
 
-const SHAPE_RS = [60, 20, -45, 30, 45]
+const SHAPE_RS = [60, 20, -45, 30, 45],
+      SHAPE_POS = [16, 8, 4, 2, 1]
