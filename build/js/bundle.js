@@ -21068,33 +21068,13 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
         ),
         _react2.default.createElement(
           "div",
-          { className: "portfolio" },
+          { className: "grid portfolio" },
           _react2.default.createElement(
-            "article",
-            { className: "portfolio__item" },
-            _react2.default.createElement(
-              "div",
-              { className: "image-wrap" },
-              _react2.default.createElement("img", { src: "src/img/student-success.png" })
-            )
-          ),
-          _react2.default.createElement(
-            "article",
-            { className: "portfolio__item" },
-            _react2.default.createElement(
-              "div",
-              { className: "image-wrap" },
-              _react2.default.createElement("img", { src: "src/img/student-success.png" })
-            )
-          ),
-          _react2.default.createElement(
-            "article",
-            { className: "portfolio__item" },
-            _react2.default.createElement(
-              "div",
-              { className: "image-wrap" },
-              _react2.default.createElement("img", { src: "src/img/student-success.png" })
-            )
+            "section",
+            { className: "row" },
+            ITEMS.map(function (item, i) {
+              return _react2.default.createElement(Item, { key: i, name: item.name, desc: item.desc, img: item.img });
+            })
           )
         )
       );
@@ -21103,6 +21083,47 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
 
   return Portfolio;
 }(_react2.default.Component);
+
+var Item = function (_React$Component2) {
+  _inherits(Item, _React$Component2);
+
+  function Item(props) {
+    _classCallCheck(this, Item);
+
+    return _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this, props));
+  }
+
+  _createClass(Item, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "article",
+        { className: "portfolio__item col" },
+        _react2.default.createElement(
+          "div",
+          { className: "image-wrap" },
+          _react2.default.createElement("img", { src: this.props.img })
+        )
+      );
+    }
+  }]);
+
+  return Item;
+}(_react2.default.Component);
+
+var ITEMS = [{
+  name: 'Student Success',
+  desc: 'University at Buffalo Student Success site.',
+  img: 'src/img/student-success.png'
+}, {
+  name: 'Student Success 222',
+  desc: 'University at Buffalo Student Success site.',
+  img: 'src/img/student-success.png'
+}, {
+  name: 'Student Success 333',
+  desc: 'University at Buffalo Student Success site.',
+  img: 'src/img/student-success.png'
+}];
 
 },{"react":177}],184:[function(require,module,exports){
 'use strict';
@@ -21155,7 +21176,7 @@ var Shapes = exports.Shapes = function (_React$Component) {
   }, {
     key: 'handleMove',
     value: function handleMove(e) {
-      var F_CONST = 10;
+      var F_CONST = 20;
       var x = e.clientX,
           y = e.clientY,
           midx = window.innerWidth / 2,

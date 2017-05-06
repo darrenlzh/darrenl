@@ -17,7 +17,7 @@ export class Shapes extends React.Component {
      window.removeEventListener('mousemove', this.handleMove)
    }
    handleMove(e) {
-     const F_CONST = 10
+     const F_CONST = 20
      let x = e.clientX,
          y = e.clientY,
          midx = window.innerWidth/2,
