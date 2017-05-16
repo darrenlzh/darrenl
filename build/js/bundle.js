@@ -20859,6 +20859,15 @@ var App = exports.App = function (_React$Component) {
         _react2.default.createElement(
           'section',
           { id: 'portfolio' },
+          _react2.default.createElement(
+            'div',
+            { className: 'title container' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              'My work'
+            )
+          ),
           _react2.default.createElement(_portfolio.Portfolio, null)
         ),
         _react2.default.createElement('section', { id: 'about' }),
@@ -20959,13 +20968,13 @@ var ITEMS = [{
   desc: 'University at Buffalo Student Success site.',
   img: 'src/img/student-success-cover.png'
 }, {
+  name: 'Weather App',
+  desc: 'University at Buffalo Student Success site.',
+  img: 'src/img/weather-app-cover.png'
+}, {
   name: 'Academic Integrity',
   desc: 'University at Buffalo Academic Integrity site.',
   img: 'src/img/academic-integrity-cover.png'
-}, {
-  name: 'Student Success 333',
-  desc: 'University at Buffalo Student Success site.',
-  img: 'src/img/student-success-cover.png'
 }, {
   name: 'Student Success 333',
   desc: 'University at Buffalo Student Success site.',

@@ -42,14 +42,14 @@ const ITEMS = [
     img: 'src/img/student-success-cover.png'
   },
   {
+    name: 'Weather App',
+    desc: 'University at Buffalo Student Success site.',
+    img: 'src/img/weather-app-cover.png'
+  },
+  {
     name: 'Academic Integrity',
     desc: 'University at Buffalo Academic Integrity site.',
     img: 'src/img/academic-integrity-cover.png'
-  },
-  {
-    name: 'Student Success 333',
-    desc: 'University at Buffalo Student Success site.',
-    img: 'src/img/student-success-cover.png'
   },
   {
     name: 'Student Success 333',

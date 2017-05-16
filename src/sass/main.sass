@@ -3,7 +3,7 @@
 body
   margin: 0
   font-family: 'Raleway', sans-serif
-  color: $font-darkgray
+  color: black
 
 h1
   font-family: 'Open Sans', monospace
@@ -40,7 +40,7 @@ section
   ul
     list-style: none
     margin-top: 1vh
-    padding: 1rem
+    padding: 1rem 2rem
     background: white
     border: 3px solid black
     transform: translateY(-1vh)
@@ -71,6 +71,17 @@ section
         color: $green
 
 #portfolio
+  h2
+    font-size: 6rem
+    font-weight: bold
+    font-family: 'Open Sans', sans-serif
+  .title
+    padding-bottom: 10vh
+    &::after
+      content: ''
+      width: 150px
+      height: 6px
+      background: $pink
   .item
     padding: 0
     &:hover
@@ -81,6 +92,8 @@ section
       background: $offgray
     &:nth-of-type(2)
       background: $mildblue
+    &:nth-of-type(3)
+      background: $ashgray
     img
       border: none
       &.img-thumbnail

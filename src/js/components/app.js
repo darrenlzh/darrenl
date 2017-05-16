@@ -50,6 +50,9 @@ export class App extends React.Component {
           </div>
         </section>
         <section id="portfolio">
+          <div className="title container">
+            <h2>My work</h2>
+          </div>
           <Portfolio />
         </section>
         <section id="about">
