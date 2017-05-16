@@ -6,18 +6,16 @@ export class Portfolio extends React.Component {
   }
   render() {
     return (
-      <div id="portfolio" className="main__container__content__inner">
+      <div>
         <h2>{this.props.name}</h2>
-        <div className="grid portfolio">
-          <section className="row">
-            {
-              ITEMS.map((item, i) => {
-                return (
-                  <Item key={i} name={item.name} desc={item.desc} img={item.img} />
-                )
-              })
-            }
-          </section>
+        <div className="row">
+          {
+            ITEMS.map((item, i) => {
+              return (
+                <Item key={i} name={item.name} desc={item.desc} img={item.img} />
+              )
+            })
+          }
         </div>
       </div>
     )
@@ -30,9 +28,9 @@ class Item extends React.Component {
   }
   render() {
     return (
-      <article className="portfolio__item col">
-        <div className="image-wrap">
-          <img src={this.props.img}/>
+      <article className="item col-sm-6 col-md-4 col-lg-3">
+        <div className="img-responsive">
+          <img src={this.props.img} className="img-thumbnail"/>
         </div>
       </article>
     )
@@ -43,16 +41,21 @@ const ITEMS = [
   {
     name: 'Student Success',
     desc: 'University at Buffalo Student Success site.',
-    img: 'src/img/student-success.png'
+    img: 'src/img/student-success-cover.jpg'
   },
   {
     name: 'Student Success 222',
     desc: 'University at Buffalo Student Success site.',
-    img: 'src/img/student-success.png'
+    img: 'src/img/student-success-cover.jpg'
   },
   {
     name: 'Student Success 333',
     desc: 'University at Buffalo Student Success site.',
-    img: 'src/img/student-success.png'
+    img: 'src/img/student-success-cover.jpg'
+  },
+  {
+    name: 'Student Success 333',
+    desc: 'University at Buffalo Student Success site.',
+    img: 'src/img/student-success-cover.jpg'
   }
 ]

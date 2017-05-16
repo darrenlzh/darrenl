@@ -1,117 +1,73 @@
 @import "includes/_vars"
-@import "includes/_grid"
-@import "includes/_portfolio"
 
 body
   margin: 0
-  font-family: 'Work Sans', sans-serif
-  color: $base-font-color
+  font-family: 'Raleway', sans-serif
+  color: $font-darkgray
 
 h1
-  font-family: 'Source Code Pro', monospace
-  color: $heading-font-color
-  margin-bottom: .3rem
-
-nav
-  ul
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    list-style: none
-    padding: 0
-    margin: 2rem
-    li
-      margin: .5rem
-      border-bottom: 1px solid transparent
-      &:hover
-        cursor: pointer
-      &:hover, &.active
-        color: $heading-font-color
-        border-bottom: 1px solid $heading-font-color
+  font-family: 'Open Sans', monospace
+  font-weight: bold
+  color: black
+  margin: 0
+  font-size: 7rem
 
 .main
   width: 100vw
-  height: 100vh
+  min-height: 100vh
   position: relative
-  .graphic-group
-    position: fixed
-    width: 100%
-    height: 100%
-    .shape
-      position: fixed
-      width: 60vw
-      height: 60vh
-      transition: transform .1s ease
-      &:nth-child(1)
-        right: -30%
-        background: lighten($shape-color, 70%)
-      &:nth-child(2)
-        bottom: -15%
-        right: -40%
-        background: lighten($shape-color, 55%)
-      &:nth-child(3)
-        bottom: -35%
-        left: 30%
-        background: lighten($shape-color, 35%)
-      &:nth-child(4)
-        bottom: -30%
-        left: 10%
-        background: lighten($shape-color, 15%)
-      &:nth-child(5)
-        bottom: -40%
-        left: -10%
-        background: $shape-color
-  &__container
-    position: relative
-    width: 100%
-    height: 100%
-    overflow: hidden
-    &__inner
-      display: flex
-      flex-direction: column
-      justify-content: center
-      align-items: center
-      width: 20vw
-      transform: translateY(20vh)
-      position: absolute
-      transition: .5s cubic-bezier(.66,.1,.39,.91)
-      // transition: .5s ease-in-out
-    &__content
-      width: calc(100vw - 40vw)
-      height: 80vh
-      background: white
-      position: absolute
-      margin: auto
-      padding: $container-padding
-      top: 0
-      bottom: 0
-      background: darken(white, 1%)
-      transition: .5s cubic-bezier(.66,.1,.39,.91)
-      // transition: .5s ease-in-out
-      &__inner
-        width: 100%
-        height: 100%
+section
+  padding-top: 10vh
 
-    &.center &__inner
-      left: 39vw
-    &.move &__inner
-      left: 5vw
-    &.center &__content
-      right: -100vw
-      opacity: 0
-    &.move &__content
-      right: 5vw
+#language
+  position: absolute
+  right: 5vw
+  top: 5vh
+  font-family: 'Open Sans', sans-serif
+  button
+    width: 45px
+    background: none
+    border: 3px solid black
+    &:focus
+      outline: none
+  ul
+    list-style: none
+    margin-top: 5px
+    padding: 1rem
+    border: 3px solid black
+    transform: translateY(-1vh)
+    opacity: 0
+    visibility: hidden
+    transition: all .2s ease
+    li
+      margin: 5px 0
+      &:hover
+        cursor: pointer
+        color: $font-mediumgray
+    &.open
+      transform: translateY(0)
       opacity: 1
-  .close
-    position: absolute
-    right: 20px
-    svg
-      width: 30px
-      height: 30px
-      path
-        fill: lighten($base-font-color, 20%)
-    &:hover
-      cursor: pointer
-      path
-        fill: $base-font-color
+      visibility: visible
+
+#intro
+  h1 span
+    color: $pink
+  p
+    font-size: 4rem
+    span
+      &:nth-of-type(1)
+        color: $gray
+      &:nth-of-type(2)
+        color: $blue
+      &:nth-of-type(3)
+        color: $green
+
+#portfolio
+  .item
+    padding: 0
+
+#about, #contact
+  height: 100vh
+
+#about
+  background: black
