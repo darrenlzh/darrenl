@@ -24,7 +24,8 @@ export class App extends React.Component {
     return (
       <div className="main">
         <div id="language">
-          <button onClick={this.handleLangMenuClick.bind(this)}>
+          <button onClick={this.handleLangMenuClick.bind(this)}
+          className={this.state.langMenuOpen? 'open': ''}>
             {LANG_CODE[this.state.language]}
           </button>
           <ul className={this.state.langMenuOpen? 'open': ''}>
@@ -61,11 +62,11 @@ export class App extends React.Component {
 }
 
 const MY_NAME = 'Darren Lim',
-      TAG_LINE = 'engineer . developer . designer',
-      LANGUAGES = ['english', 'français', 'dansk'],
-      LANG_CODE = ['EN', 'FR', 'DK'],
+      LANGUAGES = ['english', 'français', 'dansk', 'malay'],
+      LANG_CODE = ['EN', 'FR', 'DK', 'MY'],
       WORDS = [
-        ['Hello', "I'm", "I'm an", 'engineer', 'developer', 'and', 'designer'],
+        ['Hello', "I'm", "I am an", 'engineer', 'developer', 'and', 'designer'],
         ['Salut', "Je m'appelle", 'Je suis', 'ingénieur', 'développeur', 'et', 'concepteur'],
-        ['Hej', "Je heder", 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer']
+        ['Hej', "Je heder", 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer'],
+        ['Hello', "Saya", 'Saya seorang', 'engineer', 'developer', 'dan', 'desginer']
       ]

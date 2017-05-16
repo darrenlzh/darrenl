@@ -20789,7 +20789,8 @@ var App = exports.App = function (_React$Component) {
           { id: 'language' },
           _react2.default.createElement(
             'button',
-            { onClick: this.handleLangMenuClick.bind(this) },
+            { onClick: this.handleLangMenuClick.bind(this),
+              className: this.state.langMenuOpen ? 'open' : '' },
             LANG_CODE[this.state.language]
           ),
           _react2.default.createElement(
@@ -20870,10 +20871,9 @@ var App = exports.App = function (_React$Component) {
 }(_react2.default.Component);
 
 var MY_NAME = 'Darren Lim',
-    TAG_LINE = 'engineer . developer . designer',
-    LANGUAGES = ['english', 'français', 'dansk'],
-    LANG_CODE = ['EN', 'FR', 'DK'],
-    WORDS = [['Hello', "I'm", "I'm an", 'engineer', 'developer', 'and', 'designer'], ['Salut', "Je m'appelle", 'Je suis', 'ingénieur', 'développeur', 'et', 'concepteur'], ['Hej', "Je heder", 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer']];
+    LANGUAGES = ['english', 'français', 'dansk', 'malay'],
+    LANG_CODE = ['EN', 'FR', 'DK', 'MY'],
+    WORDS = [['Hello', "I'm", "I am an", 'engineer', 'developer', 'and', 'designer'], ['Salut', "Je m'appelle", 'Je suis', 'ingénieur', 'développeur', 'et', 'concepteur'], ['Hej', "Je heder", 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer'], ['Hello', "Saya", 'Saya seorang', 'engineer', 'developer', 'dan', 'desginer']];
 
 },{"./portfolio.js":180,"react":177}],180:[function(require,module,exports){
 "use strict";
@@ -20946,11 +20946,7 @@ var Item = function (_React$Component2) {
       return _react2.default.createElement(
         "article",
         { className: "item col-sm-6 col-md-4 col-lg-3" },
-        _react2.default.createElement(
-          "div",
-          { className: "img-responsive" },
-          _react2.default.createElement("img", { src: this.props.img, className: "img-thumbnail" })
-        )
+        _react2.default.createElement("img", { src: this.props.img, className: "img-thumbnail" })
       );
     }
   }]);
@@ -20961,19 +20957,19 @@ var Item = function (_React$Component2) {
 var ITEMS = [{
   name: 'Student Success',
   desc: 'University at Buffalo Student Success site.',
-  img: 'src/img/student-success-cover.jpg'
+  img: 'src/img/student-success-cover.png'
 }, {
-  name: 'Student Success 222',
-  desc: 'University at Buffalo Student Success site.',
-  img: 'src/img/student-success-cover.jpg'
-}, {
-  name: 'Student Success 333',
-  desc: 'University at Buffalo Student Success site.',
-  img: 'src/img/student-success-cover.jpg'
+  name: 'Academic Integrity',
+  desc: 'University at Buffalo Academic Integrity site.',
+  img: 'src/img/academic-integrity-cover.png'
 }, {
   name: 'Student Success 333',
   desc: 'University at Buffalo Student Success site.',
-  img: 'src/img/student-success-cover.jpg'
+  img: 'src/img/student-success-cover.png'
+}, {
+  name: 'Student Success 333',
+  desc: 'University at Buffalo Student Success site.',
+  img: 'src/img/student-success-cover.png'
 }];
 
 },{"react":177}]},{},[178])

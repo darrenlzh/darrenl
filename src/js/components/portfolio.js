@@ -29,9 +29,7 @@ class Item extends React.Component {
   render() {
     return (
       <article className="item col-sm-6 col-md-4 col-lg-3">
-        <div className="img-responsive">
-          <img src={this.props.img} className="img-thumbnail"/>
-        </div>
+        <img src={this.props.img} className="img-thumbnail"/>
       </article>
     )
   }
@@ -41,21 +39,21 @@ const ITEMS = [
   {
     name: 'Student Success',
     desc: 'University at Buffalo Student Success site.',
-    img: 'src/img/student-success-cover.jpg'
+    img: 'src/img/student-success-cover.png'
   },
   {
-    name: 'Student Success 222',
-    desc: 'University at Buffalo Student Success site.',
-    img: 'src/img/student-success-cover.jpg'
-  },
-  {
-    name: 'Student Success 333',
-    desc: 'University at Buffalo Student Success site.',
-    img: 'src/img/student-success-cover.jpg'
+    name: 'Academic Integrity',
+    desc: 'University at Buffalo Academic Integrity site.',
+    img: 'src/img/academic-integrity-cover.png'
   },
   {
     name: 'Student Success 333',
     desc: 'University at Buffalo Student Success site.',
-    img: 'src/img/student-success-cover.jpg'
+    img: 'src/img/student-success-cover.png'
+  },
+  {
+    name: 'Student Success 333',
+    desc: 'University at Buffalo Student Success site.',
+    img: 'src/img/student-success-cover.png'
   }
 ]

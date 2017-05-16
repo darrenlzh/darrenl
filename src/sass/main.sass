@@ -20,20 +20,28 @@ section
   padding-top: 10vh
 
 #language
+  display: flex
+  flex-direction: column
+  align-items: flex-end
   position: absolute
   right: 5vw
   top: 5vh
   font-family: 'Open Sans', sans-serif
   button
     width: 45px
+    height: 45px
     background: none
     border: 3px solid black
     &:focus
       outline: none
+    &.open
+      background: black
+      color: white
   ul
     list-style: none
-    margin-top: 5px
+    margin-top: 1vh
     padding: 1rem
+    background: white
     border: 3px solid black
     transform: translateY(-1vh)
     opacity: 0
@@ -65,6 +73,18 @@ section
 #portfolio
   .item
     padding: 0
+    &:hover
+      cursor: pointer
+      img
+        transform: scale(1.05)
+    &:nth-of-type(1)
+      background: $offgray
+    &:nth-of-type(2)
+      background: $mildblue
+    img
+      border: none
+      &.img-thumbnail
+        background: none
 
 #about, #contact
   height: 100vh
