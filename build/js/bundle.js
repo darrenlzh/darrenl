@@ -20756,6 +20756,7 @@ var App = exports.App = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.handleLangMenuClick = _this.handleLangMenuClick.bind(_this);
+    _this.handleCloseLangMenuClick = _this.handleCloseLangMenuClick.bind(_this);
     _this.handleLangClick = _this.handleLangClick.bind(_this);
     _this.state = {
       language: 0,
@@ -20770,6 +20771,11 @@ var App = exports.App = function (_React$Component) {
     value: function handleLangMenuClick() {
       var temp = !this.state.langMenuOpen;
       this.setState({ langMenuOpen: temp });
+    }
+  }, {
+    key: 'handleCloseLangMenuClick',
+    value: function handleCloseLangMenuClick() {
+      this.setState({ langMenuOpen: false });
     }
   }, {
     key: 'handleLangClick',
@@ -20809,7 +20815,7 @@ var App = exports.App = function (_React$Component) {
         ),
         _react2.default.createElement(
           'section',
-          { id: 'intro' },
+          { id: 'intro', onClick: this.handleCloseLangMenuClick.bind(this) },
           _react2.default.createElement(
             'div',
             { className: 'container' },
@@ -20858,14 +20864,14 @@ var App = exports.App = function (_React$Component) {
         ),
         _react2.default.createElement(
           'section',
-          { id: 'portfolio' },
+          { id: 'portfolio', onClick: this.handleCloseLangMenuClick.bind(this) },
           _react2.default.createElement(
             'div',
             { className: 'title container' },
             _react2.default.createElement(
               'h2',
               null,
-              'My work'
+              this.state.words[7]
             )
           ),
           _react2.default.createElement(_portfolio.Portfolio, null)
@@ -20880,12 +20886,12 @@ var App = exports.App = function (_React$Component) {
 }(_react2.default.Component);
 
 var MY_NAME = 'Darren Lim',
-    LANGUAGES = ['english', 'français', 'dansk', 'malay'],
-    LANG_CODE = ['EN', 'FR', 'DK', 'MY'],
-    WORDS = [['Hello', "I'm", "I am an", 'engineer', 'developer', 'and', 'designer'], ['Salut', "Je m'appelle", 'Je suis', 'ingénieur', 'développeur', 'et', 'concepteur'], ['Hej', "Je heder", 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer'], ['Hello', "Saya", 'Saya seorang', 'engineer', 'developer', 'dan', 'desginer']];
+    LANGUAGES = ['english', 'français', 'dansk', 'bahasa melayu', '中文'],
+    LANG_CODE = ['EN', 'FR', 'DK', 'MY', '中文'],
+    WORDS = [['Hello', "I'm", "I am an", 'engineer', 'developer', 'and', 'designer', 'My work'], ['Salut', "Je m'appelle", 'Je suis', 'ingénieur', 'développeur', 'et', 'concepteur', 'Mon travail'], ['Hej', 'Jeg heder', 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer', 'Mit arbejde'], ['Hello', 'Saya', 'Saya seorang', 'jurutera perisian', 'developer', 'dan', 'pereka web', 'Kerjaan saya'], ['你好', '我叫', '我是', '电脑工程师', '网络开发者', '及', '设计师', '我的作品']];
 
 },{"./portfolio.js":180,"react":177}],180:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -20894,7 +20900,7 @@ exports.Portfolio = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -20912,27 +20918,45 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
   function Portfolio(props) {
     _classCallCheck(this, Portfolio);
 
-    return _possibleConstructorReturn(this, (Portfolio.__proto__ || Object.getPrototypeOf(Portfolio)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Portfolio.__proto__ || Object.getPrototypeOf(Portfolio)).call(this, props));
+
+    _this.state = {
+      current: -1,
+      hover: false,
+      expand: false
+    };
+    _this.mouseOver = _this.mouseOver.bind(_this);
+    _this.mouseOut = _this.mouseOut.bind(_this);
+    _this.handleClick = _this.handleClick.bind(_this);
+    return _this;
   }
 
   _createClass(Portfolio, [{
-    key: "render",
+    key: 'mouseOver',
+    value: function mouseOver(i) {
+      this.setState({ current: i, hover: true });
+    }
+  }, {
+    key: 'mouseOut',
+    value: function mouseOut(i) {
+      this.setState({ current: -1, hover: false });
+    }
+  }, {
+    key: 'handleClick',
+    value: function handleClick(i) {
+      this.setState({ current: i, expanded: true });
+    }
+  }, {
+    key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
-        "div",
-        null,
-        _react2.default.createElement(
-          "h2",
-          null,
-          this.props.name
-        ),
-        _react2.default.createElement(
-          "div",
-          { className: "row" },
-          ITEMS.map(function (item, i) {
-            return _react2.default.createElement(Item, { key: i, name: item.name, desc: item.desc, img: item.img });
-          })
-        )
+        'div',
+        { className: 'row' },
+        ITEMS.map(function (item, i) {
+          return _react2.default.createElement(Item, { key: i, id: i, name: item.name, desc: item.desc, img: item.img, click: _this2.handleClick.bind(_this2, i), over: _this2.mouseOver.bind(_this2, i), out: _this2.mouseOut.bind(_this2), current: _this2.state.current, hover: _this2.state.hover });
+        })
       );
     }
   }]);
@@ -20950,12 +20974,26 @@ var Item = function (_React$Component2) {
   }
 
   _createClass(Item, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        "article",
-        { className: "item col-sm-6 col-md-4 col-lg-3" },
-        _react2.default.createElement("img", { src: this.props.img, className: "img-thumbnail" })
+        'article',
+        { className: 'item col-xs-6 col-sm-6 col-md-4 col-lg-3 ' + (this.props.hover && this.props.current == this.props.id ? 'hovered' : ''), onClick: this.props.click, onMouseOver: this.props.over, onMouseOut: this.props.out },
+        _react2.default.createElement('img', { src: this.props.img, className: 'img-thumbnail' }),
+        _react2.default.createElement(
+          'div',
+          { className: 'hover-layer' },
+          _react2.default.createElement(
+            'h3',
+            null,
+            this.props.name
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            this.props.desc
+          )
+        )
       );
     }
   }]);
@@ -20969,7 +21007,7 @@ var ITEMS = [{
   img: 'src/img/student-success-cover.png'
 }, {
   name: 'Weather App',
-  desc: 'University at Buffalo Student Success site.',
+  desc: 'Weather forecast app built with Angular',
   img: 'src/img/weather-app-cover.png'
 }, {
   name: 'Academic Integrity',

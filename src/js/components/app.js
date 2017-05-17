@@ -6,6 +6,7 @@ export class App extends React.Component {
   constructor(props) {
     super(props)
     this.handleLangMenuClick = this.handleLangMenuClick.bind(this)
+    this.handleCloseLangMenuClick = this.handleCloseLangMenuClick.bind(this)
     this.handleLangClick = this.handleLangClick.bind(this)
     this.state = {
       language: 0,
@@ -16,6 +17,9 @@ export class App extends React.Component {
   handleLangMenuClick() {
     var temp = !this.state.langMenuOpen
     this.setState({ langMenuOpen: temp })
+  }
+  handleCloseLangMenuClick() {
+    this.setState({ langMenuOpen: false })
   }
   handleLangClick(i) {
     this.setState({ language: i, words: WORDS[i] })
@@ -40,7 +44,7 @@ export class App extends React.Component {
             }
           </ul>
         </div>
-        <section id="intro">
+        <section id="intro" onClick={this.handleCloseLangMenuClick.bind(this)}>
           <div className="container">
               <h1>{this.state.words[0]}.<br/>
               {this.state.words[1]} <span>{MY_NAME}</span>.</h1>
@@ -49,9 +53,9 @@ export class App extends React.Component {
               </p>
           </div>
         </section>
-        <section id="portfolio">
+        <section id="portfolio" onClick={this.handleCloseLangMenuClick.bind(this)}>
           <div className="title container">
-            <h2>My work</h2>
+            <h2>{this.state.words[7]}</h2>
           </div>
           <Portfolio />
         </section>
@@ -65,11 +69,22 @@ export class App extends React.Component {
 }
 
 const MY_NAME = 'Darren Lim',
-      LANGUAGES = ['english', 'français', 'dansk', 'malay'],
-      LANG_CODE = ['EN', 'FR', 'DK', 'MY'],
+      LANGUAGES = ['english', 'français', 'dansk', 'bahasa melayu', '中文'],
+      LANG_CODE = ['EN', 'FR', 'DK', 'MY', '中文'],
       WORDS = [
-        ['Hello', "I'm", "I am an", 'engineer', 'developer', 'and', 'designer'],
-        ['Salut', "Je m'appelle", 'Je suis', 'ingénieur', 'développeur', 'et', 'concepteur'],
-        ['Hej', "Je heder", 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer'],
-        ['Hello', "Saya", 'Saya seorang', 'engineer', 'developer', 'dan', 'desginer']
+        [
+          'Hello', "I'm", "I am an", 'engineer', 'developer', 'and', 'designer', 'My work'
+        ],
+        [
+          'Salut', "Je m'appelle", 'Je suis', 'ingénieur', 'développeur', 'et', 'concepteur', 'Mon travail'
+        ],
+        [
+          'Hej', 'Jeg heder', 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer', 'Mit arbejde'
+        ],
+        [
+          'Hello', 'Saya', 'Saya seorang', 'jurutera perisian', 'developer', 'dan', 'pereka web', 'Kerjaan saya'
+        ],
+        [
+          '你好', '我叫', '我是', '电脑工程师', '网络开发者', '及', '设计师', '我的作品'
+        ]
       ]

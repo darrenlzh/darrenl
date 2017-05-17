@@ -3,20 +3,35 @@ import React from 'react'
 export class Portfolio extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      current: -1,
+      hover: false,
+      expand: false
+    }
+    this.mouseOver = this.mouseOver.bind(this)
+    this.mouseOut = this.mouseOut.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+  }
+  mouseOver(i) {
+    this.setState({ current: i, hover: true })
+  }
+  mouseOut(i) {
+    this.setState({ current: -1, hover: false })
+
+  }
+  handleClick(i) {
+    this.setState({ current: i, expanded: true })
   }
   render() {
     return (
-      <div>
-        <h2>{this.props.name}</h2>
-        <div className="row">
-          {
-            ITEMS.map((item, i) => {
-              return (
-                <Item key={i} name={item.name} desc={item.desc} img={item.img} />
-              )
-            })
-          }
-        </div>
+      <div className="row">
+        {
+          ITEMS.map((item, i) => {
+            return (
+              <Item key={i} id={i} name={item.name} desc={item.desc} img={item.img} click={this.handleClick.bind(this, i)} over={this.mouseOver.bind(this, i)} out={this.mouseOut.bind(this)} current ={this.state.current} hover={this.state.hover}/>
+            )
+          })
+        }
       </div>
     )
   }
@@ -28,8 +43,12 @@ class Item extends React.Component {
   }
   render() {
     return (
-      <article className="item col-sm-6 col-md-4 col-lg-3">
+      <article className={`item col-xs-6 col-sm-6 col-md-4 col-lg-3 ${this.props.hover && this.props.current==this.props.id? 'hovered' : ''}`} onClick={this.props.click} onMouseOver={this.props.over} onMouseOut={this.props.out}>
         <img src={this.props.img} className="img-thumbnail"/>
+        <div className="hover-layer">
+          <h3>{this.props.name}</h3>
+          <p>{this.props.desc}</p>
+        </div>
       </article>
     )
   }
@@ -43,7 +62,7 @@ const ITEMS = [
   },
   {
     name: 'Weather App',
-    desc: 'University at Buffalo Student Success site.',
+    desc: 'Weather forecast app built with Angular',
     img: 'src/img/weather-app-cover.png'
   },
   {
