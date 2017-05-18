@@ -20758,6 +20758,7 @@ var App = exports.App = function (_React$Component) {
     _this.handleLangMenuClick = _this.handleLangMenuClick.bind(_this);
     _this.handleCloseLangMenuClick = _this.handleCloseLangMenuClick.bind(_this);
     _this.handleLangClick = _this.handleLangClick.bind(_this);
+    _this.mouseLeave = _this.mouseLeave.bind(_this);
     _this.state = {
       language: 0,
       langMenuOpen: false,
@@ -20783,16 +20784,29 @@ var App = exports.App = function (_React$Component) {
       this.setState({ language: i, words: WORDS[i] });
     }
   }, {
+    key: 'mouseLeave',
+    value: function mouseLeave(mouseLeft) {
+      var _this2 = this;
+
+      if (mouseLeft) {
+        timeout = setTimeout(function () {
+          _this2.setState({ langMenuOpen: false });
+        }, 1500);
+      } else {
+        clearTimeout(timeout);
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       return _react2.default.createElement(
         'div',
         { className: 'main' },
         _react2.default.createElement(
           'div',
-          { id: 'language' },
+          { id: 'language', onMouseLeave: this.mouseLeave.bind(this, true), onMouseEnter: this.mouseLeave.bind(this, false) },
           _react2.default.createElement(
             'button',
             { onClick: this.handleLangMenuClick.bind(this),
@@ -20806,8 +20820,8 @@ var App = exports.App = function (_React$Component) {
               return _react2.default.createElement(
                 'li',
                 { key: i,
-                  className: _this2.state.language == i ? 'active' : '',
-                  onClick: _this2.handleLangClick.bind(_this2, i) },
+                  className: _this3.state.language == i ? 'active' : '',
+                  onClick: _this3.handleLangClick.bind(_this3, i) },
                 item
               );
             })
@@ -20874,10 +20888,43 @@ var App = exports.App = function (_React$Component) {
               this.state.words[7]
             )
           ),
+          _react2.default.createElement(
+            'div',
+            { className: 'summary container' },
+            _react2.default.createElement(
+              'p',
+              null,
+              'Here are some cool stuff I have done.'
+            )
+          ),
           _react2.default.createElement(_portfolio.Portfolio, null)
         ),
-        _react2.default.createElement('section', { id: 'about' }),
-        _react2.default.createElement('section', { id: 'contact' })
+        _react2.default.createElement(
+          'section',
+          { id: 'about' },
+          _react2.default.createElement(
+            'div',
+            { className: 'title container' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              'About me'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'section',
+          { id: 'contact' },
+          _react2.default.createElement(
+            'div',
+            { className: 'title container' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Contact me'
+            )
+          )
+        )
       );
     }
   }]);
@@ -20885,10 +20932,12 @@ var App = exports.App = function (_React$Component) {
   return App;
 }(_react2.default.Component);
 
-var MY_NAME = 'Darren Lim',
+var timeout;
+
+var MY_NAME = 'Jean Deaux',
     LANGUAGES = ['english', 'français', 'dansk', 'bahasa melayu', '中文'],
     LANG_CODE = ['EN', 'FR', 'DK', 'MY', '中文'],
-    WORDS = [['Hello', "I'm", "I am an", 'engineer', 'developer', 'and', 'designer', 'My work'], ['Salut', "Je m'appelle", 'Je suis', 'ingénieur', 'développeur', 'et', 'concepteur', 'Mon travail'], ['Hej', 'Jeg heder', 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer', 'Mit arbejde'], ['Hello', 'Saya', 'Saya seorang', 'jurutera perisian', 'developer', 'dan', 'pereka web', 'Kerjaan saya'], ['你好', '我叫', '我是', '电脑工程师', '网络开发者', '及', '设计师', '我的作品']];
+    WORDS = [['Hello', "I'm", "I am an", 'engineer', 'developer', 'and', 'designer', 'My work'], ['Salut', "Je m'appelle", 'Je suis', 'ingénieur', 'développeur', 'et', 'concepteur', 'Mon travail'], ['Hej', 'Jeg heder', 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer', 'Mit arbejde'], ['Hello', 'Saya', 'Saya seorang', 'jurutera perisian', 'developer', 'dan', 'pereka web', 'Kerjaan saya'], ['你好', '我叫', '我是', '软件工程师', '网络开发者', '及', '设计师', '我的作品']];
 
 },{"./portfolio.js":180,"react":177}],180:[function(require,module,exports){
 'use strict';
@@ -20953,7 +21002,7 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'row' },
+        { className: 'inner' },
         ITEMS.map(function (item, i) {
           return _react2.default.createElement(Item, { key: i, id: i, name: item.name, desc: item.desc, img: item.img, click: _this2.handleClick.bind(_this2, i), over: _this2.mouseOver.bind(_this2, i), out: _this2.mouseOut.bind(_this2), current: _this2.state.current, hover: _this2.state.hover });
         })

@@ -24,7 +24,7 @@ export class Portfolio extends React.Component {
   }
   render() {
     return (
-      <div className="row">
+      <div className="inner">
         {
           ITEMS.map((item, i) => {
             return (

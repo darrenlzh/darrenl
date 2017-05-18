@@ -8,6 +8,7 @@ export class App extends React.Component {
     this.handleLangMenuClick = this.handleLangMenuClick.bind(this)
     this.handleCloseLangMenuClick = this.handleCloseLangMenuClick.bind(this)
     this.handleLangClick = this.handleLangClick.bind(this)
+    this.mouseLeave = this.mouseLeave.bind(this)
     this.state = {
       language: 0,
       langMenuOpen: false,
@@ -24,10 +25,20 @@ export class App extends React.Component {
   handleLangClick(i) {
     this.setState({ language: i, words: WORDS[i] })
   }
+  mouseLeave(mouseLeft) {
+    if (mouseLeft) {
+      timeout = setTimeout(() => {
+        this.setState({ langMenuOpen: false })
+      }, 1500)
+    }
+    else {
+      clearTimeout(timeout)
+    }
+  }
   render() {
     return (
       <div className="main">
-        <div id="language">
+        <div id="language" onMouseLeave={this.mouseLeave.bind(this, true)} onMouseEnter={this.mouseLeave.bind(this, false)}>
           <button onClick={this.handleLangMenuClick.bind(this)}
           className={this.state.langMenuOpen? 'open': ''}>
             {LANG_CODE[this.state.language]}
@@ -57,18 +68,29 @@ export class App extends React.Component {
           <div className="title container">
             <h2>{this.state.words[7]}</h2>
           </div>
+          <div className="summary container">
+            <p>Here are some cool stuff I have done.</p>
+          </div>
           <Portfolio />
         </section>
         <section id="about">
+          <div className="title container">
+            <h2>About me</h2>
+          </div>
         </section>
         <section id="contact">
+          <div className="title container">
+            <h2>Contact me</h2>
+          </div>
         </section>
       </div>
     )
   }
 }
 
-const MY_NAME = 'Darren Lim',
+var timeout
+
+const MY_NAME = 'Jean Deaux',
       LANGUAGES = ['english', 'français', 'dansk', 'bahasa melayu', '中文'],
       LANG_CODE = ['EN', 'FR', 'DK', 'MY', '中文'],
       WORDS = [
@@ -85,6 +107,6 @@ const MY_NAME = 'Darren Lim',
           'Hello', 'Saya', 'Saya seorang', 'jurutera perisian', 'developer', 'dan', 'pereka web', 'Kerjaan saya'
         ],
         [
-          '你好', '我叫', '我是', '电脑工程师', '网络开发者', '及', '设计师', '我的作品'
+          '你好', '我叫', '我是', '软件工程师', '网络开发者', '及', '设计师', '我的作品'
         ]
       ]
