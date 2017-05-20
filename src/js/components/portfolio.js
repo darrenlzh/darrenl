@@ -6,7 +6,7 @@ export class Portfolio extends React.Component {
     this.state = {
       current: -1,
       hover: false,
-      expand: false
+      view: false
     }
     this.mouseOver = this.mouseOver.bind(this)
     this.mouseOut = this.mouseOut.bind(this)
@@ -20,7 +20,8 @@ export class Portfolio extends React.Component {
 
   }
   handleClick(i) {
-    this.setState({ current: i, expanded: true })
+    var temp = !this.state.view
+    this.setState({ current: i, view: temp })
   }
   render() {
     return (
@@ -32,6 +33,13 @@ export class Portfolio extends React.Component {
             )
           })
         }
+        <div id="view" className={this.state.view? 'viewing' : ''}>
+          <div className="view-inner">
+            <button onClick={this.handleClick.bind(this, -1)}>
+              <i className="material-icons">close</i>
+            </button>
+          </div>
+        </div>
       </div>
     )
   }

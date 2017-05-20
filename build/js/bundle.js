@@ -20940,7 +20940,7 @@ var MY_NAME = 'Jean Deaux',
     WORDS = [['Hello', "I'm", "I am an", 'engineer', 'developer', 'and', 'designer', 'My work'], ['Salut', "Je m'appelle", 'Je suis', 'ingénieur', 'développeur', 'et', 'concepteur', 'Mon travail'], ['Hej', 'Jeg heder', 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer', 'Mit arbejde'], ['Hello', 'Saya', 'Saya seorang', 'jurutera perisian', 'developer', 'dan', 'pereka web', 'Kerjaan saya'], ['你好', '我叫', '我是', '软件工程师', '网络开发者', '及', '设计师', '我的作品']];
 
 },{"./portfolio.js":180,"react":177}],180:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -20949,7 +20949,7 @@ exports.Portfolio = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -20972,7 +20972,7 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
     _this.state = {
       current: -1,
       hover: false,
-      expand: false
+      view: false
     };
     _this.mouseOver = _this.mouseOver.bind(_this);
     _this.mouseOut = _this.mouseOut.bind(_this);
@@ -20981,31 +20981,49 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
   }
 
   _createClass(Portfolio, [{
-    key: 'mouseOver',
+    key: "mouseOver",
     value: function mouseOver(i) {
       this.setState({ current: i, hover: true });
     }
   }, {
-    key: 'mouseOut',
+    key: "mouseOut",
     value: function mouseOut(i) {
       this.setState({ current: -1, hover: false });
     }
   }, {
-    key: 'handleClick',
+    key: "handleClick",
     value: function handleClick(i) {
-      this.setState({ current: i, expanded: true });
+      var temp = !this.state.view;
+      this.setState({ current: i, view: temp });
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _this2 = this;
 
       return _react2.default.createElement(
-        'div',
-        { className: 'inner' },
+        "div",
+        { className: "inner" },
         ITEMS.map(function (item, i) {
           return _react2.default.createElement(Item, { key: i, id: i, name: item.name, desc: item.desc, img: item.img, click: _this2.handleClick.bind(_this2, i), over: _this2.mouseOver.bind(_this2, i), out: _this2.mouseOut.bind(_this2), current: _this2.state.current, hover: _this2.state.hover });
-        })
+        }),
+        _react2.default.createElement(
+          "div",
+          { id: "view", className: this.state.view ? 'viewing' : '' },
+          _react2.default.createElement(
+            "div",
+            { className: "view-inner" },
+            _react2.default.createElement(
+              "button",
+              { onClick: this.handleClick.bind(this, -1) },
+              _react2.default.createElement(
+                "i",
+                { className: "material-icons" },
+                "close"
+              )
+            )
+          )
+        )
       );
     }
   }]);
@@ -21023,22 +21041,22 @@ var Item = function (_React$Component2) {
   }
 
   _createClass(Item, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'article',
-        { className: 'item col-xs-6 col-sm-6 col-md-4 col-lg-3 ' + (this.props.hover && this.props.current == this.props.id ? 'hovered' : ''), onClick: this.props.click, onMouseOver: this.props.over, onMouseOut: this.props.out },
-        _react2.default.createElement('img', { src: this.props.img, className: 'img-thumbnail' }),
+        "article",
+        { className: "item col-xs-6 col-sm-6 col-md-4 col-lg-3 " + (this.props.hover && this.props.current == this.props.id ? 'hovered' : ''), onClick: this.props.click, onMouseOver: this.props.over, onMouseOut: this.props.out },
+        _react2.default.createElement("img", { src: this.props.img, className: "img-thumbnail" }),
         _react2.default.createElement(
-          'div',
-          { className: 'hover-layer' },
+          "div",
+          { className: "hover-layer" },
           _react2.default.createElement(
-            'h3',
+            "h3",
             null,
             this.props.name
           ),
           _react2.default.createElement(
-            'p',
+            "p",
             null,
             this.props.desc
           )
