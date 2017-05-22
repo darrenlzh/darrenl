@@ -5,19 +5,9 @@ export class Portfolio extends React.Component {
     super(props)
     this.state = {
       current: -1,
-      hover: false,
       view: false
     }
-    this.mouseOver = this.mouseOver.bind(this)
-    this.mouseOut = this.mouseOut.bind(this)
     this.handleClick = this.handleClick.bind(this)
-  }
-  mouseOver(i) {
-    this.setState({ current: i, hover: true })
-  }
-  mouseOut(i) {
-    this.setState({ current: -1, hover: false })
-
   }
   handleClick(i) {
     var temp = !this.state.view
@@ -29,12 +19,20 @@ export class Portfolio extends React.Component {
         {
           ITEMS.map((item, i) => {
             return (
-              <Item key={i} id={i} name={item.name} desc={item.desc} img={item.img} click={this.handleClick.bind(this, i)} over={this.mouseOver.bind(this, i)} out={this.mouseOut.bind(this)} current ={this.state.current} hover={this.state.hover}/>
+              <Item key={i} id={i} name={item.name} desc={item.desc} img={item.img} click={this.handleClick.bind(this, i)} current ={this.state.current}/>
             )
           })
         }
         <div id="view" className={this.state.view? 'viewing' : ''}>
           <div className="view-inner">
+            <div className="row">
+              <div className="inner-left col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+              </div>
+              <div className="inner-right col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <h3>{this.state.current>=0? ITEMS[this.state.current].name : ''}</h3>
+              </div>
+            </div>
             <button onClick={this.handleClick.bind(this, -1)}>
               <i className="material-icons">close</i>
             </button>
@@ -51,12 +49,8 @@ class Item extends React.Component {
   }
   render() {
     return (
-      <article className={`item col-xs-6 col-sm-6 col-md-4 col-lg-3 ${this.props.hover && this.props.current==this.props.id? 'hovered' : ''}`} onClick={this.props.click} onMouseOver={this.props.over} onMouseOut={this.props.out}>
+      <article className={`item col-xs-6 col-sm-6 col-md-4 col-lg-3`} onClick={this.props.click}>
         <img src={this.props.img} className="img-thumbnail"/>
-        <div className="hover-layer">
-          <h3>{this.props.name}</h3>
-          <p>{this.props.desc}</p>
-        </div>
       </article>
     )
   }

@@ -165,7 +165,10 @@ section
 #view
   height: 100%
   width: 100%
-  background: $gray
+  background: $lightwhite
+  padding: 5rem
+  border-top: 1px solid $offwhite
+  border-bottom: 1px solid $offwhite
   position: absolute
   top: 0
   opacity: 0
@@ -175,15 +178,28 @@ section
     opacity: 1
     visibility: visible
   .view-inner
+    height: 100%
     position: relative
+    .row
+      height: 100%
+      .inner-left
+        background: white
+        height: 100%
+      .inner-left, .inner-right
+        padding: 0
+      .inner-right
+        padding-left: 5rem
+    h3
+      color: black
     button
       padding: 0
       position: absolute
-      right: 10px
-      top: 10px
+      right: -15px
+      top: -15px
       background: none
       border: none
       &:focus
         outline: none
       .material-icons
         font-size: 7rem
+        color: black
