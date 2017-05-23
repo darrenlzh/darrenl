@@ -90,7 +90,7 @@ export class App extends React.Component {
 
 var timeout
 
-const MY_NAME = 'Jean Deaux',
+const MY_NAME = 'Darren Lim',
       LANGUAGES = ['english', 'français', 'dansk', 'bahasa melayu', '中文'],
       LANG_CODE = ['EN', 'FR', 'DK', 'MY', '中文'],
       WORDS = [

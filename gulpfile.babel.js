@@ -30,8 +30,8 @@ const path = {
 gulp.task('development', ['scripts', 'styles'], () => {
     browserSync({
         'server': {
-          'baseDir': './',
-          'index': 'src/index.html'
+          'baseDir': 'build/',
+          'index': 'index.html'
         },
         'snippetOptions': {
             'rule': {
