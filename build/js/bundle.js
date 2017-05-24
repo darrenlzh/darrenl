@@ -20992,7 +20992,7 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
         "div",
         { className: "inner" },
         ITEMS.map(function (item, i) {
-          return _react2.default.createElement(Item, { key: i, id: i, name: item.name, desc: item.desc, img: item.img, click: _this2.handleClick.bind(_this2, i), current: _this2.state.current });
+          return _react2.default.createElement(Item, { key: i, id: i, name: item.name, desc: item.desc, cover: item.cover, click: _this2.handleClick.bind(_this2, i), current: _this2.state.current });
         }),
         _react2.default.createElement(
           "div",
@@ -21003,7 +21003,11 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
             _react2.default.createElement(
               "div",
               { className: "row" },
-              _react2.default.createElement("div", { className: "inner-left col-xs-12 col-sm-12 col-md-4 col-lg-4" }),
+              _react2.default.createElement(
+                "div",
+                { className: "inner-left col-xs-12 col-sm-12 col-md-4 col-lg-4" },
+                _react2.default.createElement("img", { src: this.state.current >= 0 ? ITEMS[this.state.current].main : '' })
+              ),
               _react2.default.createElement(
                 "div",
                 { className: "inner-right col-xs-12 col-sm-12 col-md-8 col-lg-8" },
@@ -21047,7 +21051,7 @@ var Item = function (_React$Component2) {
       return _react2.default.createElement(
         "article",
         { className: "item col-xs-6 col-sm-6 col-md-4 col-lg-3", onClick: this.props.click },
-        _react2.default.createElement("img", { src: this.props.img, className: "img-thumbnail" })
+        _react2.default.createElement("img", { src: this.props.cover, className: "img-thumbnail" })
       );
     }
   }]);
@@ -21058,35 +21062,44 @@ var Item = function (_React$Component2) {
 var ITEMS = [{
   name: 'Student Success',
   desc: 'University at Buffalo Student Success site.',
-  img: 'img/student-success-cover.png'
+  cover: 'img/student-success-cover.png',
+  main: 'img/student-success.png'
+
 }, {
   name: 'Weather App',
   desc: 'Weather forecast app built with Angular',
-  img: 'img/weather-app-cover.png'
+  cover: 'img/weather-app-cover.png',
+  main: 'img/student-success.png'
 }, {
   name: 'Academic Integrity',
   desc: 'University at Buffalo Academic Integrity site.',
-  img: 'img/academic-integrity-cover.png'
+  cover: 'img/academic-integrity-cover.png',
+  main: 'img/student-success.png'
 }, {
   name: 'Student Success 333',
   desc: 'University at Buffalo Student Success site.',
-  img: 'img/student-success-cover.png'
+  cover: 'img/student-success-cover.png',
+  main: 'img/student-success.png'
 }, {
   name: 'Student Success',
   desc: 'University at Buffalo Student Success site.',
-  img: 'img/student-success-cover.png'
+  cover: 'img/student-success-cover.png',
+  main: 'img/student-success.png'
 }, {
   name: 'Weather App',
   desc: 'Weather forecast app built with Angular',
-  img: 'img/weather-app-cover.png'
+  cover: 'img/weather-app-cover.png',
+  main: 'img/student-success.png'
 }, {
   name: 'Academic Integrity',
   desc: 'University at Buffalo Academic Integrity site.',
-  img: 'img/academic-integrity-cover.png'
+  cover: 'img/academic-integrity-cover.png',
+  main: 'img/student-success.png'
 }, {
   name: 'Student Success 333',
   desc: 'University at Buffalo Student Success site.',
-  img: 'img/student-success-cover.png'
+  cover: 'img/student-success-cover.png',
+  main: 'img/student-success.png'
 }];
 
 },{"react":177}]},{},[178])

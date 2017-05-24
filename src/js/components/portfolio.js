@@ -19,7 +19,7 @@ export class Portfolio extends React.Component {
         {
           ITEMS.map((item, i) => {
             return (
-              <Item key={i} id={i} name={item.name} desc={item.desc} img={item.img} click={this.handleClick.bind(this, i)} current ={this.state.current}/>
+              <Item key={i} id={i} name={item.name} desc={item.desc} cover={item.cover} click={this.handleClick.bind(this, i)} current ={this.state.current}/>
             )
           })
         }
@@ -27,7 +27,7 @@ export class Portfolio extends React.Component {
           <div className="view-inner">
             <div className="row">
               <div className="inner-left col-xs-12 col-sm-12 col-md-4 col-lg-4">
-
+                <img src={this.state.current>=0? ITEMS[this.state.current].main : ''}/>
               </div>
               <div className="inner-right col-xs-12 col-sm-12 col-md-8 col-lg-8">
                 <h3>{this.state.current>=0? ITEMS[this.state.current].name : ''}</h3>
@@ -50,7 +50,7 @@ class Item extends React.Component {
   render() {
     return (
       <article className={`item col-xs-6 col-sm-6 col-md-4 col-lg-3`} onClick={this.props.click}>
-        <img src={this.props.img} className="img-thumbnail"/>
+        <img src={this.props.cover} className="img-thumbnail"/>
       </article>
     )
   }
@@ -60,41 +60,50 @@ const ITEMS = [
   {
     name: 'Student Success',
     desc: 'University at Buffalo Student Success site.',
-    img: 'img/student-success-cover.png'
+    cover: 'img/student-success-cover.png',
+    main: 'img/student-success.png'
+
   },
   {
     name: 'Weather App',
     desc: 'Weather forecast app built with Angular',
-    img: 'img/weather-app-cover.png'
+    cover: 'img/weather-app-cover.png',
+    main: 'img/student-success.png'
   },
   {
     name: 'Academic Integrity',
     desc: 'University at Buffalo Academic Integrity site.',
-    img: 'img/academic-integrity-cover.png'
+    cover: 'img/academic-integrity-cover.png',
+    main: 'img/student-success.png'
   },
   {
     name: 'Student Success 333',
     desc: 'University at Buffalo Student Success site.',
-    img: 'img/student-success-cover.png'
+    cover: 'img/student-success-cover.png',
+    main: 'img/student-success.png'
   },
   {
     name: 'Student Success',
     desc: 'University at Buffalo Student Success site.',
-    img: 'img/student-success-cover.png'
+    cover: 'img/student-success-cover.png',
+    main: 'img/student-success.png'
   },
   {
     name: 'Weather App',
     desc: 'Weather forecast app built with Angular',
-    img: 'img/weather-app-cover.png'
+    cover: 'img/weather-app-cover.png',
+    main: 'img/student-success.png'
   },
   {
     name: 'Academic Integrity',
     desc: 'University at Buffalo Academic Integrity site.',
-    img: 'img/academic-integrity-cover.png'
+    cover: 'img/academic-integrity-cover.png',
+    main: 'img/student-success.png'
   },
   {
     name: 'Student Success 333',
     desc: 'University at Buffalo Student Success site.',
-    img: 'img/student-success-cover.png'
+    cover: 'img/student-success-cover.png',
+    main: 'img/student-success.png'
   }
 ]
