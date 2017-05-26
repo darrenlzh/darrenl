@@ -21006,7 +21006,7 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
               _react2.default.createElement(
                 "div",
                 { className: "inner-left col-xs-12 col-sm-12 col-md-4 col-lg-4" },
-                _react2.default.createElement("img", { src: this.state.current >= 0 ? ITEMS[this.state.current].main : '' })
+                _react2.default.createElement("img", { src: this.state.current >= 0 ? ITEMS[this.state.current].cover : '' })
               ),
               _react2.default.createElement(
                 "div",

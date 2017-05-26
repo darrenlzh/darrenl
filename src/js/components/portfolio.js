@@ -27,7 +27,7 @@ export class Portfolio extends React.Component {
           <div className="view-inner">
             <div className="row">
               <div className="inner-left col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                <img src={this.state.current>=0? ITEMS[this.state.current].main : ''}/>
+                <img src={this.state.current>=0? ITEMS[this.state.current].cover : ''}/>
               </div>
               <div className="inner-right col-xs-12 col-sm-12 col-md-8 col-lg-8">
                 <h3>{this.state.current>=0? ITEMS[this.state.current].name : ''}</h3>
