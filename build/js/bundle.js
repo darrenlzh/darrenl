@@ -21076,9 +21076,9 @@ var ITEMS = [{
   cover: 'img/academic-integrity-cover.png',
   main: 'img/student-success.png'
 }, {
-  name: 'Student Success 333',
-  desc: 'University at Buffalo Student Success site.',
-  cover: 'img/student-success-cover.png',
+  name: 'Marquise Patisserie & Chocolaterie',
+  desc: 'Marquise Patisserie & Chocolaterie.',
+  cover: 'img/marquise-cover.png',
   main: 'img/student-success.png'
 }, {
   name: 'Student Success',
