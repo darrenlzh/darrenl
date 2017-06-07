@@ -90,21 +90,21 @@ const ITEMS = [
     main: 'img/student-success.png'
   },
   {
-    name: 'Weather App',
-    desc: 'Weather forecast app built with Angular',
-    cover: 'img/weather-app-cover.png',
+    name: 'iLearns Kinesthetic Learning App',
+    desc: 'Classroom learning with technology for elementry students',
+    cover: 'img/ilearns-cover.png',
     main: 'img/student-success.png'
   },
   {
     name: 'Academic Integrity',
     desc: 'University at Buffalo Academic Integrity site.',
-    cover: 'img/academic-integrity-cover.png',
+    cover: '',
     main: 'img/student-success.png'
   },
   {
     name: 'Student Success 333',
     desc: 'University at Buffalo Student Success site.',
-    cover: 'img/student-success-cover.png',
+    cover: '',
     main: 'img/student-success.png'
   }
 ]

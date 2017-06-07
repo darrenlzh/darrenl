@@ -20894,7 +20894,7 @@ var App = exports.App = function (_React$Component) {
             _react2.default.createElement(
               'p',
               null,
-              'Here are some cool stuff I have done.'
+              'Here are some cool stuff I have worked on.'
             )
           ),
           _react2.default.createElement(_portfolio.Portfolio, null)
@@ -20909,6 +20909,41 @@ var App = exports.App = function (_React$Component) {
               'h2',
               null,
               'About me'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'content container' },
+            _react2.default.createElement(
+              'div',
+              { className: 'profile row' },
+              _react2.default.createElement(
+                'div',
+                { className: 'col-xs-12 col-sm-12 col-md-4 col-lg-4' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'profile__pic' },
+                  _react2.default.createElement('img', { src: './img/profile.png' })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'col-xs-12 col-sm-12 col-md-8 col-lg-8' },
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'I\'m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web dev stack including: '
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'skills-group' },
+                  _react2.default.createElement('i', { id: 'javascript', className: 'devicon-javascript-plain' }),
+                  _react2.default.createElement('i', { id: 'react', className: 'devicon-react-original' }),
+                  _react2.default.createElement('i', { id: 'angular', className: 'devicon-angularjs-plain' }),
+                  _react2.default.createElement('i', { id: 'sass', className: 'devicon-sass-original' }),
+                  _react2.default.createElement('i', { id: 'gulp', className: 'devicon-gulp-plain' })
+                )
+              )
             )
           )
         ),
@@ -21091,19 +21126,19 @@ var ITEMS = [{
   cover: 'img/mozzcato-cover.png',
   main: 'img/student-success.png'
 }, {
-  name: 'Weather App',
-  desc: 'Weather forecast app built with Angular',
-  cover: 'img/weather-app-cover.png',
+  name: 'iLearns Kinesthetic Learning App',
+  desc: 'Classroom learning with technology for elementry students',
+  cover: 'img/ilearns-cover.png',
   main: 'img/student-success.png'
 }, {
   name: 'Academic Integrity',
   desc: 'University at Buffalo Academic Integrity site.',
-  cover: 'img/academic-integrity-cover.png',
+  cover: '',
   main: 'img/student-success.png'
 }, {
   name: 'Student Success 333',
   desc: 'University at Buffalo Student Success site.',
-  cover: 'img/student-success-cover.png',
+  cover: '',
   main: 'img/student-success.png'
 }];
 
