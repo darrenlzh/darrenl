@@ -19,7 +19,7 @@ export class Portfolio extends React.Component {
         {
           ITEMS.map((item, i) => {
             return (
-              <Item key={i} id={i} name={item.name} desc={item.desc} cover={item.cover} click={this.handleClick.bind(this, i)} current ={this.state.current}/>
+              <Item key={i} cover={item.cover} click={this.handleClick.bind(this, i)}/>
             )
           })
         }
@@ -31,6 +31,7 @@ export class Portfolio extends React.Component {
               </div>
               <div className="inner-right col-xs-12 col-sm-12 col-md-8 col-lg-8">
                 <h3>{this.state.current>=0? ITEMS[this.state.current].name : ''}</h3>
+                <p>{this.state.current>=0? ITEMS[this.state.current].desc : ''}</p>
               </div>
             </div>
             <button onClick={this.handleClick.bind(this, -1)}>
@@ -78,14 +79,14 @@ const ITEMS = [
   },
   {
     name: 'Marquise Patisserie & Chocolaterie',
-    desc: 'Marquise Patisserie & Chocolaterie.',
+    desc: 'Marquise Patisserie & Chocolaterie online store front.',
     cover: 'img/marquise-cover.png',
     main: 'img/student-success.png'
   },
   {
-    name: 'Student Success',
-    desc: 'University at Buffalo Student Success site.',
-    cover: 'img/student-success-cover.png',
+    name: 'MozzCato Food Trading Co.',
+    desc: 'MozzCato online store front.',
+    cover: 'img/mozzcato-cover.png',
     main: 'img/student-success.png'
   },
   {

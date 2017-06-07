@@ -20992,7 +20992,7 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
         "div",
         { className: "inner" },
         ITEMS.map(function (item, i) {
-          return _react2.default.createElement(Item, { key: i, id: i, name: item.name, desc: item.desc, cover: item.cover, click: _this2.handleClick.bind(_this2, i), current: _this2.state.current });
+          return _react2.default.createElement(Item, { key: i, cover: item.cover, click: _this2.handleClick.bind(_this2, i) });
         }),
         _react2.default.createElement(
           "div",
@@ -21015,6 +21015,11 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
                   "h3",
                   null,
                   this.state.current >= 0 ? ITEMS[this.state.current].name : ''
+                ),
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  this.state.current >= 0 ? ITEMS[this.state.current].desc : ''
                 )
               )
             ),
@@ -21077,13 +21082,13 @@ var ITEMS = [{
   main: 'img/student-success.png'
 }, {
   name: 'Marquise Patisserie & Chocolaterie',
-  desc: 'Marquise Patisserie & Chocolaterie.',
+  desc: 'Marquise Patisserie & Chocolaterie online store front.',
   cover: 'img/marquise-cover.png',
   main: 'img/student-success.png'
 }, {
-  name: 'Student Success',
-  desc: 'University at Buffalo Student Success site.',
-  cover: 'img/student-success-cover.png',
+  name: 'MozzCato Food Trading Co.',
+  desc: 'MozzCato online store front.',
+  cover: 'img/mozzcato-cover.png',
   main: 'img/student-success.png'
 }, {
   name: 'Weather App',
