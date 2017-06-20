@@ -69,7 +69,7 @@ export class App extends React.Component {
             <h2>{this.state.words[7]}</h2>
           </div>
           <div className="summary container">
-            <p>Here are some cool stuff I have worked on.</p>
+            <p>Here are some of my work.</p>
           </div>
           <Portfolio />
         </section>

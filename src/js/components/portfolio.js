@@ -27,10 +27,12 @@ export class Portfolio extends React.Component {
           <div className="view-inner">
             <div className="row">
               <div className="inner-left col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                <img src={this.state.current>=0? ITEMS[this.state.current].cover : ''}/>
+                <a className="image" href={this.state.current>=0? ITEMS[this.state.current].link : ''} target="_blank">
+                  <img src={this.state.current>=0? ITEMS[this.state.current].cover : ''}/>
+                </a>
               </div>
               <div className="inner-right col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                <h3>{this.state.current>=0? ITEMS[this.state.current].name : ''}</h3>
+                <h3><a href={this.state.current>=0? ITEMS[this.state.current].link : ''} target="_blank">{this.state.current>=0? ITEMS[this.state.current].name : ''}</a></h3>
                 <p>{this.state.current>=0? ITEMS[this.state.current].desc : ''}</p>
               </div>
             </div>
@@ -59,52 +61,53 @@ class Item extends React.Component {
 
 const ITEMS = [
   {
+    name: 'Weather in Angular 2',
+    desc: 'A weather forecast app built with Angular 2, Node and Express.',
+    cover: 'img/weather-cover.png',
+    main: 'img/student-success.png',
+    link: 'http://darrenl.im/weather'
+  },
+  {
     name: 'Student Success',
-    desc: 'University at Buffalo Student Success site.',
+    desc: 'University at Buffalo Student Success site. Built with Sass, Pug, vanilla JavaScript and Gulp tools to automate workflow.',
     cover: 'img/student-success-cover.png',
-    main: 'img/student-success.png'
+    main: 'img/student-success.png',
+    link: 'http://studentsuccess.buffalo.edu'
 
   },
   {
     name: 'Weather App',
-    desc: 'Weather forecast app built with Angular',
+    desc: 'Weather forecast app built with AngularJS and apixu API.',
     cover: 'img/weather-app-cover.png',
-    main: 'img/student-success.png'
+    main: 'img/student-success.png',
+    link: 'http://darrenl.im/weather-app'
   },
   {
     name: 'Academic Integrity',
-    desc: 'University at Buffalo Academic Integrity site.',
+    desc: 'University at Buffalo Academic Integrity site. Built with Sass & Pug with Gulp tools.',
     cover: 'img/academic-integrity-cover.png',
-    main: 'img/student-success.png'
+    main: 'img/student-success.png',
+    link: 'http://academicintegrity.buffalo.edu'
   },
   {
     name: 'Marquise Patisserie & Chocolaterie',
     desc: 'Marquise Patisserie & Chocolaterie online store front.',
     cover: 'img/marquise-cover.png',
-    main: 'img/student-success.png'
+    main: 'img/student-success.png',
+    link: '#'
   },
   {
     name: 'MozzCato Food Trading Co.',
     desc: 'MozzCato online store front.',
     cover: 'img/mozzcato-cover.png',
-    main: 'img/student-success.png'
+    main: 'img/student-success.png',
+    link: '#'
   },
   {
     name: 'iLearns Kinesthetic Learning App',
     desc: 'Classroom learning with technology for elementry students',
     cover: 'img/ilearns-cover.png',
-    main: 'img/student-success.png'
-  },
-  {
-    name: 'Academic Integrity',
-    desc: 'University at Buffalo Academic Integrity site.',
-    cover: '',
-    main: 'img/student-success.png'
-  },
-  {
-    name: 'Student Success 333',
-    desc: 'University at Buffalo Student Success site.',
-    cover: '',
-    main: 'img/student-success.png'
+    main: 'img/student-success.png',
+    link: '#'
   }
 ]

@@ -20894,7 +20894,7 @@ var App = exports.App = function (_React$Component) {
             _react2.default.createElement(
               'p',
               null,
-              'Here are some cool stuff I have worked on.'
+              'Here are some of my work.'
             )
           ),
           _react2.default.createElement(_portfolio.Portfolio, null)
@@ -21041,7 +21041,11 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
               _react2.default.createElement(
                 "div",
                 { className: "inner-left col-xs-12 col-sm-12 col-md-4 col-lg-4" },
-                _react2.default.createElement("img", { src: this.state.current >= 0 ? ITEMS[this.state.current].cover : '' })
+                _react2.default.createElement(
+                  "a",
+                  { className: "image", href: this.state.current >= 0 ? ITEMS[this.state.current].link : '', target: "_blank" },
+                  _react2.default.createElement("img", { src: this.state.current >= 0 ? ITEMS[this.state.current].cover : '' })
+                )
               ),
               _react2.default.createElement(
                 "div",
@@ -21049,7 +21053,11 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
                 _react2.default.createElement(
                   "h3",
                   null,
-                  this.state.current >= 0 ? ITEMS[this.state.current].name : ''
+                  _react2.default.createElement(
+                    "a",
+                    { href: this.state.current >= 0 ? ITEMS[this.state.current].link : '', target: "_blank" },
+                    this.state.current >= 0 ? ITEMS[this.state.current].name : ''
+                  )
                 ),
                 _react2.default.createElement(
                   "p",
@@ -21100,46 +21108,48 @@ var Item = function (_React$Component2) {
 }(_react2.default.Component);
 
 var ITEMS = [{
+  name: 'Weather in Angular 2',
+  desc: 'A weather forecast app built with Angular 2, Node and Express.',
+  cover: 'img/weather-cover.png',
+  main: 'img/student-success.png',
+  link: 'http://darrenl.im/weather'
+}, {
   name: 'Student Success',
-  desc: 'University at Buffalo Student Success site.',
+  desc: 'University at Buffalo Student Success site. Built with Sass, Pug, vanilla JavaScript and Gulp tools to automate workflow.',
   cover: 'img/student-success-cover.png',
-  main: 'img/student-success.png'
+  main: 'img/student-success.png',
+  link: 'http://studentsuccess.buffalo.edu'
 
 }, {
   name: 'Weather App',
-  desc: 'Weather forecast app built with Angular',
+  desc: 'Weather forecast app built with AngularJS and apixu API.',
   cover: 'img/weather-app-cover.png',
-  main: 'img/student-success.png'
+  main: 'img/student-success.png',
+  link: 'http://darrenl.im/weather-app'
 }, {
   name: 'Academic Integrity',
-  desc: 'University at Buffalo Academic Integrity site.',
+  desc: 'University at Buffalo Academic Integrity site. Built with Sass & Pug with Gulp tools.',
   cover: 'img/academic-integrity-cover.png',
-  main: 'img/student-success.png'
+  main: 'img/student-success.png',
+  link: 'http://academicintegrity.buffalo.edu'
 }, {
   name: 'Marquise Patisserie & Chocolaterie',
   desc: 'Marquise Patisserie & Chocolaterie online store front.',
   cover: 'img/marquise-cover.png',
-  main: 'img/student-success.png'
+  main: 'img/student-success.png',
+  link: '#'
 }, {
   name: 'MozzCato Food Trading Co.',
   desc: 'MozzCato online store front.',
   cover: 'img/mozzcato-cover.png',
-  main: 'img/student-success.png'
+  main: 'img/student-success.png',
+  link: '#'
 }, {
   name: 'iLearns Kinesthetic Learning App',
   desc: 'Classroom learning with technology for elementry students',
   cover: 'img/ilearns-cover.png',
-  main: 'img/student-success.png'
-}, {
-  name: 'Academic Integrity',
-  desc: 'University at Buffalo Academic Integrity site.',
-  cover: '',
-  main: 'img/student-success.png'
-}, {
-  name: 'Student Success 333',
-  desc: 'University at Buffalo Student Success site.',
-  cover: '',
-  main: 'img/student-success.png'
+  main: 'img/student-success.png',
+  link: '#'
 }];
 
 },{"react":177}]},{},[178])
