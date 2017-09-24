@@ -10,12 +10,22 @@ export class Portfolio extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
   handleClick(i) {
-    var temp = !this.state.view
+    let temp = !this.state.view
     this.setState({ current: i, view: temp })
+
+    const view = document.getElementById('view-container'),
+          vHeight = view.offsetHeight,
+          vpHeight = window.innerHeight
+
+    let  vOffset = 0
+    if (vHeight < vpHeight) vOffset = (vpHeight - vHeight) / 2
+
+    let scrollToValue = view.offsetTop - vOffset
+    scrollTo(document.body, scrollToValue, 600)
   }
   render() {
     return (
-      <div className="inner">
+      <div className="inner" id="view-container">
         {
           ITEMS.map((item, i) => {
             return (
@@ -111,3 +121,31 @@ const ITEMS = [
     link: '#'
   }
 ]
+
+function scrollTo(element, to, duration) {
+  var start = element.scrollTop,
+      change = to - start,
+      increment = 20
+
+  var animateScroll = function(elapsedTime) {
+      elapsedTime += increment
+      var position = easeInOut(elapsedTime, start, change, duration)
+      element.scrollTop = position
+      if (elapsedTime < duration) {
+          setTimeout(function() {
+              animateScroll(elapsedTime)
+          }, increment)
+      }
+  };
+
+  animateScroll(0)
+}
+
+function easeInOut(currentTime, start, change, duration) {
+  currentTime /= duration / 2
+  if (currentTime < 1) {
+      return change / 2 * currentTime * currentTime + start
+  }
+  currentTime -= 1
+  return -change / 2 * (currentTime * (currentTime - 2) - 1) + start
+}

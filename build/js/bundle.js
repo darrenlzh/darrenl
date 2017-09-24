@@ -20975,7 +20975,7 @@ var MY_NAME = 'Darren Lim',
     WORDS = [['Hello', "I'm", "I am an", 'engineer', 'developer', 'and', 'designer', 'My work'], ['Salut', "Je m'appelle", 'Je suis', 'ingénieur', 'développeur', 'et', 'concepteur', 'Mon travail'], ['Hej', 'Jeg heder', 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer', 'Mit arbejde'], ['Hello', 'Saya', 'Saya seorang', 'jurutera perisian', 'developer', 'dan', 'pereka web', 'Kerjaan saya'], ['你好', '我叫', '我是', '软件工程师', '网络开发者', '及', '设计师', '我的作品']];
 
 },{"./portfolio.js":180,"react":177}],180:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -20984,7 +20984,7 @@ exports.Portfolio = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -21013,66 +21013,76 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
   }
 
   _createClass(Portfolio, [{
-    key: "handleClick",
+    key: 'handleClick',
     value: function handleClick(i) {
       var temp = !this.state.view;
       this.setState({ current: i, view: temp });
+
+      var view = document.getElementById('view-container'),
+          vHeight = view.offsetHeight,
+          vpHeight = window.innerHeight;
+
+      var vOffset = 0;
+      if (vHeight < vpHeight) vOffset = (vpHeight - vHeight) / 2;
+
+      var scrollToValue = view.offsetTop - vOffset;
+      scrollTo(document.body, scrollToValue, 600);
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       var _this2 = this;
 
       return _react2.default.createElement(
-        "div",
-        { className: "inner" },
+        'div',
+        { className: 'inner', id: 'view-container' },
         ITEMS.map(function (item, i) {
           return _react2.default.createElement(Item, { key: i, cover: item.cover, click: _this2.handleClick.bind(_this2, i) });
         }),
         _react2.default.createElement(
-          "div",
-          { id: "view", className: this.state.view ? 'viewing' : '' },
+          'div',
+          { id: 'view', className: this.state.view ? 'viewing' : '' },
           _react2.default.createElement(
-            "div",
-            { className: "view-inner" },
+            'div',
+            { className: 'view-inner' },
             _react2.default.createElement(
-              "div",
-              { className: "row" },
+              'div',
+              { className: 'row' },
               _react2.default.createElement(
-                "div",
-                { className: "inner-left col-xs-12 col-sm-12 col-md-4 col-lg-4" },
+                'div',
+                { className: 'inner-left col-xs-12 col-sm-12 col-md-4 col-lg-4' },
                 _react2.default.createElement(
-                  "a",
-                  { className: "image", href: this.state.current >= 0 ? ITEMS[this.state.current].link : '', target: "_blank" },
-                  _react2.default.createElement("img", { src: this.state.current >= 0 ? ITEMS[this.state.current].cover : '' })
+                  'a',
+                  { className: 'image', href: this.state.current >= 0 ? ITEMS[this.state.current].link : '', target: '_blank' },
+                  _react2.default.createElement('img', { src: this.state.current >= 0 ? ITEMS[this.state.current].cover : '' })
                 )
               ),
               _react2.default.createElement(
-                "div",
-                { className: "inner-right col-xs-12 col-sm-12 col-md-8 col-lg-8" },
+                'div',
+                { className: 'inner-right col-xs-12 col-sm-12 col-md-8 col-lg-8' },
                 _react2.default.createElement(
-                  "h3",
+                  'h3',
                   null,
                   _react2.default.createElement(
-                    "a",
-                    { href: this.state.current >= 0 ? ITEMS[this.state.current].link : '', target: "_blank" },
+                    'a',
+                    { href: this.state.current >= 0 ? ITEMS[this.state.current].link : '', target: '_blank' },
                     this.state.current >= 0 ? ITEMS[this.state.current].name : ''
                   )
                 ),
                 _react2.default.createElement(
-                  "p",
+                  'p',
                   null,
                   this.state.current >= 0 ? ITEMS[this.state.current].desc : ''
                 )
               )
             ),
             _react2.default.createElement(
-              "button",
+              'button',
               { onClick: this.handleClick.bind(this, -1) },
               _react2.default.createElement(
-                "i",
-                { className: "material-icons" },
-                "close"
+                'i',
+                { className: 'material-icons' },
+                'close'
               )
             )
           )
@@ -21094,12 +21104,12 @@ var Item = function (_React$Component2) {
   }
 
   _createClass(Item, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        "article",
-        { className: "item col-xs-6 col-sm-6 col-md-4 col-lg-3", onClick: this.props.click },
-        _react2.default.createElement("img", { src: this.props.cover, className: "img-thumbnail" })
+        'article',
+        { className: 'item col-xs-6 col-sm-6 col-md-4 col-lg-3', onClick: this.props.click },
+        _react2.default.createElement('img', { src: this.props.cover, className: 'img-thumbnail' })
       );
     }
   }]);
@@ -21151,6 +21161,34 @@ var ITEMS = [{
   main: 'img/student-success.png',
   link: '#'
 }];
+
+function scrollTo(element, to, duration) {
+  var start = element.scrollTop,
+      change = to - start,
+      increment = 20;
+
+  var animateScroll = function animateScroll(elapsedTime) {
+    elapsedTime += increment;
+    var position = easeInOut(elapsedTime, start, change, duration);
+    element.scrollTop = position;
+    if (elapsedTime < duration) {
+      setTimeout(function () {
+        animateScroll(elapsedTime);
+      }, increment);
+    }
+  };
+
+  animateScroll(0);
+}
+
+function easeInOut(currentTime, start, change, duration) {
+  currentTime /= duration / 2;
+  if (currentTime < 1) {
+    return change / 2 * currentTime * currentTime + start;
+  }
+  currentTime -= 1;
+  return -change / 2 * (currentTime * (currentTime - 2) - 1) + start;
+}
 
 },{"react":177}]},{},[178])
 

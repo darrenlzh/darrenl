@@ -1,0 +1,37 @@
+#language
+  display: flex
+  flex-direction: column
+  align-items: flex-end
+  position: absolute
+  right: 5vw
+  top: 5vh
+  font-family: 'Open Sans', sans-serif
+  button
+    width: 50px
+    height: 50px
+    background: none
+    border: 3px solid black
+    &:focus
+      outline: none
+    &.open
+      background: black
+      color: white
+  ul
+    list-style: none
+    margin-top: 1vh
+    padding: 1rem 2rem
+    background: white
+    border: 3px solid black
+    transform: translateY(-1vh)
+    opacity: 0
+    visibility: hidden
+    transition: all .2s ease
+    li
+      margin: 5px 0
+      &:hover
+        cursor: pointer
+        color: $font-mediumgray
+    &.open
+      transform: translateY(0)
+      opacity: 1
+      visibility: visible
