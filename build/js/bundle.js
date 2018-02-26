@@ -20739,6 +20739,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _portfolio = require('./portfolio.js');
 
+var _languageConfig = require('../includes/language-config');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20762,7 +20764,7 @@ var App = exports.App = function (_React$Component) {
     _this.state = {
       language: 0,
       langMenuOpen: false,
-      words: WORDS[0]
+      words: _languageConfig.WORDS[0]
     };
     return _this;
   }
@@ -20781,7 +20783,7 @@ var App = exports.App = function (_React$Component) {
   }, {
     key: 'handleLangClick',
     value: function handleLangClick(i) {
-      this.setState({ language: i, words: WORDS[i] });
+      this.setState({ language: i, words: _languageConfig.WORDS[i] });
     }
   }, {
     key: 'mouseLeave',
@@ -20811,12 +20813,12 @@ var App = exports.App = function (_React$Component) {
             'button',
             { onClick: this.handleLangMenuClick.bind(this),
               className: this.state.langMenuOpen ? 'open' : '' },
-            LANG_CODE[this.state.language]
+            _languageConfig.LANG_CODE[this.state.language]
           ),
           _react2.default.createElement(
             'ul',
             { className: this.state.langMenuOpen ? 'open' : '' },
-            LANGUAGES.map(function (item, i) {
+            _languageConfig.LANGUAGES.map(function (item, i) {
               return _react2.default.createElement(
                 'li',
                 { key: i,
@@ -20844,7 +20846,7 @@ var App = exports.App = function (_React$Component) {
               _react2.default.createElement(
                 'span',
                 null,
-                MY_NAME
+                _languageConfig.MY_NAME
               ),
               '.'
             ),
@@ -20969,12 +20971,7 @@ var App = exports.App = function (_React$Component) {
 
 var timeout;
 
-var MY_NAME = 'Darren Lim',
-    LANGUAGES = ['english', 'français', 'dansk', 'bahasa melayu', '中文'],
-    LANG_CODE = ['EN', 'FR', 'DK', 'MY', '中文'],
-    WORDS = [['Hello', "I'm", "I am an", 'engineer', 'developer', 'and', 'designer', 'My work'], ['Salut', "Je m'appelle", 'Je suis', 'ingénieur', 'développeur', 'et', 'concepteur', 'Mon travail'], ['Hej', 'Jeg heder', 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer', 'Mit arbejde'], ['Hello', 'Saya', 'Saya seorang', 'jurutera perisian', 'developer', 'dan', 'pereka web', 'Kerjaan saya'], ['你好', '我叫', '我是', '软件工程师', '网络开发者', '及', '设计师', '我的作品']];
-
-},{"./portfolio.js":180,"react":177}],180:[function(require,module,exports){
+},{"../includes/language-config":181,"./portfolio.js":180,"react":177}],180:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20987,6 +20984,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _scrollTo = require('../utils/scrollTo');
+
+var _portfolioItems = require('../includes/portfolio-items');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21026,7 +21027,7 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
       if (vHeight < vpHeight) vOffset = (vpHeight - vHeight) / 2;
 
       var scrollToValue = view.offsetTop - vOffset;
-      scrollTo(document.body, scrollToValue, 600);
+      (0, _scrollTo.scrollTo)(document.documentElement, scrollToValue, 600);
     }
   }, {
     key: 'render',
@@ -21036,7 +21037,7 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'inner', id: 'view-container' },
-        ITEMS.map(function (item, i) {
+        _portfolioItems.ITEMS.map(function (item, i) {
           return _react2.default.createElement(Item, { key: i, cover: item.cover, click: _this2.handleClick.bind(_this2, i) });
         }),
         _react2.default.createElement(
@@ -21053,8 +21054,8 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
                 { className: 'inner-left col-xs-12 col-sm-12 col-md-4 col-lg-4' },
                 _react2.default.createElement(
                   'a',
-                  { className: 'image', href: this.state.current >= 0 ? ITEMS[this.state.current].link : '', target: '_blank' },
-                  _react2.default.createElement('img', { src: this.state.current >= 0 ? ITEMS[this.state.current].cover : '' })
+                  { className: 'image', href: this.state.current >= 0 ? _portfolioItems.ITEMS[this.state.current].link : '', target: '_blank' },
+                  _react2.default.createElement('img', { src: this.state.current >= 0 ? _portfolioItems.ITEMS[this.state.current].cover : '' })
                 )
               ),
               _react2.default.createElement(
@@ -21065,14 +21066,14 @@ var Portfolio = exports.Portfolio = function (_React$Component) {
                   null,
                   _react2.default.createElement(
                     'a',
-                    { href: this.state.current >= 0 ? ITEMS[this.state.current].link : '', target: '_blank' },
-                    this.state.current >= 0 ? ITEMS[this.state.current].name : ''
+                    { href: this.state.current >= 0 ? _portfolioItems.ITEMS[this.state.current].link : '', target: '_blank' },
+                    this.state.current >= 0 ? _portfolioItems.ITEMS[this.state.current].name : ''
                   )
                 ),
                 _react2.default.createElement(
                   'p',
                   null,
-                  this.state.current >= 0 ? ITEMS[this.state.current].desc : ''
+                  this.state.current >= 0 ? _portfolioItems.ITEMS[this.state.current].desc : ''
                 )
               )
             ),
@@ -21108,8 +21109,12 @@ var Item = function (_React$Component2) {
     value: function render() {
       return _react2.default.createElement(
         'article',
-        { className: 'item col-xs-6 col-sm-6 col-md-4 col-lg-3', onClick: this.props.click },
-        _react2.default.createElement('img', { src: this.props.cover, className: 'img-thumbnail' })
+        { className: 'item-container col-xs-6 col-sm-6 col-md-4 col-lg-3', onClick: this.props.click },
+        _react2.default.createElement(
+          'div',
+          { className: 'item' },
+          _react2.default.createElement('img', { src: this.props.cover, className: 'img-thumbnail' })
+        )
       );
     }
   }]);
@@ -21117,7 +21122,24 @@ var Item = function (_React$Component2) {
   return Item;
 }(_react2.default.Component);
 
-var ITEMS = [{
+},{"../includes/portfolio-items":182,"../utils/scrollTo":183,"react":177}],181:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var MY_NAME = exports.MY_NAME = 'Darren Lim';
+var LANGUAGES = exports.LANGUAGES = ['english', 'français', 'dansk', 'bahasa melayu', '中文'];
+var LANG_CODE = exports.LANG_CODE = ['EN', 'FR', 'DK', 'MY', '中文'];
+var WORDS = exports.WORDS = [['Hello', "I'm", "I am an", 'engineer', 'developer', 'and', 'designer', 'My work'], ['Salut', "Je m'appelle", 'Je suis', 'ingénieur', 'développeur', 'et', 'concepteur', 'Mon travail'], ['Hej', 'Jeg heder', 'Jeg er', 'ingeniør', 'udvikler', 'og', 'desginer', 'Mit arbejde'], ['Hello', 'Saya', 'Saya seorang', 'jurutera perisian', 'developer', 'dan', 'pereka web', 'Kerjaan saya'], ['你好', '我叫', '我是', '软件工程师', '网络开发者', '及', '设计师', '我的作品']];
+
+},{}],182:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var ITEMS = exports.ITEMS = [{
   name: 'Weather in Angular 2',
   desc: 'A weather forecast app built with Angular 2, Node and Express.',
   cover: 'img/weather-cover.png',
@@ -21162,34 +21184,41 @@ var ITEMS = [{
   link: '#'
 }];
 
+},{}],183:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.scrollTo = scrollTo;
 function scrollTo(element, to, duration) {
-  var start = element.scrollTop,
-      change = to - start,
-      increment = 20;
+    var start = element.scrollTop,
+        change = to - start,
+        increment = 20;
 
-  var animateScroll = function animateScroll(elapsedTime) {
-    elapsedTime += increment;
-    var position = easeInOut(elapsedTime, start, change, duration);
-    element.scrollTop = position;
-    if (elapsedTime < duration) {
-      setTimeout(function () {
-        animateScroll(elapsedTime);
-      }, increment);
-    }
-  };
+    var animateScroll = function animateScroll(elapsedTime) {
+        elapsedTime += increment;
+        var position = easeInOut(elapsedTime, start, change, duration);
+        element.scrollTop = position;
+        if (elapsedTime < duration) {
+            setTimeout(function () {
+                animateScroll(elapsedTime);
+            }, increment);
+        }
+    };
 
-  animateScroll(0);
+    animateScroll(10);
 }
 
 function easeInOut(currentTime, start, change, duration) {
-  currentTime /= duration / 2;
-  if (currentTime < 1) {
-    return change / 2 * currentTime * currentTime + start;
-  }
-  currentTime -= 1;
-  return -change / 2 * (currentTime * (currentTime - 2) - 1) + start;
+    currentTime /= duration / 2;
+    if (currentTime < 1) {
+        return change / 2 * currentTime * currentTime + start;
+    }
+    currentTime -= 1;
+    return -change / 2 * (currentTime * (currentTime - 2) - 1) + start;
 }
 
-},{"react":177}]},{},[178])
+},{}]},{},[178])
 
 //# sourceMappingURL=bundle.js.map

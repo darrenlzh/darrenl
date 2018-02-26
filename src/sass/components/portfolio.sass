@@ -1,30 +1,26 @@
 #portfolio
   display: inline-block
+  overflow: hidden
   .inner
     display: inline-block
-    width: 100%
+    margin-left: -5px
+    margin-right: -5px
     position: relative
+    @include mobile
+      margin-left: -2px
+      margin-right: -2px
+  .item-container
+    padding: 5px
+    @include mobile
+      padding: 2px
   .item
     padding: 0
     position: relative
+    background: $color1
     &:hover
       cursor: pointer
       img
         transform: scale(1.1)
-    &:nth-of-type(7n+1)
-      background: $color1
-    &:nth-of-type(7n+2)
-      background: $color7
-    &:nth-of-type(7n+3)
-      background: $color4
-    &:nth-of-type(7n+4)
-      background: $color6
-    &:nth-of-type(7n+5)
-      background: $color5
-    &:nth-of-type(7n+6)
-      background: $color2
-    &:nth-of-type(7n+7)
-      background: $color3
     img
       border: none
       &.img-thumbnail
