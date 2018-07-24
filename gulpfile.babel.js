@@ -10,8 +10,8 @@ import source from 'vinyl-source-stream';
 const path = {
   'HTML': './src/index.html',
   'SASS': {
-    'ALL': './src/sass/**/*.sass',
-    'MAIN': './src/sass/main.sass'
+    'ALL': './src/scss/**/*.scss',
+    'MAIN': './src/scss/main.scss'
   },
   'JS': {
     'ALL': './src/js/**/*.js',
@@ -93,7 +93,6 @@ gulp.task('styles', () => {
         .pipe(gulp.dest(path.BUILD.CSS))
         .pipe(browserSync.stream());
 });
-
 
 /* ----------------- */
 /* HTML
