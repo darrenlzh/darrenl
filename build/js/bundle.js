@@ -21353,7 +21353,7 @@ var App = exports.App = function (_React$Component) {
                 _react2.default.createElement(
                   'p',
                   null,
-                  'I\'m aan experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web dev stack including:'
+                  'I\'m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web dev stack including:'
                 ),
                 _react2.default.createElement(
                   'div',
