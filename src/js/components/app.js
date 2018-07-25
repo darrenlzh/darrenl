@@ -86,7 +86,7 @@ export class App extends React.Component {
                 </div>
               </div>
               <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                <p>I&#39;m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web dev stack including:</p>
+                <p>I&#39;m aan experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web dev stack including:</p>
                 <div className="skills-group">
                   <i id="javascript" className="devicon-javascript-plain"></i>
                   <i id="react" className="devicon-react-original"></i>
