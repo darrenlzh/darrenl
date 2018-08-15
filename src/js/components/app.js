@@ -80,21 +80,26 @@ export class App extends React.Component {
           </div>
           <div className="content container">
             <div className="profile row">
-              <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+              <div className="col-xs-12 col-sm-12 col-md-3">
                 <div className="profile__pic">
-                  <img src="./img/profile.png" />
                 </div>
               </div>
-              <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                <p>I&#39;m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web dev stack including:</p>
-                <div className="skills-group">
-                  <i id="javascript" className="devicon-javascript-plain"></i>
-                  <i id="react" className="devicon-react-original"></i>
-                  <i id="angular" className="devicon-angularjs-plain"></i>
-                  <i id="sass" className="devicon-sass-original"></i>
-                  <i id="gulp" className="devicon-gulp-plain"></i>
-                </div>
+              <div className="col-xs-12 col-sm-12 col-md-9">
+                <p>I&#39;m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web technologies.</p>
               </div>
+            </div>
+            <h3 className="skills-header">My Tech Stack</h3>
+            <div className="skills-group">
+              <i id="javascript" className="devicon-javascript-plain"></i>
+              <i id="react" className="devicon-react-original"></i>
+              <i id="angular" className="devicon-angularjs-plain"></i>
+              <i id="php" className="devicon-php-plain"></i>
+              <i id="wordpress" className="devicon-wordpress-plain"></i>
+              <i id="python" className="devicon-python-plain"></i>
+              <i id="typescript" className="devicon-typescript-plain"></i>
+              <i id="express" className="devicon-express-original"></i>
+              <i id="sass" className="devicon-sass-original"></i>
+              <i id="gulp" className="devicon-gulp-plain"></i>
             </div>
           </div>
         </section>

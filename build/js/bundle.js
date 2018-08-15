@@ -21340,31 +21340,37 @@ var App = exports.App = function (_React$Component) {
               { className: 'profile row' },
               _react2.default.createElement(
                 'div',
-                { className: 'col-xs-12 col-sm-12 col-md-4 col-lg-4' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'profile__pic' },
-                  _react2.default.createElement('img', { src: './img/profile.png' })
-                )
+                { className: 'col-xs-12 col-sm-12 col-md-3' },
+                _react2.default.createElement('div', { className: 'profile__pic' })
               ),
               _react2.default.createElement(
                 'div',
-                { className: 'col-xs-12 col-sm-12 col-md-8 col-lg-8' },
+                { className: 'col-xs-12 col-sm-12 col-md-9' },
                 _react2.default.createElement(
                   'p',
                   null,
-                  'I\'m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web dev stack including:'
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'skills-group' },
-                  _react2.default.createElement('i', { id: 'javascript', className: 'devicon-javascript-plain' }),
-                  _react2.default.createElement('i', { id: 'react', className: 'devicon-react-original' }),
-                  _react2.default.createElement('i', { id: 'angular', className: 'devicon-angularjs-plain' }),
-                  _react2.default.createElement('i', { id: 'sass', className: 'devicon-sass-original' }),
-                  _react2.default.createElement('i', { id: 'gulp', className: 'devicon-gulp-plain' })
+                  'I\'m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web technologies.'
                 )
               )
+            ),
+            _react2.default.createElement(
+              'h3',
+              { className: 'skills-header' },
+              'My Tech Stack'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'skills-group' },
+              _react2.default.createElement('i', { id: 'javascript', className: 'devicon-javascript-plain' }),
+              _react2.default.createElement('i', { id: 'react', className: 'devicon-react-original' }),
+              _react2.default.createElement('i', { id: 'angular', className: 'devicon-angularjs-plain' }),
+              _react2.default.createElement('i', { id: 'php', className: 'devicon-php-plain' }),
+              _react2.default.createElement('i', { id: 'wordpress', className: 'devicon-wordpress-plain' }),
+              _react2.default.createElement('i', { id: 'python', className: 'devicon-python-plain' }),
+              _react2.default.createElement('i', { id: 'typescript', className: 'devicon-typescript-plain' }),
+              _react2.default.createElement('i', { id: 'express', className: 'devicon-express-original' }),
+              _react2.default.createElement('i', { id: 'sass', className: 'devicon-sass-original' }),
+              _react2.default.createElement('i', { id: 'gulp', className: 'devicon-gulp-plain' })
             )
           )
         ),
