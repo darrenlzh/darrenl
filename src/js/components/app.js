@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Portfolio } from './portfolio.js'
+import { ContactForm } from './contact-form.js'
 import { MY_NAME, LANGUAGES, LANG_CODE, WORDS } from '../includes/language-config'
 
 export class App extends React.Component {
@@ -107,6 +108,7 @@ export class App extends React.Component {
           <div className="title container">
             <h2>Contact me</h2>
           </div>
+          <ContactForm />
         </section>
       </div>
     )
