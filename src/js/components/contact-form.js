@@ -13,53 +13,100 @@ export class ContactForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'Please write an essay about your favorite DOM element.'
+      name: '',
+      email: '',
+      company: '',
+      message: '',
+      loading: false
     };
 
+    this.handleWait = this.handleWait.bind(this)
+    this.handleFormReset = this.handleFormReset.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  handleWait(state) {
+    this.setState({
+      loading: state
+    })
+  }
+
+  handleFormReset() {
+    this.setState({
+      name: '',
+      email: '',
+      company: '',
+      message: ''
+    })
+  }
+
   handleChange(event) {
-    this.setState({value: event.target.value})
+    const target = event.target
+    const value = target.value
+    const name = target.name
+
+    this.setState({
+      [name]: value
+    })
   }
 
   handleSubmit(event) {
+    this.handleWait(true)
 		axios.post(
 			'https://darrenl.im/api/contact',
 			querystring.stringify({
-		    name: 'Fred',
-		    email: 'Flintstone@blah.com',
-				message: 'Blah hello blah hello'
+		    name: this.state.name,
+		    email: this.state.email,
+        company: this.state.company,
+				message: this.state.message
 		  }),
 			config)
-	  .then(function (response) {
-			console.log(response)
+	  .then((response) => {
 			if (response.data.success) {
-				alert('Your message was sent!')
+				// alert('Your message was sent!')
+        this.handleWait(false)
+        this.handleFormReset()
 			} else {
 				alert('There was a problem with the server. Please try again later?')
 			}
 	  })
-	  .catch(function (error) {
-			alert('There was a problem submit your form. Please try again?')
-	  });
+	  .catch((error) => {
+			alert('There was a problem submitting your form. Please try again?')
+	  })
     event.preventDefault()
   }
 
   render() {
     return (
 			<form onSubmit={this.handleSubmit} id="contact-form" role="form">
-				<fieldset>
-					<label htmlFor="name">Name &#42;</label>
-					<input id="name" name="name" type="text" placeholder="Your name" required="required"/>
-					<label htmlFor="email">Email &#42;</label>
-					<input id="email" name="email" type="text" placeholder="Your email" required="required"/>
-					<label htmlFor="message">Message &#42;</label>
-					<textarea id="message" name="message" placeholder="Enter your message here" rows="3" required="required"></textarea>
-					<button type="submit">Submit</button>
-				</fieldset>
+        <div className={`form-inner ${this.state.loading? 'loading' : ''}`}>
+  				<fieldset>
+  					<input id="name" name="name" type="text" required="required" value={this.state.name || ''} onChange={this.handleChange}/>
+  					<label htmlFor="name">Name</label>
+            <div className="line"></div>
+  				</fieldset>
+          <fieldset>
+            <input id="company" name="company" type="text" required="required" value={this.state.company || ''} onChange={this.handleChange}/>
+            <label htmlFor="company">Company &#40;Optional&#41;</label>
+            <div className="line"></div>
+          </fieldset>
+          <fieldset>
+            <input id="email" name="email" type="text" required="required" value={this.state.email || ''} onChange={this.handleChange}/>
+            <label htmlFor="email">Email</label>
+            <div className="line"></div>
+          </fieldset>
+          <fieldset>
+            <textarea id="message" name="message" rows="3" required="required" value={this.state.message || ''} onChange={this.handleChange}></textarea>
+            <label htmlFor="message">Message</label>
+            <div className="line"></div>
+          </fieldset>
+          <button type="submit">{this.state.loading? '' : 'Submit'}</button>
+          <div className="loader">
+            <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+          </div>
+        </div>
 			</form>
-    );
+    )
   }
 }
