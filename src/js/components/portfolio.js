@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import { scrollTo } from '../utils/scrollTo'
 import { ITEMS } from '../includes/portfolio-items'
 
@@ -35,6 +37,9 @@ export class Portfolio extends React.Component {
             )
           })
         }
+        <article className="view-all item-container">
+          <Link to="portfolio">View All</Link>
+        </article>
         <div id="view" className={this.state.view? 'viewing' : ''}>
           <div className="view-inner">
             <div className="row">
@@ -64,7 +69,7 @@ class Item extends React.Component {
   }
   render() {
     return (
-      <article className={`item-container col-xs-6 col-sm-6 col-md-4 col-lg-3`} onClick={this.props.click}>
+      <article className={`item-container`} onClick={this.props.click}>
         <div className="item">
           <img src={this.props.cover} className="img-thumbnail"/>
         </div>

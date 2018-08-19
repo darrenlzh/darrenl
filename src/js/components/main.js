@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { Portfolio } from './portfolio.js'
 import { ContactForm } from './contact-form.js'
 import { MY_NAME, LANGUAGES, LANG_CODE, WORDS } from '../includes/language-config'
 
-export class App extends React.Component {
+export class Main extends React.Component {
   constructor(props) {
     super(props)
     this.handleLangMenuClick = this.handleLangMenuClick.bind(this)

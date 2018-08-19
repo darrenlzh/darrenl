@@ -1,6 +1,21 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import {App} from './components/app.js'
+import { Main } from './components/main.js'
+import { MainPortfolio } from './components/main-portfolio.js'
 
-ReactDOM.render(<App />, document.getElementById('app'))
+class App extends React.Component {
+	render() {
+		return (
+			<Router>
+				<Switch>
+					<Route exact path="/" component={Main} />
+					<Route path="/portfolio" component={MainPortfolio} />
+				</Switch>
+			</Router>
+		)
+	}
+}
+
+render(<App />, document.getElementById('app'))

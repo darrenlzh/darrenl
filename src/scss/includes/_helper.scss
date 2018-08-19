@@ -3,3 +3,72 @@
     @content
   }
 }
+
+@mixin bp ($screen) {
+	@if $screen == 'xs' {
+		@media (max-width: $sm - 1) {
+			@content;
+		}
+	}
+
+	@else if $screen == 'sm' {
+		@media (min-width: $sm) and (max-width: $md - 1) {
+			@content;
+		}
+	}
+
+	@else if $screen == 'md' {
+		@media (min-width: $md) and (max-width: $lg - 1) {
+			@content;
+		}
+	}
+
+	@else if $screen == 'lg' {
+		@media (min-width: $lg) and (max-width: $xl - 1) {
+			@content;
+		}
+	}
+}
+
+@mixin bp-min ($screen) {
+	@if $screen == 'sm' {
+		@media (min-width: $sm) { @content; }
+	}
+
+	@else if $screen == 'md' {
+		@media (min-width: $md) { @content; }
+	}
+
+	@else if $screen == 'lg' {
+		@media (min-width: $lg) { @content; }
+	}
+
+	@else if $screen == 'xl' {
+		@media (min-width: $xl) { @content; }
+	}
+}
+
+@mixin bp-max ($screen) {
+	@if $screen == 'xs' {
+		@media (max-width: $sm - 1) { @content; }
+	}
+
+	@else if $screen == 'sm' {
+		@media (max-width: $md - 1) { @content; }
+	}
+
+	@else if $screen == 'md' {
+		@media (max-width: $lg - 1) { @content; }
+	}
+
+	@else if $screen == 'lg' {
+		@media (max-width: $xl - 1) { @content; }
+	}
+}
+
+@mixin flex ($direction: row, $justify: center, $align: center) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+}
