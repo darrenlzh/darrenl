@@ -1,21 +1,38 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { renderToStaticMarkup } from 'react-dom/server'
+import { withLocalize, Translate } from 'react-localize-redux'
+import globalTranslations from '../translations/global.json'
+
 import { Portfolio } from './portfolio.js'
 import { ContactForm } from './contact-form.js'
-import { MY_NAME, LANGUAGES, LANG_CODE, WORDS } from '../includes/language-config'
+import LanguageToggler from './language-toggler.js'
 
 export class Main extends React.Component {
   constructor(props) {
     super(props)
+
+    const defaultLanguage = window.localStorage.getItem("languageCode") || 'en';
+
+    this.props.initialize({
+      languages: [
+        { name: 'english', code: 'en' },
+        { name: 'français', code: 'fr' },
+        { name: 'dansk', code: 'dk' },
+        { name: 'bahasa melayu', code: 'my' },
+        { name: '中文', code: '中文' }
+      ],
+      translation: globalTranslations,
+      options: { renderToStaticMarkup, defaultLanguage }
+    })
     this.handleLangMenuClick = this.handleLangMenuClick.bind(this)
     this.handleCloseLangMenuClick = this.handleCloseLangMenuClick.bind(this)
     this.handleLangClick = this.handleLangClick.bind(this)
     this.mouseLeave = this.mouseLeave.bind(this)
     this.state = {
-      language: 0,
-      langMenuOpen: false,
-      words: WORDS[0]
+      currentLanguage: 'en',
+      langMenuOpen: false
     }
   }
   handleLangMenuClick() {
@@ -38,47 +55,61 @@ export class Main extends React.Component {
       clearTimeout(timeout)
     }
   }
+  componentDidUpdate() {
+    const langCode = this.props.activeLanguage.code
+    if (langCode != this.state.currentLanguage) {
+      window.localStorage.setItem("languageCode", langCode)
+      this.setState({
+        currentLanguage: langCode
+      })
+    }
+    else {
+      return
+    }
+  }
   render() {
     return (
       <div className="main">
         <div id="language" onMouseLeave={this.mouseLeave.bind(this, true)} onMouseEnter={this.mouseLeave.bind(this, false)}>
           <button onClick={this.handleLangMenuClick.bind(this)}
           className={this.state.langMenuOpen? 'open': ''}>
-            {LANG_CODE[this.state.language]}
+            {this.state.currentLanguage}
           </button>
-          <ul className={this.state.langMenuOpen? 'open': ''}>
-            {
-              LANGUAGES.map((item, i) => {
-                return (
-                  <li key={i}
-                  className={this.state.language==i? 'active':''}
-                  onClick={this.handleLangClick.bind(this, i)}>{item}</li>
-                )
-              })
-            }
-          </ul>
+          <LanguageToggler open={this.state.langMenuOpen}/>
         </div>
         <section id="intro" onClick={this.handleCloseLangMenuClick.bind(this)}>
-          <div className="container">
-              <h1>{this.state.words[0]}.<br/>
-              {this.state.words[1]} <span>{MY_NAME}</span>.</h1>
-              <p>
-                {this.state.words[2]} <span>{this.state.words[3]}</span>, <span>{this.state.words[4]}</span> {this.state.words[5]} <span>{this.state.words[6]}</span>.
-              </p>
-          </div>
+          <Translate>
+            {
+              ({ translate }) => (
+                <div className="container">
+                <h1>{translate('intro.hello')}.<br/>
+                {translate('intro.im')} <span>Darren Lim</span>.</h1>
+                <p>
+                  {translate('intro.iam')} <span>{translate('intro.job.engineer')}</span>, <span>{translate('intro.job.developer')}</span> {translate('intro.and')} <span>{translate('intro.job.designer')}</span>.
+                </p>
+                </div>
+              )
+            }
+          </Translate>
         </section>
         <section id="portfolio" onClick={this.handleCloseLangMenuClick.bind(this)}>
           <div className="title container">
-            <h2>{this.state.words[7]}</h2>
+            <Translate>
+              {({ translate }) => <h2>{translate("section.mywork")}</h2>}
+            </Translate>
           </div>
           <div className="summary container">
-            <p>Here are some of my work.</p>
+            <Translate>
+              {({ translate }) => <p>{translate("section.myworkSub")}</p>}
+            </Translate>
           </div>
           <Portfolio />
         </section>
         <section id="about">
           <div className="title container">
-            <h2>About me</h2>
+            <Translate>
+              {({ translate }) => <h2>{translate("section.aboutme")}</h2>}
+            </Translate>
           </div>
           <div className="content container">
             <div className="profile row">
@@ -107,7 +138,9 @@ export class Main extends React.Component {
         </section>
         <section id="contact">
           <div className="title container">
-            <h2>Contact me</h2>
+          <Translate>
+            {({ translate }) => <h2>{translate("section.contactme")}</h2>}
+          </Translate>
           </div>
           <ContactForm />
         </section>
@@ -115,5 +148,5 @@ export class Main extends React.Component {
     )
   }
 }
-
 var timeout
+export default withLocalize(Main)

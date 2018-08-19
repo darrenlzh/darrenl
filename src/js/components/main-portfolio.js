@@ -8,8 +8,9 @@ export class MainPortfolio extends React.Component {
 
   render() {
     return (
-      <div className="inner" id="view-container">
-        HELLO
+      <div id="portfolio-home">
+        My portfolio page is<br/>Coming Soon...
+				<a href="/">Back to Home</a>
       </div>
     )
   }

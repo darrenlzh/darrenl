@@ -115,3 +115,17 @@
     }
   }
 }
+
+#portfolio-home {
+  @include flex($direction: column);
+  font-family: 'Crimson Text', serif;
+  font-size: 50px;
+  height: 100vh;
+  text-align: center;
+
+  a {
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    margin-top: 60px;
+  }
+}

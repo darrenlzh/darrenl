@@ -1,6 +1,19 @@
 {
-	"sectionTitle": {
-		"mywork": ["My Work", "Mon Travail"],
-		"about": ["About", "A Propos"]
+	"intro": {
+		"hello": ["Hello", "Salut", "Hej", "Hello", "你好"],
+		"im": ["I'm", "Je m'appelle", "Jeg heder", "Saya", "我叫"],
+		"iam": ["I am an", "Je suis", "Jeg er", "Saya seorang", "我是"],
+		"and": ["and", "et", "og", "dan", "及"],
+		"job": {
+			"engineer": ["engineer", "ingénieur", "ingeniør", "jurutera perisian", "软件工程师"],
+			"developer": ["developer", "développeur", "udvikkler", "developer", "网络开发者"],
+			"designer": ["designer", "concepteur", "designer", "pereka web", "设计师"]
+		}
+	},
+	"section": {
+		"mywork": ["My Work", "Mon travail", "Mit arbejde", "Kerjaan Saya", "我的作品"],
+		"myworkSub": ["Here are some of my work", "Voici certains de mes travaux", "Her er nogle af mit arbejde", "Inilah beberapa kerjaan-kerjaan saya", "以下是我的一些作品"],
+		"aboutme": ["About Me", "A propos", "Om mig", "Tentang Saya", "关于我"],
+		"contactme": ["Contact Me", "Contactez moi", "Kontakt mig", "Hubungi Saya", "跟我联系"]
 	}
 }

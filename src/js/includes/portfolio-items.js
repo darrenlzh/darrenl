@@ -44,7 +44,7 @@ export const ITEMS = [
   },
   {
     name: 'iLearns Kinesthetic Learning App',
-    desc: 'Classroom learning with technology for elementry students',
+    desc: 'Classroom learning with technology for elementary students',
     cover: 'img/ilearns-cover.png',
     main: 'img/student-success.png',
     link: '#'
