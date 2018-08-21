@@ -31477,7 +31477,7 @@ var Main = function (_React$Component) {
     var defaultLanguage = window.localStorage.getItem("languageCode") || 'en';
 
     _this.props.initialize({
-      languages: [{ name: 'english', code: 'en' }, { name: 'français', code: 'fr' }, { name: 'dansk', code: 'dk' }, { name: 'bahasa melayu', code: 'my' }, { name: '中文', code: '中文' }],
+      languages: [{ name: 'english', code: 'en' }, { name: 'français', code: 'fr' }, { name: 'svenska', code: 'se' }, { name: 'dansk', code: 'dk' }, { name: 'bahasa melayu', code: 'my' }, { name: '中文', code: '中文' }],
       translation: _global2.default,
       options: { renderToStaticMarkup: _server.renderToStaticMarkup, defaultLanguage: defaultLanguage }
     });
@@ -31485,6 +31485,7 @@ var Main = function (_React$Component) {
     _this.handleCloseLangMenuClick = _this.handleCloseLangMenuClick.bind(_this);
     _this.handleLangClick = _this.handleLangClick.bind(_this);
     _this.mouseLeave = _this.mouseLeave.bind(_this);
+    _this.handleScroll = _this.handleScroll.bind(_this);
     _this.state = {
       currentLanguage: 'en',
       langMenuOpen: false,
@@ -31523,6 +31524,11 @@ var Main = function (_React$Component) {
       }
     }
   }, {
+    key: 'handleScroll',
+    value: function handleScroll() {
+      console.log('hello');
+    }
+  }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
       var langCode = this.props.activeLanguage.code;
@@ -31542,6 +31548,7 @@ var Main = function (_React$Component) {
       setTimeout(function () {
         self.setState({ initialLoading: false });
       }, 2500);
+      document.body.addEventListener('scroll', this.handleScroll);
     }
   }, {
     key: 'render',
@@ -31620,12 +31627,6 @@ var Main = function (_React$Component) {
                         _react2.default.createElement(
                           'span',
                           null,
-                          translate('intro.job.engineer')
-                        ),
-                        ', ',
-                        _react2.default.createElement(
-                          'span',
-                          null,
                           translate('intro.job.developer')
                         ),
                         ' ',
@@ -31636,7 +31637,7 @@ var Main = function (_React$Component) {
                           null,
                           translate('intro.job.designer')
                         ),
-                        '.'
+                        translate('intro.job.end')
                       )
                     );
                   }
@@ -31730,12 +31731,31 @@ var Main = function (_React$Component) {
                     'I\'m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web technologies.'
                   )
                 )
-              ),
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'section',
+            { id: 'skills' },
+            _react2.default.createElement(
+              'div',
+              { className: 'title container' },
               _react2.default.createElement(
-                'h3',
-                { className: 'skills-header' },
-                'My Tech Stack'
-              ),
+                _reactLocalizeRedux.Translate,
+                null,
+                function (_ref5) {
+                  var translate = _ref5.translate;
+                  return _react2.default.createElement(
+                    'h2',
+                    null,
+                    translate("section.skills")
+                  );
+                }
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'content container' },
               _react2.default.createElement(
                 'div',
                 { className: 'skills-group' },
@@ -31761,8 +31781,8 @@ var Main = function (_React$Component) {
               _react2.default.createElement(
                 _reactLocalizeRedux.Translate,
                 null,
-                function (_ref5) {
-                  var translate = _ref5.translate;
+                function (_ref6) {
+                  var translate = _ref6.translate;
                   return _react2.default.createElement(
                     'h2',
                     null,
@@ -32016,21 +32036,22 @@ var ITEMS = exports.ITEMS = [{
 },{}],298:[function(require,module,exports){
 module.exports={
 	"intro": {
-		"hello": ["Hello", "Salut", "Hej", "Hello", "你好"],
-		"im": ["I'm", "Je m'appelle", "Jeg heder", "Saya", "我叫"],
-		"iam": ["I am an", "Je suis", "Jeg er", "Saya seorang", "我是"],
-		"and": ["and", "et", "og", "dan", "及"],
+		"hello": ["Hello", "Salut", "Hej", "Hej", "Hello", "你好"],
+		"im": ["I'm", "Je m'appelle", "Jag heter", "Jeg heder", "Saya", "我叫"],
+		"iam": ["I am a", "Je suis", "Jag är", "Jeg er", "Saya seorang", "我是"],
+		"and": ["and", "et", "och", "og", "dan", "及"],
 		"job": {
-			"engineer": ["engineer", "ingénieur", "ingeniør", "jurutera perisian", "软件工程师"],
-			"developer": ["developer", "développeur", "udvikkler", "developer", "网络开发者"],
-			"designer": ["designer", "concepteur", "designer", "pereka web", "设计师"]
+			"developer": ["developer", "développeur", "webbutvecklare", "webudvikler", "developer", "网络开发者"],
+			"designer": ["designer", "concepteur", "designer", "designer", "pereka web", "设计师"],
+			"end": [" for all things web.", " pour le web.", ".", ".", ".", "."]
 		}
 	},
 	"section": {
-		"mywork": ["My Work", "Mon travail", "Mit arbejde", "Kerjaan Saya", "我的作品"],
-		"myworkSub": ["Here are some of my work", "Voici certains de mes travaux", "Her er nogle af mit arbejde", "Inilah beberapa kerjaan-kerjaan saya", "以下是我的一些作品"],
-		"aboutme": ["About Me", "A propos", "Om mig", "Tentang Saya", "关于我"],
-		"contactme": ["Contact Me", "Contactez moi", "Kontakt mig", "Hubungi Saya", "跟我联系"]
+		"mywork": ["My Work", "Mon travail", "Mitt arbete", "Mit arbejde", "Kerjaan saya", "我的作品"],
+		"myworkSub": ["Here are some of my work", "Voici certains de mes travaux", "Här är några av mitt arbete", "Her er nogle af mit arbejde", "Inilah beberapa kerjaan-kerjaan saya", "以下是我的一些作品"],
+		"aboutme": ["About Me", "A propos", "Om mig", "Om mig", "Tentang saya", "关于我"],
+		"skills": ["My Skills", "Mes compétences", "Mina färdigheter", "Mine færdigheder", "Kemahiran saya", "我的技能"],
+		"contactme": ["Contact Me", "Contactez moi", "Kontakta mig", "Kontakt mig", "Hubungi Saya", "跟我联系"]
 	}
 }
 

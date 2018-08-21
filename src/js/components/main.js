@@ -20,6 +20,7 @@ class Main extends React.Component {
       languages: [
         { name: 'english', code: 'en' },
         { name: 'français', code: 'fr' },
+        { name: 'svenska', code: 'se' },
         { name: 'dansk', code: 'dk' },
         { name: 'bahasa melayu', code: 'my' },
         { name: '中文', code: '中文' }
@@ -31,6 +32,7 @@ class Main extends React.Component {
     this.handleCloseLangMenuClick = this.handleCloseLangMenuClick.bind(this)
     this.handleLangClick = this.handleLangClick.bind(this)
     this.mouseLeave = this.mouseLeave.bind(this)
+    this.handleScroll = this.handleScroll.bind(this)
     this.state = {
       currentLanguage: 'en',
       langMenuOpen: false,
@@ -57,6 +59,9 @@ class Main extends React.Component {
       clearTimeout(timeout)
     }
   }
+  handleScroll() {
+    console.log('hello')
+  }
   componentDidUpdate() {
     const langCode = this.props.activeLanguage.code
     if (langCode != this.state.currentLanguage) {
@@ -74,6 +79,7 @@ class Main extends React.Component {
     setTimeout(() => {
       self.setState({ initialLoading: false })
     }, 2500)
+    document.body.addEventListener('scroll', this.handleScroll)
   }
   render() {
 
@@ -97,6 +103,7 @@ class Main extends React.Component {
               </div>
             )}
           </Transition>
+
           <section id="intro" onClick={this.handleCloseLangMenuClick.bind(this)}>
             <Transition appear={true} in={true} timeout={500}>
               {(status) => (
@@ -107,7 +114,7 @@ class Main extends React.Component {
                         <h1>{translate('intro.hello')}.<br/>
                         {translate('intro.im')} <span>Darren Lim</span>.</h1>
                         <p>
-                          {translate('intro.iam')} <span>{translate('intro.job.engineer')}</span>, <span>{translate('intro.job.developer')}</span> {translate('intro.and')} <span>{translate('intro.job.designer')}</span>.
+                          {translate('intro.iam')} <span>{translate('intro.job.developer')}</span> {translate('intro.and')} <span>{translate('intro.job.designer')}</span>{translate('intro.job.end')}
                         </p>
                       </div>
                     )
@@ -116,6 +123,7 @@ class Main extends React.Component {
               )}
             </Transition>
           </section>
+
           <section id="portfolio" onClick={this.handleCloseLangMenuClick.bind(this)}>
             <Transition appear={true} in={true} timeout={1000}>
               {(status) => (
@@ -135,6 +143,7 @@ class Main extends React.Component {
             </Transition>
             <Portfolio />
           </section>
+
           <section id="about">
             <div className="title container">
               <Translate>
@@ -151,7 +160,16 @@ class Main extends React.Component {
                   <p>I&#39;m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web technologies.</p>
                 </div>
               </div>
-              <h3 className="skills-header">My Tech Stack</h3>
+            </div>
+          </section>
+
+          <section id="skills">
+            <div className="title container">
+              <Translate>
+                {({ translate }) => <h2>{translate("section.skills")}</h2>}
+              </Translate>
+            </div>
+            <div className="content container">
               <div className="skills-group">
                 <i id="javascript" className="devicon-javascript-plain"></i>
                 <i id="react" className="devicon-react-original"></i>
@@ -166,6 +184,7 @@ class Main extends React.Component {
               </div>
             </div>
           </section>
+
           <section id="contact">
             <div className="title container">
             <Translate>

@@ -8,10 +8,11 @@
   font-family: 'Open Sans', sans-serif;
 
   button {
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
     background: none;
     border: 3px solid black;
+    font-size: 18px;
     text-transform: uppercase;
 
     &:focus {
@@ -25,6 +26,7 @@
   }
 
   ul {
+    font-size: 16px;
     list-style: none;
     margin-top: 1vh;
     padding: 1rem 2rem;
@@ -36,7 +38,7 @@
     transition: all .2s ease;
 
     li {
-      margin: 5px 0;
+      margin: 15px 0;
 
       &:hover {
         cursor: pointer;
