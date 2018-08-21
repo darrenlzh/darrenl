@@ -1,6 +1,10 @@
 #contact {
 	color: white;
 
+	.container {
+		position: relative;
+	}
+
 	.social-icons {
 		margin-top: 100px;
 
@@ -32,9 +36,10 @@
 
 #contact-form {
 	color: black;
+	margin-bottom: 150px;
 	position: absolute;
-	top: 15vh;
-	right: 150px;
+	top: 0;
+	right: 0;
 	width: $form-width;
 
 	h3 {

@@ -1,0 +1,44 @@
+{
+	"skillsList": [
+		{
+			"name": "javascript",
+			"icon": "devicon-javascript-plain"
+		},
+		{
+			"name": "react",
+			"icon": "devicon-react-original"
+		},
+		{
+			"name": "angular",
+			"icon": "devicon-angularjs-plain"
+		},
+		{
+			"name": "php",
+			"icon": "devicon-php-plain"
+		},
+		{
+			"name": "wordpress",
+			"icon": "devicon-wordpress-plain"
+		},
+		{
+			"name": "python",
+			"icon": "devicon-python-plain"
+		},
+		{
+			"name": "typescript",
+			"icon": "devicon-typescript-plain"
+		},
+		{
+			"name": "express",
+			"icon": "devicon-express-original"
+		},
+		{
+			"name": "sass",
+			"icon": "devicon-sass-original"
+		},
+		{
+			"name": "gulp",
+			"icon": "devicon-gulp-plain"
+		},
+	]
+}

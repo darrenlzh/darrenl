@@ -31340,7 +31340,7 @@ var ContactForm = exports.ContactForm = function (_React$Component) {
   return ContactForm;
 }(_react2.default.Component);
 
-},{"../utils/scrollTo":299,"axios":1,"querystring":81,"react":283}],293:[function(require,module,exports){
+},{"../utils/scrollTo":300,"axios":1,"querystring":81,"react":283}],293:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31434,7 +31434,7 @@ var MainPortfolio = exports.MainPortfolio = function (_React$Component) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -31463,6 +31463,10 @@ var _languageToggler = require('./language-toggler.js');
 
 var _languageToggler2 = _interopRequireDefault(_languageToggler);
 
+var _skills = require('../content/skills.json');
+
+var _skills2 = _interopRequireDefault(_skills);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31472,380 +31476,381 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Main = function (_React$Component) {
-  _inherits(Main, _React$Component);
+	_inherits(Main, _React$Component);
 
-  function Main(props) {
-    _classCallCheck(this, Main);
+	function Main(props) {
+		_classCallCheck(this, Main);
 
-    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
 
-    var defaultLanguage = window.localStorage.getItem("languageCode") || 'en';
+		var defaultLanguage = window.localStorage.getItem("languageCode") || 'en';
 
-    _this.props.initialize({
-      languages: [{ name: 'english', code: 'en' }, { name: 'français', code: 'fr' }, { name: 'svenska', code: 'se' }, { name: 'dansk', code: 'dk' }, { name: 'bahasa melayu', code: 'my' }, { name: '中文', code: '中文' }],
-      translation: _global2.default,
-      options: { renderToStaticMarkup: _server.renderToStaticMarkup, defaultLanguage: defaultLanguage }
-    });
-    _this.handleLangMenuClick = _this.handleLangMenuClick.bind(_this);
-    _this.handleCloseLangMenuClick = _this.handleCloseLangMenuClick.bind(_this);
-    _this.handleLangClick = _this.handleLangClick.bind(_this);
-    _this.mouseLeave = _this.mouseLeave.bind(_this);
-    _this.handleScroll = _this.handleScroll.bind(_this);
-    _this.state = {
-      currentLanguage: 'en',
-      langMenuOpen: false,
-      initialLoading: true
-    };
-    return _this;
-  }
+		_this.props.initialize({
+			languages: [{ name: 'english', code: 'en' }, { name: 'français', code: 'fr' }, { name: 'svenska', code: 'se' }, { name: 'dansk', code: 'dk' }, { name: 'bahasa melayu', code: 'my' }, { name: '中文', code: '中文' }],
+			translation: _global2.default,
+			options: { renderToStaticMarkup: _server.renderToStaticMarkup, defaultLanguage: defaultLanguage }
+		});
+		_this.handleLangMenuClick = _this.handleLangMenuClick.bind(_this);
+		_this.handleCloseLangMenuClick = _this.handleCloseLangMenuClick.bind(_this);
+		_this.handleLangClick = _this.handleLangClick.bind(_this);
+		_this.mouseLeave = _this.mouseLeave.bind(_this);
+		_this.handleScroll = _this.handleScroll.bind(_this);
+		_this.state = {
+			currentLanguage: 'en',
+			langMenuOpen: false,
+			initialLoading: true
+		};
+		return _this;
+	}
 
-  _createClass(Main, [{
-    key: 'handleLangMenuClick',
-    value: function handleLangMenuClick() {
-      var temp = !this.state.langMenuOpen;
-      this.setState({ langMenuOpen: temp });
-    }
-  }, {
-    key: 'handleCloseLangMenuClick',
-    value: function handleCloseLangMenuClick() {
-      this.setState({ langMenuOpen: false });
-    }
-  }, {
-    key: 'handleLangClick',
-    value: function handleLangClick(i) {
-      this.setState({ language: i, words: WORDS[i] });
-    }
-  }, {
-    key: 'mouseLeave',
-    value: function mouseLeave(mouseLeft) {
-      var _this2 = this;
+	_createClass(Main, [{
+		key: 'handleLangMenuClick',
+		value: function handleLangMenuClick() {
+			var temp = !this.state.langMenuOpen;
+			this.setState({ langMenuOpen: temp });
+		}
+	}, {
+		key: 'handleCloseLangMenuClick',
+		value: function handleCloseLangMenuClick() {
+			this.setState({ langMenuOpen: false });
+		}
+	}, {
+		key: 'handleLangClick',
+		value: function handleLangClick(i) {
+			this.setState({ language: i, words: WORDS[i] });
+		}
+	}, {
+		key: 'mouseLeave',
+		value: function mouseLeave(mouseLeft) {
+			var _this2 = this;
 
-      if (mouseLeft) {
-        timeout = setTimeout(function () {
-          _this2.setState({ langMenuOpen: false });
-        }, 1500);
-      } else {
-        clearTimeout(timeout);
-      }
-    }
-  }, {
-    key: 'handleScroll',
-    value: function handleScroll() {
-      console.log('hello');
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      var langCode = this.props.activeLanguage.code;
-      if (langCode != this.state.currentLanguage) {
-        window.localStorage.setItem("languageCode", langCode);
-        this.setState({
-          currentLanguage: langCode
-        });
-      } else {
-        return;
-      }
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var self = this;
-      setTimeout(function () {
-        self.setState({ initialLoading: false });
-      }, 2500);
-      document.body.addEventListener('scroll', this.handleScroll);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this3 = this;
+			if (mouseLeft) {
+				timeout = setTimeout(function () {
+					_this2.setState({ langMenuOpen: false });
+				}, 1500);
+			} else {
+				clearTimeout(timeout);
+			}
+		}
+	}, {
+		key: 'handleScroll',
+		value: function handleScroll() {
+			console.log('hello');
+		}
+	}, {
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate() {
+			var langCode = this.props.activeLanguage.code;
+			if (langCode != this.state.currentLanguage) {
+				window.localStorage.setItem("languageCode", langCode);
+				this.setState({
+					currentLanguage: langCode
+				});
+			} else {
+				return;
+			}
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var self = this;
+			setTimeout(function () {
+				self.setState({ initialLoading: false });
+			}, 2500);
+			document.body.addEventListener('scroll', this.handleScroll);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
 
-      if (this.state.initialLoading) {
-        return _react2.default.createElement(
-          'div',
-          { className: 'loader initial-loading' },
-          _react2.default.createElement(
-            'div',
-            { className: 'lds-ring' },
-            _react2.default.createElement('div', null),
-            _react2.default.createElement('div', null),
-            _react2.default.createElement('div', null),
-            _react2.default.createElement('div', null)
-          )
-        );
-      } else {
-        return _react2.default.createElement(
-          'div',
-          { className: 'main' },
-          _react2.default.createElement(
-            _reactTransitionGroup.Transition,
-            { appear: true, 'in': true, timeout: 1000 },
-            function (status) {
-              return _react2.default.createElement(
-                'div',
-                { id: 'language', className: 'fade fade-' + status, onMouseLeave: _this3.mouseLeave.bind(_this3, true), onMouseEnter: _this3.mouseLeave.bind(_this3, false) },
-                _react2.default.createElement(
-                  'button',
-                  { onClick: _this3.handleLangMenuClick.bind(_this3),
-                    className: _this3.state.langMenuOpen ? 'open' : '' },
-                  _this3.state.currentLanguage
-                ),
-                _react2.default.createElement(_languageToggler2.default, { open: _this3.state.langMenuOpen })
-              );
-            }
-          ),
-          _react2.default.createElement(
-            'section',
-            { id: 'intro', onClick: this.handleCloseLangMenuClick.bind(this) },
-            _react2.default.createElement(
-              _reactTransitionGroup.Transition,
-              { appear: true, 'in': true, timeout: 500 },
-              function (status) {
-                return _react2.default.createElement(
-                  _reactLocalizeRedux.Translate,
-                  null,
-                  function (_ref) {
-                    var translate = _ref.translate;
-                    return _react2.default.createElement(
-                      'div',
-                      { className: 'container fade fade-' + status },
-                      _react2.default.createElement(
-                        'h1',
-                        null,
-                        translate('intro.hello'),
-                        '.',
-                        _react2.default.createElement('br', null),
-                        translate('intro.im'),
-                        ' ',
-                        _react2.default.createElement(
-                          'span',
-                          null,
-                          'Darren Lim'
-                        ),
-                        '.'
-                      ),
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        translate('intro.iam'),
-                        ' ',
-                        _react2.default.createElement(
-                          'span',
-                          null,
-                          translate('intro.job.developer')
-                        ),
-                        ' ',
-                        translate('intro.and'),
-                        ' ',
-                        _react2.default.createElement(
-                          'span',
-                          null,
-                          translate('intro.job.designer')
-                        ),
-                        translate('intro.job.end')
-                      )
-                    );
-                  }
-                );
-              }
-            )
-          ),
-          _react2.default.createElement(
-            'section',
-            { id: 'portfolio', onClick: this.handleCloseLangMenuClick.bind(this) },
-            _react2.default.createElement(
-              _reactTransitionGroup.Transition,
-              { appear: true, 'in': true, timeout: 1000 },
-              function (status) {
-                return _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'title container fade fade-' + status },
-                    _react2.default.createElement(
-                      _reactLocalizeRedux.Translate,
-                      null,
-                      function (_ref2) {
-                        var translate = _ref2.translate;
-                        return _react2.default.createElement(
-                          'h2',
-                          null,
-                          translate("section.mywork")
-                        );
-                      }
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'summary container fade fade-' + status },
-                    _react2.default.createElement(
-                      _reactLocalizeRedux.Translate,
-                      null,
-                      function (_ref3) {
-                        var translate = _ref3.translate;
-                        return _react2.default.createElement(
-                          'p',
-                          null,
-                          translate("section.myworkSub")
-                        );
-                      }
-                    )
-                  )
-                );
-              }
-            ),
-            _react2.default.createElement(_portfolio.Portfolio, null)
-          ),
-          _react2.default.createElement(
-            'section',
-            { id: 'about' },
-            _react2.default.createElement(
-              'div',
-              { className: 'title container' },
-              _react2.default.createElement(
-                _reactLocalizeRedux.Translate,
-                null,
-                function (_ref4) {
-                  var translate = _ref4.translate;
-                  return _react2.default.createElement(
-                    'h2',
-                    null,
-                    translate("section.aboutme")
-                  );
-                }
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'content container' },
-              _react2.default.createElement(
-                'div',
-                { className: 'profile row' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-xs-12 col-sm-12 col-md-3' },
-                  _react2.default.createElement('div', { className: 'profile__pic' })
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-xs-12 col-sm-12 col-md-9' },
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    'I\'m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web technologies.'
-                  )
-                )
-              )
-            )
-          ),
-          _react2.default.createElement(
-            'section',
-            { id: 'skills' },
-            _react2.default.createElement(
-              'div',
-              { className: 'title container' },
-              _react2.default.createElement(
-                _reactLocalizeRedux.Translate,
-                null,
-                function (_ref5) {
-                  var translate = _ref5.translate;
-                  return _react2.default.createElement(
-                    'h2',
-                    null,
-                    translate("section.skills")
-                  );
-                }
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'content container' },
-              _react2.default.createElement(
-                'div',
-                { className: 'skills-group' },
-                _react2.default.createElement('i', { id: 'javascript', className: 'devicon-javascript-plain' }),
-                _react2.default.createElement('i', { id: 'react', className: 'devicon-react-original' }),
-                _react2.default.createElement('i', { id: 'angular', className: 'devicon-angularjs-plain' }),
-                _react2.default.createElement('i', { id: 'php', className: 'devicon-php-plain' }),
-                _react2.default.createElement('i', { id: 'wordpress', className: 'devicon-wordpress-plain' }),
-                _react2.default.createElement('i', { id: 'python', className: 'devicon-python-plain' }),
-                _react2.default.createElement('i', { id: 'typescript', className: 'devicon-typescript-plain' }),
-                _react2.default.createElement('i', { id: 'express', className: 'devicon-express-original' }),
-                _react2.default.createElement('i', { id: 'sass', className: 'devicon-sass-original' }),
-                _react2.default.createElement('i', { id: 'gulp', className: 'devicon-gulp-plain' })
-              )
-            )
-          ),
-          _react2.default.createElement(
-            'section',
-            { id: 'contact' },
-            _react2.default.createElement(
-              'div',
-              { className: 'title container' },
-              _react2.default.createElement(
-                _reactLocalizeRedux.Translate,
-                null,
-                function (_ref6) {
-                  var translate = _ref6.translate;
-                  return _react2.default.createElement(
-                    'h2',
-                    null,
-                    translate("section.contactme")
-                  );
-                }
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'social-icons container' },
-              _react2.default.createElement(
-                'a',
-                { href: 'https://www.linkedin.com/in/darrenzlim/', target: 'blank' },
-                _react2.default.createElement('i', { className: 'fab fa-linkedin' })
-              ),
-              _react2.default.createElement(
-                'a',
-                { href: 'https://github.com/darrenlzh', target: 'blank' },
-                _react2.default.createElement('i', { className: 'fab fa-github' })
-              ),
-              _react2.default.createElement(
-                'a',
-                { href: 'https://codepen.io/darrenlim/', target: 'blank' },
-                _react2.default.createElement('i', { className: 'fab fa-codepen' })
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'email container' },
-              'darrenzhlim ',
-              _react2.default.createElement(
-                'span',
-                null,
-                '(at)'
-              ),
-              ' gmail ',
-              _react2.default.createElement(
-                'span',
-                null,
-                '(dot)'
-              ),
-              ' com'
-            ),
-            _react2.default.createElement(_contactForm.ContactForm, null)
-          )
-        );
-      }
-    }
-  }]);
+			if (this.state.initialLoading) {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'loader initial-loading' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'lds-ring' },
+						_react2.default.createElement('div', null),
+						_react2.default.createElement('div', null),
+						_react2.default.createElement('div', null),
+						_react2.default.createElement('div', null)
+					)
+				);
+			} else {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'main' },
+					_react2.default.createElement(
+						_reactTransitionGroup.Transition,
+						{ appear: true, 'in': true, timeout: 1000 },
+						function (status) {
+							return _react2.default.createElement(
+								'div',
+								{ id: 'language', className: 'fade fade-' + status, onMouseLeave: _this3.mouseLeave.bind(_this3, true), onMouseEnter: _this3.mouseLeave.bind(_this3, false) },
+								_react2.default.createElement(
+									'button',
+									{ onClick: _this3.handleLangMenuClick.bind(_this3),
+										className: _this3.state.langMenuOpen ? 'open' : '' },
+									_this3.state.currentLanguage
+								),
+								_react2.default.createElement(_languageToggler2.default, { open: _this3.state.langMenuOpen })
+							);
+						}
+					),
+					_react2.default.createElement(
+						'section',
+						{ id: 'intro', onClick: this.handleCloseLangMenuClick.bind(this) },
+						_react2.default.createElement(
+							_reactTransitionGroup.Transition,
+							{ appear: true, 'in': true, timeout: 500 },
+							function (status) {
+								return _react2.default.createElement(
+									_reactLocalizeRedux.Translate,
+									null,
+									function (_ref) {
+										var translate = _ref.translate;
+										return _react2.default.createElement(
+											'div',
+											{ className: 'container fade fade-' + status },
+											_react2.default.createElement(
+												'h1',
+												null,
+												translate('intro.hello'),
+												'.',
+												_react2.default.createElement('br', null),
+												translate('intro.im'),
+												' ',
+												_react2.default.createElement(
+													'span',
+													null,
+													'Darren Lim'
+												),
+												'.'
+											),
+											_react2.default.createElement(
+												'p',
+												null,
+												translate('intro.iam'),
+												' ',
+												_react2.default.createElement(
+													'span',
+													null,
+													translate('intro.job.developer')
+												),
+												' ',
+												translate('intro.and'),
+												' ',
+												_react2.default.createElement(
+													'span',
+													null,
+													translate('intro.job.designer')
+												),
+												translate('intro.job.end')
+											)
+										);
+									}
+								);
+							}
+						)
+					),
+					_react2.default.createElement(
+						'section',
+						{ id: 'portfolio', onClick: this.handleCloseLangMenuClick.bind(this) },
+						_react2.default.createElement(
+							_reactTransitionGroup.Transition,
+							{ appear: true, 'in': true, timeout: 1000 },
+							function (status) {
+								return _react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement(
+										'div',
+										{ className: 'title container fade fade-' + status },
+										_react2.default.createElement(
+											_reactLocalizeRedux.Translate,
+											null,
+											function (_ref2) {
+												var translate = _ref2.translate;
+												return _react2.default.createElement(
+													'h2',
+													null,
+													translate("section.mywork")
+												);
+											}
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'summary container fade fade-' + status },
+										_react2.default.createElement(
+											_reactLocalizeRedux.Translate,
+											null,
+											function (_ref3) {
+												var translate = _ref3.translate;
+												return _react2.default.createElement(
+													'p',
+													null,
+													translate("section.myworkSub")
+												);
+											}
+										)
+									)
+								);
+							}
+						),
+						_react2.default.createElement(_portfolio.Portfolio, null)
+					),
+					_react2.default.createElement(
+						'section',
+						{ id: 'about' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'title container' },
+							_react2.default.createElement(
+								_reactLocalizeRedux.Translate,
+								null,
+								function (_ref4) {
+									var translate = _ref4.translate;
+									return _react2.default.createElement(
+										'h2',
+										null,
+										translate("section.aboutme")
+									);
+								}
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'content container' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'profile row' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-xs-12 col-sm-12 col-md-3' },
+									_react2.default.createElement('div', { className: 'profile__pic' })
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-xs-12 col-sm-12 col-md-9' },
+									_react2.default.createElement(
+										'p',
+										null,
+										'I\'m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web technologies.'
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						'section',
+						{ id: 'skills' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'title container' },
+							_react2.default.createElement(
+								_reactLocalizeRedux.Translate,
+								null,
+								function (_ref5) {
+									var translate = _ref5.translate;
+									return _react2.default.createElement(
+										'h2',
+										null,
+										translate("section.skills")
+									);
+								}
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'content container' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'skills-group' },
+								_skills2.default.skillsList.map(function (skill, i) {
+									return _react2.default.createElement(
+										'div',
+										{ className: 'skill' },
+										_react2.default.createElement('i', { id: skill.name, className: skill.icon })
+									);
+								})
+							)
+						)
+					),
+					_react2.default.createElement(
+						'section',
+						{ id: 'contact' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'container' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'title container' },
+								_react2.default.createElement(
+									_reactLocalizeRedux.Translate,
+									null,
+									function (_ref6) {
+										var translate = _ref6.translate;
+										return _react2.default.createElement(
+											'h2',
+											null,
+											translate("section.contactme")
+										);
+									}
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'social-icons' },
+								_react2.default.createElement(
+									'a',
+									{ href: 'https://www.linkedin.com/in/darrenzlim/', target: 'blank' },
+									_react2.default.createElement('i', { className: 'fab fa-linkedin' })
+								),
+								_react2.default.createElement(
+									'a',
+									{ href: 'https://github.com/darrenlzh', target: 'blank' },
+									_react2.default.createElement('i', { className: 'fab fa-github' })
+								),
+								_react2.default.createElement(
+									'a',
+									{ href: 'https://codepen.io/darrenlim/', target: 'blank' },
+									_react2.default.createElement('i', { className: 'fab fa-codepen' })
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'email' },
+								'darrenzhlim ',
+								_react2.default.createElement(
+									'span',
+									null,
+									'(at)'
+								),
+								' gmail ',
+								_react2.default.createElement(
+									'span',
+									null,
+									'(dot)'
+								),
+								' com'
+							),
+							_react2.default.createElement(_contactForm.ContactForm, null)
+						)
+					)
+				);
+			}
+		}
+	}]);
 
-  return Main;
+	return Main;
 }(_react2.default.Component);
 
 var timeout;
 exports.default = (0, _reactLocalizeRedux.withLocalize)(Main);
 
-},{"../translations/global.json":298,"./contact-form.js":292,"./language-toggler.js":293,"./portfolio.js":296,"react":283,"react-dom/server":212,"react-localize-redux":217,"react-router-dom":233,"react-transition-group":250}],296:[function(require,module,exports){
+},{"../content/skills.json":297,"../translations/global.json":299,"./contact-form.js":292,"./language-toggler.js":293,"./portfolio.js":296,"react":283,"react-dom/server":212,"react-localize-redux":217,"react-router-dom":233,"react-transition-group":250}],296:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -32023,7 +32028,53 @@ var Item = function (_React$Component2) {
   return Item;
 }(_react2.default.Component);
 
-},{"../includes/portfolio-items":297,"../utils/scrollTo":299,"react":283,"react-router-dom":233,"react-transition-group":250}],297:[function(require,module,exports){
+},{"../includes/portfolio-items":298,"../utils/scrollTo":300,"react":283,"react-router-dom":233,"react-transition-group":250}],297:[function(require,module,exports){
+module.exports={
+	"skillsList": [
+		{
+			"name": "javascript",
+			"icon": "devicon-javascript-plain"
+		},
+		{
+			"name": "react",
+			"icon": "devicon-react-original"
+		},
+		{
+			"name": "angular",
+			"icon": "devicon-angularjs-plain"
+		},
+		{
+			"name": "php",
+			"icon": "devicon-php-plain"
+		},
+		{
+			"name": "wordpress",
+			"icon": "devicon-wordpress-plain"
+		},
+		{
+			"name": "python",
+			"icon": "devicon-python-plain"
+		},
+		{
+			"name": "typescript",
+			"icon": "devicon-typescript-plain"
+		},
+		{
+			"name": "express",
+			"icon": "devicon-express-original"
+		},
+		{
+			"name": "sass",
+			"icon": "devicon-sass-original"
+		},
+		{
+			"name": "gulp",
+			"icon": "devicon-gulp-plain"
+		},
+	]
+}
+
+},{}],298:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -32074,7 +32125,7 @@ var ITEMS = exports.ITEMS = [{
   link: '#'
 }];
 
-},{}],298:[function(require,module,exports){
+},{}],299:[function(require,module,exports){
 module.exports={
 	"intro": {
 		"hello": ["Hello", "Salut", "Hej", "Hej", "Hello", "你好"],
@@ -32096,7 +32147,7 @@ module.exports={
 	}
 }
 
-},{}],299:[function(require,module,exports){
+},{}],300:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

@@ -47,7 +47,8 @@ section {
   }
 
   .title {
-    padding-bottom: 1rem;
+	padding: 0;
+	padding-bottom: 1rem;
 
     &::after {
       content: '';
@@ -99,7 +100,6 @@ section {
 #contact {
   height: 80vh;
   background: black;
-  position: relative;
 
   h2 {
     color: white;
