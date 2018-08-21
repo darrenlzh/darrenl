@@ -7,7 +7,7 @@ import { withLocalize, Translate } from 'react-localize-redux'
 import globalTranslations from '../translations/global.json'
 
 import { Portfolio } from './portfolio.js'
-import { ContactForm } from './contact-form.js'
+import ContactForm from './contact-form.js'
 import LanguageToggler from './language-toggler.js'
 
 import skills from '../content/skills.json'

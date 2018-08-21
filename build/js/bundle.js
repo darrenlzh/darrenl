@@ -31156,7 +31156,6 @@ var App = function (_React$Component) {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.ContactForm = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -31165,6 +31164,8 @@ var _react = require('react');
 var _react2 = _interopRequireDefault(_react);
 
 var _scrollTo = require('../utils/scrollTo');
+
+var _reactLocalizeRedux = require('react-localize-redux');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31184,7 +31185,7 @@ var config = {
 	}
 };
 
-var ContactForm = exports.ContactForm = function (_React$Component) {
+var ContactForm = function (_React$Component) {
 	_inherits(ContactForm, _React$Component);
 
 	function ContactForm(props) {
@@ -31260,78 +31261,91 @@ var ContactForm = exports.ContactForm = function (_React$Component) {
 	}, {
 		key: 'render',
 		value: function render() {
+			var _this3 = this;
+
 			return _react2.default.createElement(
 				'form',
 				{ onSubmit: this.handleSubmit, id: 'contact-form', role: 'form' },
 				_react2.default.createElement(
-					'h3',
+					_reactLocalizeRedux.Translate,
 					null,
-					'Get in touch with me, or just say hi :)'
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'form-inner ' + (this.state.loading ? 'loading' : '') },
-					_react2.default.createElement(
-						'fieldset',
-						null,
-						_react2.default.createElement('input', { id: 'name', className: this.state.name ? '' : 'empty', name: 'name', type: 'text', required: 'required', value: this.state.name || '', onChange: this.handleChange }),
-						_react2.default.createElement(
-							'label',
-							{ htmlFor: 'name' },
-							'Name'
-						),
-						_react2.default.createElement('div', { className: 'line' })
-					),
-					_react2.default.createElement(
-						'fieldset',
-						null,
-						_react2.default.createElement('input', { id: 'company', className: this.state.company ? '' : 'empty', name: 'company', type: 'text', value: this.state.company || '', onChange: this.handleChange }),
-						_react2.default.createElement(
-							'label',
-							{ htmlFor: 'company' },
-							'Company (Optional)'
-						),
-						_react2.default.createElement('div', { className: 'line' })
-					),
-					_react2.default.createElement(
-						'fieldset',
-						null,
-						_react2.default.createElement('input', { id: 'email', className: this.state.email ? '' : 'empty', name: 'email', type: 'email', required: 'required', value: this.state.email || '', onChange: this.handleChange }),
-						_react2.default.createElement(
-							'label',
-							{ htmlFor: 'email' },
-							'Email'
-						),
-						_react2.default.createElement('div', { className: 'line' })
-					),
-					_react2.default.createElement(
-						'fieldset',
-						null,
-						_react2.default.createElement('textarea', { id: 'message', className: this.state.message ? '' : 'empty', name: 'message', rows: '3', required: 'required', value: this.state.message || '', onChange: this.handleChange }),
-						_react2.default.createElement(
-							'label',
-							{ htmlFor: 'message' },
-							'Message'
-						),
-						_react2.default.createElement('div', { className: 'line' })
-					),
-					_react2.default.createElement(
-						'button',
-						{ type: 'submit' },
-						this.state.loading ? '' : 'Send'
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'loader' },
-						_react2.default.createElement(
+					function (_ref) {
+						var translate = _ref.translate;
+						return _react2.default.createElement(
 							'div',
-							{ className: 'lds-ring' },
-							_react2.default.createElement('div', null),
-							_react2.default.createElement('div', null),
-							_react2.default.createElement('div', null),
-							_react2.default.createElement('div', null)
-						)
-					)
+							null,
+							_react2.default.createElement(
+								'h3',
+								null,
+								translate('contactForm.heading')
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'form-inner ' + (_this3.state.loading ? 'loading' : '') },
+								_react2.default.createElement(
+									'fieldset',
+									null,
+									_react2.default.createElement('input', { id: 'name', className: _this3.state.name ? '' : 'empty', name: 'name', type: 'text', required: 'required', value: _this3.state.name || '', onChange: _this3.handleChange }),
+									_react2.default.createElement(
+										'label',
+										{ htmlFor: 'name' },
+										translate('contactForm.name')
+									),
+									_react2.default.createElement('div', { className: 'line' })
+								),
+								_react2.default.createElement(
+									'fieldset',
+									null,
+									_react2.default.createElement('input', { id: 'company', className: _this3.state.company ? '' : 'empty', name: 'company', type: 'text', value: _this3.state.company || '', onChange: _this3.handleChange }),
+									_react2.default.createElement(
+										'label',
+										{ htmlFor: 'company' },
+										translate('contactForm.company')
+									),
+									_react2.default.createElement('div', { className: 'line' })
+								),
+								_react2.default.createElement(
+									'fieldset',
+									null,
+									_react2.default.createElement('input', { id: 'email', className: _this3.state.email ? '' : 'empty', name: 'email', type: 'email', required: 'required', value: _this3.state.email || '', onChange: _this3.handleChange }),
+									_react2.default.createElement(
+										'label',
+										{ htmlFor: 'email' },
+										translate('contactForm.email')
+									),
+									_react2.default.createElement('div', { className: 'line' })
+								),
+								_react2.default.createElement(
+									'fieldset',
+									null,
+									_react2.default.createElement('textarea', { id: 'message', className: _this3.state.message ? '' : 'empty', name: 'message', rows: '3', required: 'required', value: _this3.state.message || '', onChange: _this3.handleChange }),
+									_react2.default.createElement(
+										'label',
+										{ htmlFor: 'message' },
+										translate('contactForm.message')
+									),
+									_react2.default.createElement('div', { className: 'line' })
+								),
+								_react2.default.createElement(
+									'button',
+									{ type: 'submit' },
+									_this3.state.loading ? '' : translate('contactForm.send')
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'loader' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'lds-ring' },
+										_react2.default.createElement('div', null),
+										_react2.default.createElement('div', null),
+										_react2.default.createElement('div', null),
+										_react2.default.createElement('div', null)
+									)
+								)
+							)
+						);
+					}
 				)
 			);
 		}
@@ -31340,7 +31354,9 @@ var ContactForm = exports.ContactForm = function (_React$Component) {
 	return ContactForm;
 }(_react2.default.Component);
 
-},{"../utils/scrollTo":300,"axios":1,"querystring":81,"react":283}],293:[function(require,module,exports){
+exports.default = (0, _reactLocalizeRedux.withLocalize)(ContactForm);
+
+},{"../utils/scrollTo":300,"axios":1,"querystring":81,"react":283,"react-localize-redux":217}],293:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31458,6 +31474,8 @@ var _global2 = _interopRequireDefault(_global);
 var _portfolio = require('./portfolio.js');
 
 var _contactForm = require('./contact-form.js');
+
+var _contactForm2 = _interopRequireDefault(_contactForm);
 
 var _languageToggler = require('./language-toggler.js');
 
@@ -31836,7 +31854,7 @@ var Main = function (_React$Component) {
 								),
 								' com'
 							),
-							_react2.default.createElement(_contactForm.ContactForm, null)
+							_react2.default.createElement(_contactForm2.default, null)
 						)
 					)
 				);
@@ -32144,6 +32162,21 @@ module.exports={
 		"aboutme": ["About Me", "A propos", "Om mig", "Om mig", "Tentang saya", "关于我"],
 		"skills": ["My Skills", "Mes compétences", "Mina färdigheter", "Mine færdigheder", "Kemahiran saya", "我的技能"],
 		"contactme": ["Contact Me", "Contactez moi", "Kontakta mig", "Kontakt mig", "Hubungi Saya", "跟我联系"]
+	},
+	"contactForm": {
+		"heading": [
+			"Get in touch with me, or just say hi :)",
+			"Entrez en contact avec moi, ou juste dire salut :)",
+			"Ta kontakt med mig, eller säg bara hej :)",
+			"Kom i kontakt med mig, eller bare sig hej",
+			"Berhubung dengan saya, atau hanya mengatakan hi :)",
+			"您可以和我联系， 也可以只是给我打个招呼 :)"
+		],
+		"name": ["Name", "Nom", "Namn", "Navn", "Nama", "名字"],
+		"company": ["Company (Optional)", "Compagnie (optionelle)", "Företag (valfritt)", "Selskab (valgfrit)", "Syarikat (tidak diperlukan)", "公司（可选）"],
+		"email": ["Email", "Email", "Email", "Email", "E-mel", "电邮"],
+		"message": ["Message", "Message", "Meddelande", "Besked", "Mesej", "信息"],
+		"send": ["Send", "Envoyer", "Skicka", "Sende", "Hantar", "发送"]
 	}
 }
 

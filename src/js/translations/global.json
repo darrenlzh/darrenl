@@ -16,5 +16,20 @@
 		"aboutme": ["About Me", "A propos", "Om mig", "Om mig", "Tentang saya", "关于我"],
 		"skills": ["My Skills", "Mes compétences", "Mina färdigheter", "Mine færdigheder", "Kemahiran saya", "我的技能"],
 		"contactme": ["Contact Me", "Contactez moi", "Kontakta mig", "Kontakt mig", "Hubungi Saya", "跟我联系"]
+	},
+	"contactForm": {
+		"heading": [
+			"Get in touch with me, or just say hi :)",
+			"Entrez en contact avec moi, ou juste dire salut :)",
+			"Ta kontakt med mig, eller säg bara hej :)",
+			"Kom i kontakt med mig, eller bare sig hej",
+			"Berhubung dengan saya, atau hanya mengatakan hi :)",
+			"您可以和我联系， 也可以只是给我打个招呼 :)"
+		],
+		"name": ["Name", "Nom", "Namn", "Navn", "Nama", "名字"],
+		"company": ["Company (Optional)", "Compagnie (optionelle)", "Företag (valfritt)", "Selskab (valgfrit)", "Syarikat (tidak diperlukan)", "公司（可选）"],
+		"email": ["Email", "Email", "Email", "Email", "E-mel", "电邮"],
+		"message": ["Message", "Message", "Meddelande", "Besked", "Mesej", "信息"],
+		"send": ["Send", "Envoyer", "Skicka", "Sende", "Hantar", "发送"]
 	}
 }
