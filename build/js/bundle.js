@@ -31154,7 +31154,7 @@ var App = function (_React$Component) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 exports.ContactForm = undefined;
 
@@ -31179,165 +31179,165 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var querystring = require('querystring');
 var axios = require('axios');
 var config = {
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded'
-  }
+	headers: {
+		'Content-Type': 'application/x-www-form-urlencoded'
+	}
 };
 
 var ContactForm = exports.ContactForm = function (_React$Component) {
-  _inherits(ContactForm, _React$Component);
+	_inherits(ContactForm, _React$Component);
 
-  function ContactForm(props) {
-    _classCallCheck(this, ContactForm);
+	function ContactForm(props) {
+		_classCallCheck(this, ContactForm);
 
-    var _this = _possibleConstructorReturn(this, (ContactForm.__proto__ || Object.getPrototypeOf(ContactForm)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (ContactForm.__proto__ || Object.getPrototypeOf(ContactForm)).call(this, props));
 
-    _this.state = {
-      name: '',
-      email: '',
-      company: '',
-      message: '',
-      loading: false
-    };
+		_this.state = {
+			name: '',
+			email: '',
+			company: '',
+			message: '',
+			loading: false
+		};
 
-    _this.handleWait = _this.handleWait.bind(_this);
-    _this.handleFormReset = _this.handleFormReset.bind(_this);
-    _this.handleChange = _this.handleChange.bind(_this);
-    _this.handleSubmit = _this.handleSubmit.bind(_this);
-    return _this;
-  }
+		_this.handleWait = _this.handleWait.bind(_this);
+		_this.handleFormReset = _this.handleFormReset.bind(_this);
+		_this.handleChange = _this.handleChange.bind(_this);
+		_this.handleSubmit = _this.handleSubmit.bind(_this);
+		return _this;
+	}
 
-  _createClass(ContactForm, [{
-    key: 'handleWait',
-    value: function handleWait(state) {
-      this.setState({
-        loading: state
-      });
-    }
-  }, {
-    key: 'handleFormReset',
-    value: function handleFormReset() {
-      this.setState({
-        name: '',
-        email: '',
-        company: '',
-        message: ''
-      });
-    }
-  }, {
-    key: 'handleChange',
-    value: function handleChange(event) {
-      var target = event.target;
-      var value = target.value;
-      var name = target.name;
+	_createClass(ContactForm, [{
+		key: 'handleWait',
+		value: function handleWait(state) {
+			this.setState({
+				loading: state
+			});
+		}
+	}, {
+		key: 'handleFormReset',
+		value: function handleFormReset() {
+			this.setState({
+				name: '',
+				email: '',
+				company: '',
+				message: ''
+			});
+		}
+	}, {
+		key: 'handleChange',
+		value: function handleChange(event) {
+			var target = event.target;
+			var value = target.value;
+			var name = target.name;
 
-      this.setState(_defineProperty({}, name, value));
-    }
-  }, {
-    key: 'handleSubmit',
-    value: function handleSubmit(event) {
-      var _this2 = this;
+			this.setState(_defineProperty({}, name, value));
+		}
+	}, {
+		key: 'handleSubmit',
+		value: function handleSubmit(event) {
+			var _this2 = this;
 
-      this.handleWait(true);
-      axios.post('https://darrenl.im/api/contact', querystring.stringify({
-        name: this.state.name,
-        email: this.state.email,
-        company: this.state.company,
-        message: this.state.message
-      }), config).then(function (response) {
-        if (response.data.success) {
-          // alert('Your message was sent!')
-          _this2.handleWait(false);
-          _this2.handleFormReset();
-        } else {
-          alert('There was a problem with the server. Please try again later?');
-        }
-      }).catch(function (error) {
-        alert('There was a problem submitting your form. Please try again?');
-      });
-      event.preventDefault();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'form',
-        { onSubmit: this.handleSubmit, id: 'contact-form', role: 'form' },
-        _react2.default.createElement(
-          'h3',
-          null,
-          'Get in touch with me, or just say hi :)'
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'form-inner ' + (this.state.loading ? 'loading' : '') },
-          _react2.default.createElement(
-            'fieldset',
-            null,
-            _react2.default.createElement('input', { id: 'name', className: this.state.name ? '' : 'empty', name: 'name', type: 'text', required: 'required', value: this.state.name || '', onChange: this.handleChange }),
-            _react2.default.createElement(
-              'label',
-              { htmlFor: 'name' },
-              'Name'
-            ),
-            _react2.default.createElement('div', { className: 'line' })
-          ),
-          _react2.default.createElement(
-            'fieldset',
-            null,
-            _react2.default.createElement('input', { id: 'company', className: this.state.company ? '' : 'empty', name: 'company', type: 'text', value: this.state.company || '', onChange: this.handleChange }),
-            _react2.default.createElement(
-              'label',
-              { htmlFor: 'company' },
-              'Company (Optional)'
-            ),
-            _react2.default.createElement('div', { className: 'line' })
-          ),
-          _react2.default.createElement(
-            'fieldset',
-            null,
-            _react2.default.createElement('input', { id: 'email', className: this.state.email ? '' : 'empty', name: 'email', type: 'email', required: 'required', value: this.state.email || '', onChange: this.handleChange }),
-            _react2.default.createElement(
-              'label',
-              { htmlFor: 'email' },
-              'Email'
-            ),
-            _react2.default.createElement('div', { className: 'line' })
-          ),
-          _react2.default.createElement(
-            'fieldset',
-            null,
-            _react2.default.createElement('textarea', { id: 'message', className: this.state.message ? '' : 'empty', name: 'message', rows: '3', required: 'required', value: this.state.message || '', onChange: this.handleChange }),
-            _react2.default.createElement(
-              'label',
-              { htmlFor: 'message' },
-              'Message'
-            ),
-            _react2.default.createElement('div', { className: 'line' })
-          ),
-          _react2.default.createElement(
-            'button',
-            { type: 'submit' },
-            this.state.loading ? '' : 'Submit'
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'loader' },
-            _react2.default.createElement(
-              'div',
-              { className: 'lds-ring' },
-              _react2.default.createElement('div', null),
-              _react2.default.createElement('div', null),
-              _react2.default.createElement('div', null),
-              _react2.default.createElement('div', null)
-            )
-          )
-        )
-      );
-    }
-  }]);
+			this.handleWait(true);
+			axios.post('https://darrenl.im/api/contact', querystring.stringify({
+				name: this.state.name,
+				email: this.state.email,
+				company: this.state.company,
+				message: this.state.message
+			}), config).then(function (response) {
+				if (response.data.success) {
+					// alert('Your message was sent!')
+					_this2.handleWait(false);
+					_this2.handleFormReset();
+				} else {
+					alert('There was a problem with the server. Please try again later?');
+				}
+			}).catch(function (error) {
+				alert('There was a problem submitting your form. Please try again?');
+			});
+			event.preventDefault();
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'form',
+				{ onSubmit: this.handleSubmit, id: 'contact-form', role: 'form' },
+				_react2.default.createElement(
+					'h3',
+					null,
+					'Get in touch with me, or just say hi :)'
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'form-inner ' + (this.state.loading ? 'loading' : '') },
+					_react2.default.createElement(
+						'fieldset',
+						null,
+						_react2.default.createElement('input', { id: 'name', className: this.state.name ? '' : 'empty', name: 'name', type: 'text', required: 'required', value: this.state.name || '', onChange: this.handleChange }),
+						_react2.default.createElement(
+							'label',
+							{ htmlFor: 'name' },
+							'Name'
+						),
+						_react2.default.createElement('div', { className: 'line' })
+					),
+					_react2.default.createElement(
+						'fieldset',
+						null,
+						_react2.default.createElement('input', { id: 'company', className: this.state.company ? '' : 'empty', name: 'company', type: 'text', value: this.state.company || '', onChange: this.handleChange }),
+						_react2.default.createElement(
+							'label',
+							{ htmlFor: 'company' },
+							'Company (Optional)'
+						),
+						_react2.default.createElement('div', { className: 'line' })
+					),
+					_react2.default.createElement(
+						'fieldset',
+						null,
+						_react2.default.createElement('input', { id: 'email', className: this.state.email ? '' : 'empty', name: 'email', type: 'email', required: 'required', value: this.state.email || '', onChange: this.handleChange }),
+						_react2.default.createElement(
+							'label',
+							{ htmlFor: 'email' },
+							'Email'
+						),
+						_react2.default.createElement('div', { className: 'line' })
+					),
+					_react2.default.createElement(
+						'fieldset',
+						null,
+						_react2.default.createElement('textarea', { id: 'message', className: this.state.message ? '' : 'empty', name: 'message', rows: '3', required: 'required', value: this.state.message || '', onChange: this.handleChange }),
+						_react2.default.createElement(
+							'label',
+							{ htmlFor: 'message' },
+							'Message'
+						),
+						_react2.default.createElement('div', { className: 'line' })
+					),
+					_react2.default.createElement(
+						'button',
+						{ type: 'submit' },
+						this.state.loading ? '' : 'Send'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'loader' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'lds-ring' },
+							_react2.default.createElement('div', null),
+							_react2.default.createElement('div', null),
+							_react2.default.createElement('div', null),
+							_react2.default.createElement('div', null)
+						)
+					)
+				)
+			);
+		}
+	}]);
 
-  return ContactForm;
+	return ContactForm;
 }(_react2.default.Component);
 
 },{"../utils/scrollTo":300,"axios":1,"querystring":81,"react":283}],293:[function(require,module,exports){
@@ -31771,7 +31771,7 @@ var Main = function (_React$Component) {
 								_skills2.default.skillsList.map(function (skill, i) {
 									return _react2.default.createElement(
 										'div',
-										{ className: 'skill' },
+										{ key: i, className: 'skill' },
 										_react2.default.createElement('i', { id: skill.name, className: skill.icon })
 									);
 								})

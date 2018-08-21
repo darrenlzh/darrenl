@@ -183,7 +183,7 @@ class Main extends React.Component {
 								{
 									skills.skillsList.map((skill, i) => {
 										return (
-											<div className="skill">
+											<div key={i} className="skill">
 												<i id={skill.name} className={skill.icon}></i>
 											</div>
 										)

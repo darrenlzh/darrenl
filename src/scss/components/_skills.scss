@@ -9,14 +9,16 @@
 	justify-content: center;
 	padding: 60px 100px 50px;
 
+	.skill {
+		&:nth-of-type(-n+5) {
+			margin-bottom: 60px;
+		}
+	}
+
 	i {
 		margin: 0 20px;
 		font-size: 10rem;
 		position: relative;
-
-		&:nth-of-type(-n+5) {
-			margin-bottom: 60px;
-		}
 
 		&::after {
 			content: '';
