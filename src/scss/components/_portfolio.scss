@@ -43,7 +43,8 @@
         transition: all .25s ease;
 
         &:hover {
-          background: darken($color1, 5%);
+          background: black;
+          color: white;
         }
       }
     }
@@ -92,7 +93,6 @@
         font-size: 2rem;
         color: white;
         text-align: center;
-        // margin-bottom: 5px
       }
 
       p {

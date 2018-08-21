@@ -16,7 +16,7 @@ class App extends React.Component {
 			<LocalizeProvider>
 				<Router>
 					<Switch>
-						<Route exact path="/" component={props => <Main />} />
+						<Route exact path="/" component={Main} />
 						<Route path="/portfolio" component={MainPortfolio} />
 					</Switch>
 				</Router>
@@ -24,16 +24,5 @@ class App extends React.Component {
 		)
 	}
 }
-
-// const App = props => (
-// 	<LocalizeProvider>
-// 		<Router>
-// 			<Switch>
-// 				<Route exact path="/" component={Main} />
-// 				<Route path="/portfolio" component={MainPortfolio} />
-// 			</Switch>
-// 		</Router>
-// 	</LocalizeProvider>
-// )
 
 render(<App />, document.getElementById('app'))

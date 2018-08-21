@@ -1,4 +1,5 @@
 import React from 'react'
+import { Transition } from 'react-transition-group'
 import { Link } from 'react-router-dom'
 
 import { renderToStaticMarkup } from 'react-dom/server'
@@ -9,7 +10,7 @@ import { Portfolio } from './portfolio.js'
 import { ContactForm } from './contact-form.js'
 import LanguageToggler from './language-toggler.js'
 
-export class Main extends React.Component {
+class Main extends React.Component {
   constructor(props) {
     super(props)
 
@@ -32,7 +33,8 @@ export class Main extends React.Component {
     this.mouseLeave = this.mouseLeave.bind(this)
     this.state = {
       currentLanguage: 'en',
-      langMenuOpen: false
+      langMenuOpen: false,
+      initialLoading: true
     }
   }
   handleLangMenuClick() {
@@ -67,85 +69,114 @@ export class Main extends React.Component {
       return
     }
   }
+  componentDidMount() {
+    let self = this
+    setTimeout(() => {
+      self.setState({ initialLoading: false })
+    }, 2500)
+  }
   render() {
-    return (
-      <div className="main">
-        <div id="language" onMouseLeave={this.mouseLeave.bind(this, true)} onMouseEnter={this.mouseLeave.bind(this, false)}>
-          <button onClick={this.handleLangMenuClick.bind(this)}
-          className={this.state.langMenuOpen? 'open': ''}>
-            {this.state.currentLanguage}
-          </button>
-          <LanguageToggler open={this.state.langMenuOpen}/>
+
+    if (this.state.initialLoading) {
+      return (
+        <div className="loader initial-loading">
+          <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
         </div>
-        <section id="intro" onClick={this.handleCloseLangMenuClick.bind(this)}>
-          <Translate>
-            {
-              ({ translate }) => (
-                <div className="container">
-                <h1>{translate('intro.hello')}.<br/>
-                {translate('intro.im')} <span>Darren Lim</span>.</h1>
-                <p>
-                  {translate('intro.iam')} <span>{translate('intro.job.engineer')}</span>, <span>{translate('intro.job.developer')}</span> {translate('intro.and')} <span>{translate('intro.job.designer')}</span>.
-                </p>
+      )
+    } else {
+      return (
+        <div className="main">
+          <Transition appear={true} in={true} timeout={1000}>
+            {(status) => (
+              <div id="language" className={`fade fade-${status}`} onMouseLeave={this.mouseLeave.bind(this, true)} onMouseEnter={this.mouseLeave.bind(this, false)}>
+                <button onClick={this.handleLangMenuClick.bind(this)}
+                className={this.state.langMenuOpen? 'open': ''}>
+                  {this.state.currentLanguage}
+                </button>
+                <LanguageToggler open={this.state.langMenuOpen}/>
+              </div>
+            )}
+          </Transition>
+          <section id="intro" onClick={this.handleCloseLangMenuClick.bind(this)}>
+            <Transition appear={true} in={true} timeout={500}>
+              {(status) => (
+                <Translate>
+                  {
+                    ({ translate }) => (
+                      <div className={`container fade fade-${status}`}>
+                        <h1>{translate('intro.hello')}.<br/>
+                        {translate('intro.im')} <span>Darren Lim</span>.</h1>
+                        <p>
+                          {translate('intro.iam')} <span>{translate('intro.job.engineer')}</span>, <span>{translate('intro.job.developer')}</span> {translate('intro.and')} <span>{translate('intro.job.designer')}</span>.
+                        </p>
+                      </div>
+                    )
+                  }
+                </Translate>
+              )}
+            </Transition>
+          </section>
+          <section id="portfolio" onClick={this.handleCloseLangMenuClick.bind(this)}>
+            <Transition appear={true} in={true} timeout={1000}>
+              {(status) => (
+                <div>
+                  <div className={`title container fade fade-${status}`}>
+                    <Translate>
+                      {({ translate }) => <h2>{translate("section.mywork")}</h2>}
+                    </Translate>
+                  </div>
+                  <div className={`summary container fade fade-${status}`}>
+                    <Translate>
+                      {({ translate }) => <p>{translate("section.myworkSub")}</p>}
+                    </Translate>
+                  </div>
                 </div>
-              )
-            }
-          </Translate>
-        </section>
-        <section id="portfolio" onClick={this.handleCloseLangMenuClick.bind(this)}>
-          <div className="title container">
-            <Translate>
-              {({ translate }) => <h2>{translate("section.mywork")}</h2>}
-            </Translate>
-          </div>
-          <div className="summary container">
-            <Translate>
-              {({ translate }) => <p>{translate("section.myworkSub")}</p>}
-            </Translate>
-          </div>
-          <Portfolio />
-        </section>
-        <section id="about">
-          <div className="title container">
-            <Translate>
-              {({ translate }) => <h2>{translate("section.aboutme")}</h2>}
-            </Translate>
-          </div>
-          <div className="content container">
-            <div className="profile row">
-              <div className="col-xs-12 col-sm-12 col-md-3">
-                <div className="profile__pic">
+              )}
+            </Transition>
+            <Portfolio />
+          </section>
+          <section id="about">
+            <div className="title container">
+              <Translate>
+                {({ translate }) => <h2>{translate("section.aboutme")}</h2>}
+              </Translate>
+            </div>
+            <div className="content container">
+              <div className="profile row">
+                <div className="col-xs-12 col-sm-12 col-md-3">
+                  <div className="profile__pic">
+                  </div>
+                </div>
+                <div className="col-xs-12 col-sm-12 col-md-9">
+                  <p>I&#39;m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web technologies.</p>
                 </div>
               </div>
-              <div className="col-xs-12 col-sm-12 col-md-9">
-                <p>I&#39;m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web technologies.</p>
+              <h3 className="skills-header">My Tech Stack</h3>
+              <div className="skills-group">
+                <i id="javascript" className="devicon-javascript-plain"></i>
+                <i id="react" className="devicon-react-original"></i>
+                <i id="angular" className="devicon-angularjs-plain"></i>
+                <i id="php" className="devicon-php-plain"></i>
+                <i id="wordpress" className="devicon-wordpress-plain"></i>
+                <i id="python" className="devicon-python-plain"></i>
+                <i id="typescript" className="devicon-typescript-plain"></i>
+                <i id="express" className="devicon-express-original"></i>
+                <i id="sass" className="devicon-sass-original"></i>
+                <i id="gulp" className="devicon-gulp-plain"></i>
               </div>
             </div>
-            <h3 className="skills-header">My Tech Stack</h3>
-            <div className="skills-group">
-              <i id="javascript" className="devicon-javascript-plain"></i>
-              <i id="react" className="devicon-react-original"></i>
-              <i id="angular" className="devicon-angularjs-plain"></i>
-              <i id="php" className="devicon-php-plain"></i>
-              <i id="wordpress" className="devicon-wordpress-plain"></i>
-              <i id="python" className="devicon-python-plain"></i>
-              <i id="typescript" className="devicon-typescript-plain"></i>
-              <i id="express" className="devicon-express-original"></i>
-              <i id="sass" className="devicon-sass-original"></i>
-              <i id="gulp" className="devicon-gulp-plain"></i>
+          </section>
+          <section id="contact">
+            <div className="title container">
+            <Translate>
+              {({ translate }) => <h2>{translate("section.contactme")}</h2>}
+            </Translate>
             </div>
-          </div>
-        </section>
-        <section id="contact">
-          <div className="title container">
-          <Translate>
-            {({ translate }) => <h2>{translate("section.contactme")}</h2>}
-          </Translate>
-          </div>
-          <ContactForm />
-        </section>
-      </div>
-    )
+            <ContactForm />
+          </section>
+        </div>
+      )
+    }
   }
 }
 var timeout

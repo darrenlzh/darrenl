@@ -1,4 +1,5 @@
 import React from 'react'
+import { Transition } from 'react-transition-group'
 import { Link } from 'react-router-dom'
 
 import { scrollTo } from '../utils/scrollTo'
@@ -33,12 +34,16 @@ export class Portfolio extends React.Component {
         {
           ITEMS.map((item, i) => {
             return (
-              <Item key={i} cover={item.cover} click={this.handleClick.bind(this, i)}/>
+              <Item key={i} num={i} cover={item.cover} click={this.handleClick.bind(this, i)}/>
             )
           })
         }
         <article className="view-all item-container">
-          <Link to="portfolio">View All</Link>
+          <Transition appear={true} in={true} timeout={2300}>
+            {(status) => (
+              <Link className={`fade fade-${status}`} to="portfolio">View All</Link>
+            )}
+          </Transition>
         </article>
         <div id="view" className={this.state.view? 'viewing' : ''}>
           <div className="view-inner">
@@ -69,11 +74,15 @@ class Item extends React.Component {
   }
   render() {
     return (
-      <article className={`item-container`} onClick={this.props.click}>
-        <div className="item">
-          <img src={this.props.cover} className="img-thumbnail"/>
-        </div>
-      </article>
+      <Transition appear={true} in={true} timeout={1500 + (this.props.num * 100)}>
+        {(status) => (
+          <article  className={`item-container fade fade-${status}`} onClick={this.props.click}>
+            <div className="item">
+              <img src={this.props.cover} className="img-thumbnail"/>
+            </div>
+          </article>
+        )}
+      </Transition>
     )
   }
 }
