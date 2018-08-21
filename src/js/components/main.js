@@ -191,6 +191,14 @@ class Main extends React.Component {
               {({ translate }) => <h2>{translate("section.contactme")}</h2>}
             </Translate>
             </div>
+            <div className="social-icons container">
+              <a href="https://www.linkedin.com/in/darrenzlim/" target="blank"><i className="fab fa-linkedin"></i></a>
+              <a href="https://github.com/darrenlzh" target="blank"><i className="fab fa-github"></i></a>
+              <a href="https://codepen.io/darrenlim/" target="blank"><i className="fab fa-codepen"></i></a>
+            </div>
+            <div className="email container">
+              darrenzhlim <span>(at)</span> gmail <span>(dot)</span> com
+            </div>
             <ContactForm />
           </section>
         </div>

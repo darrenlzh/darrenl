@@ -1,8 +1,46 @@
+#contact {
+	color: white;
+
+	.social-icons {
+		margin-top: 100px;
+
+		a {
+			margin-right: 50px;
+		}
+
+		svg {
+			color: white;
+			height: 70px;
+			width: 70px;
+
+			&:hover {
+				color: $pink;
+			}
+		}
+	}
+
+	.email {
+		font-size: 24px;
+		letter-spacing: 2px;
+		margin-top: 30px;
+
+		span {
+			color: lighten(black, 40%);
+		}
+	}
+}
+
 #contact-form {
+	color: black;
 	position: absolute;
 	top: 15vh;
 	right: 150px;
 	width: $form-width;
+
+	h3 {
+		color: white;
+		margin-bottom: 25px;
+	}
 
 	.form-inner {
 		display: flex;
@@ -73,7 +111,7 @@
 			padding: $form-input-padding $form-input-padding 5px $form-input-padding;
 			width: 100%;
 
-			&:focus, &:valid {
+			&:focus, &:not(.empty) {
 				+ label {
 					font-size: 12px;
 					line-height: 30px;

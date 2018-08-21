@@ -80,24 +80,25 @@ export class ContactForm extends React.Component {
   render() {
     return (
 			<form onSubmit={this.handleSubmit} id="contact-form" role="form">
+        <h3>Get in touch with me, or just say hi :)</h3>
         <div className={`form-inner ${this.state.loading? 'loading' : ''}`}>
   				<fieldset>
-  					<input id="name" name="name" type="text" required="required" value={this.state.name || ''} onChange={this.handleChange}/>
+  					<input id="name" className={this.state.name? '' : 'empty'} name="name" type="text" required="required" value={this.state.name || ''} onChange={this.handleChange}/>
   					<label htmlFor="name">Name</label>
             <div className="line"></div>
   				</fieldset>
           <fieldset>
-            <input id="company" name="company" type="text" required="required" value={this.state.company || ''} onChange={this.handleChange}/>
+            <input id="company" className={this.state.company? '' : 'empty'} name="company" type="text" value={this.state.company || ''} onChange={this.handleChange}/>
             <label htmlFor="company">Company &#40;Optional&#41;</label>
             <div className="line"></div>
           </fieldset>
           <fieldset>
-            <input id="email" name="email" type="text" required="required" value={this.state.email || ''} onChange={this.handleChange}/>
+            <input id="email" className={this.state.email? '' : 'empty'} name="email" type="email" required="required" value={this.state.email || ''} onChange={this.handleChange}/>
             <label htmlFor="email">Email</label>
             <div className="line"></div>
           </fieldset>
           <fieldset>
-            <textarea id="message" name="message" rows="3" required="required" value={this.state.message || ''} onChange={this.handleChange}></textarea>
+            <textarea id="message" className={this.state.message? '' : 'empty'} name="message" rows="3" required="required" value={this.state.message || ''} onChange={this.handleChange}></textarea>
             <label htmlFor="message">Message</label>
             <div className="line"></div>
           </fieldset>

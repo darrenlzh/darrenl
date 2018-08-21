@@ -31264,12 +31264,17 @@ var ContactForm = exports.ContactForm = function (_React$Component) {
         'form',
         { onSubmit: this.handleSubmit, id: 'contact-form', role: 'form' },
         _react2.default.createElement(
+          'h3',
+          null,
+          'Get in touch with me, or just say hi :)'
+        ),
+        _react2.default.createElement(
           'div',
           { className: 'form-inner ' + (this.state.loading ? 'loading' : '') },
           _react2.default.createElement(
             'fieldset',
             null,
-            _react2.default.createElement('input', { id: 'name', name: 'name', type: 'text', required: 'required', value: this.state.name || '', onChange: this.handleChange }),
+            _react2.default.createElement('input', { id: 'name', className: this.state.name ? '' : 'empty', name: 'name', type: 'text', required: 'required', value: this.state.name || '', onChange: this.handleChange }),
             _react2.default.createElement(
               'label',
               { htmlFor: 'name' },
@@ -31280,7 +31285,7 @@ var ContactForm = exports.ContactForm = function (_React$Component) {
           _react2.default.createElement(
             'fieldset',
             null,
-            _react2.default.createElement('input', { id: 'company', name: 'company', type: 'text', required: 'required', value: this.state.company || '', onChange: this.handleChange }),
+            _react2.default.createElement('input', { id: 'company', className: this.state.company ? '' : 'empty', name: 'company', type: 'text', value: this.state.company || '', onChange: this.handleChange }),
             _react2.default.createElement(
               'label',
               { htmlFor: 'company' },
@@ -31291,7 +31296,7 @@ var ContactForm = exports.ContactForm = function (_React$Component) {
           _react2.default.createElement(
             'fieldset',
             null,
-            _react2.default.createElement('input', { id: 'email', name: 'email', type: 'text', required: 'required', value: this.state.email || '', onChange: this.handleChange }),
+            _react2.default.createElement('input', { id: 'email', className: this.state.email ? '' : 'empty', name: 'email', type: 'email', required: 'required', value: this.state.email || '', onChange: this.handleChange }),
             _react2.default.createElement(
               'label',
               { htmlFor: 'email' },
@@ -31302,7 +31307,7 @@ var ContactForm = exports.ContactForm = function (_React$Component) {
           _react2.default.createElement(
             'fieldset',
             null,
-            _react2.default.createElement('textarea', { id: 'message', name: 'message', rows: '3', required: 'required', value: this.state.message || '', onChange: this.handleChange }),
+            _react2.default.createElement('textarea', { id: 'message', className: this.state.message ? '' : 'empty', name: 'message', rows: '3', required: 'required', value: this.state.message || '', onChange: this.handleChange }),
             _react2.default.createElement(
               'label',
               { htmlFor: 'message' },
@@ -31790,6 +31795,42 @@ var Main = function (_React$Component) {
                   );
                 }
               )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'social-icons container' },
+              _react2.default.createElement(
+                'a',
+                { href: 'https://www.linkedin.com/in/darrenzlim/', target: 'blank' },
+                _react2.default.createElement('i', { className: 'fab fa-linkedin' })
+              ),
+              _react2.default.createElement(
+                'a',
+                { href: 'https://github.com/darrenlzh', target: 'blank' },
+                _react2.default.createElement('i', { className: 'fab fa-github' })
+              ),
+              _react2.default.createElement(
+                'a',
+                { href: 'https://codepen.io/darrenlim/', target: 'blank' },
+                _react2.default.createElement('i', { className: 'fab fa-codepen' })
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'email container' },
+              'darrenzhlim ',
+              _react2.default.createElement(
+                'span',
+                null,
+                '(at)'
+              ),
+              ' gmail ',
+              _react2.default.createElement(
+                'span',
+                null,
+                '(dot)'
+              ),
+              ' com'
             ),
             _react2.default.createElement(_contactForm.ContactForm, null)
           )
