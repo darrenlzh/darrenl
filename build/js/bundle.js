@@ -31431,9 +31431,7 @@ var MainPortfolio = exports.MainPortfolio = function (_React$Component) {
       return _react2.default.createElement(
         "div",
         { id: "portfolio-home" },
-        "My portfolio page is",
-        _react2.default.createElement("br", null),
-        "Coming Soon...",
+        "Still working on this to showcase my work :)",
         _react2.default.createElement(
           "a",
           { href: "/" },
@@ -31755,7 +31753,18 @@ var Main = function (_React$Component) {
 									_react2.default.createElement(
 										'p',
 										null,
-										'I\'m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web technologies.'
+										'I\'m an experienced Web Developer with a knack for UX/UI design and experimenting with the latest web technologies on side projects.'
+									),
+									_react2.default.createElement(
+										'p',
+										{ className: 'sub' },
+										'I use modern javascript libraries and frameworks with third-party APIs to create cool and useful apps. This site, for example, is built with React, ',
+										_react2.default.createElement(
+											'a',
+											{ href: 'https://github.com/ryandrewjohnson/react-localize-redux', target: '_blank' },
+											'React Localize'
+										),
+										', and React Transitions. I\'ve also built a custom contact form that interfaces with Nodemailer in Express using Google\'s OAuth Playground.'
 									)
 								)
 							)

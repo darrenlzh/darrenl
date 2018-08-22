@@ -166,7 +166,8 @@ class Main extends React.Component {
 									<div className="profile__pic"></div>
 								</div>
 								<div className="col-xs-12 col-sm-12 col-md-9">
-									<p>I&#39;m an experienced Web Engineer & Designer with a knack for UX/UI design, creating modern and dynamic applications with the latest web technologies.</p>
+									<p>I&#39;m an experienced Web Developer with a knack for UX/UI design and experimenting with the latest web technologies on side projects.</p>
+                  <p className="sub">I use modern javascript libraries and frameworks with third-party APIs to create cool and useful apps. This site, for example, is built with React, <a href="https://github.com/ryandrewjohnson/react-localize-redux" target="_blank">React Localize</a>, and React Transitions. I&#39;ve also built a custom contact form that interfaces with Nodemailer in Express using Google&#39;s OAuth Playground.</p>
 								</div>
 							</div>
 						</div>

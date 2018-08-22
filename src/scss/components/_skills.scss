@@ -1,6 +1,10 @@
 #skills {
 	background: $color1;
-	padding-bottom: 200px;
+	padding-bottom: 100px;
+
+	@include bp-max(sm) {
+		padding-bottom: 50px;
+	}
 }
 
 .skills-group {
@@ -10,9 +14,12 @@
 	padding: 60px 100px 50px;
 
 	.skill {
-		&:nth-of-type(-n+5) {
-			margin-bottom: 60px;
-		}
+		@include flex();
+		background: white;
+		border: 5px solid $color1;
+		padding: 20px;
+		height: 180px;
+		width: 180px;
 	}
 
 	i {
@@ -29,7 +36,7 @@
 			color: white;
 			position: absolute;
 			bottom: 0;
-			left: 0;
+			left: -5px;
 			right: 0;
 			text-align: center;
 			font-size: 1.8rem;
@@ -101,8 +108,6 @@
 		}
 
 		&#python {
-			height: 100px;
-
 			&:hover {
 				color: #F9D861;
 			}
@@ -149,6 +154,27 @@
 
 			&::after {
 				content: 'Gulp';
+			}
+		}
+	}
+
+	@include bp-max(md) {
+		padding: 60px 20px 50px;
+	}
+
+	@include bp-max(xs) {
+		padding: 60px 0 50px;
+
+		.skill {
+			height: 150px;
+			width: 150px;
+		}
+
+		i {
+			font-size: 7rem;
+
+			&::after {
+				left: -20px;
 			}
 		}
 	}

@@ -19,6 +19,7 @@ a:not(.image) {
   color: black;
   text-decoration: none;
   border-bottom: 2px solid black;
+  line-height: 1.5em;
 
   &:hover {
     color: black;
@@ -44,6 +45,10 @@ section {
     font-size: 6rem;
     font-weight: bold;
     font-family: 'Open Sans', sans-serif;
+
+    @include bp-max(sm) {
+      font-size: 4rem;
+    }
   }
 
   .title {
@@ -56,6 +61,10 @@ section {
       height: 6px;
       background: $pink;
     }
+
+    @include bp-max(sm) {
+      margin-left: 10px;
+    }
   }
 
   .summary {
@@ -64,7 +73,16 @@ section {
     p {
       font-size: 2rem;
       color: $font-mediumgray;
-      // margin-left: 2rem;
+    }
+  }
+
+  @include bp-max(sm) {
+    &:not(#intro) {
+      padding-top: 50px;
+    }
+
+    .summary {
+      padding-bottom: 20px;
     }
   }
 }
@@ -72,10 +90,6 @@ section {
 #intro {
   h1 {
     font-size: 9rem;
-
-    @include mobile {
-      font-size: 6rem;
-    }
 
     span {
       color: $pink;
@@ -93,6 +107,16 @@ section {
       &:nth-of-type(2) {
         color: $green;
       }
+    }
+  }
+
+  @include bp-max(sm) {
+    h1 {
+      font-size: 5rem;
+    }
+
+    p {
+      font-size: 2.5rem;
     }
   }
 }

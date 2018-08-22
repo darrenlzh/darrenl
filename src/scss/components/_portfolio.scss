@@ -19,19 +19,6 @@
     padding: 5px;
     width: 25%;
 
-    @include bp-max(md) {
-      padding: 2px;
-      width: 33.3333%;
-    }
-
-    @include bp-max(sm) {
-      width: 50%;
-    }
-
-    @include bp-max(xs) {
-      width: 100%;
-    }
-
     &.view-all {
       a {
         @include flex();
@@ -49,6 +36,18 @@
       }
     }
 
+    @include bp-max(md) {
+      padding: 2px;
+      width: 33.3333%;
+    }
+
+    @include bp-max(sm) {
+      width: 50%;
+
+      &.view-all a {
+        font-size: 2rem;
+      }
+    }
   }
 
   .item {

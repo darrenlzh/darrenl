@@ -9,7 +9,7 @@ export class MainPortfolio extends React.Component {
   render() {
     return (
       <div id="portfolio-home">
-        My portfolio page is<br/>Coming Soon...
+        Still working on this to showcase my work :)
 				<a href="/">Back to Home</a>
       </div>
     )
