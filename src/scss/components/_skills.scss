@@ -1,5 +1,5 @@
 #skills {
-	background: $color1;
+	background: $bg-3;
 	padding-bottom: 100px;
 
 	@include bp-max(sm) {
@@ -15,8 +15,8 @@
 
 	.skill {
 		@include flex();
-		background: white;
-		border: 5px solid $color1;
+		background: $bg-2;
+		border: 5px solid $bg-3;
 		padding: 20px;
 		height: 180px;
 		width: 180px;

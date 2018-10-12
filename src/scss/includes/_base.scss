@@ -3,28 +3,29 @@ html {
 }
 
 body {
+	background: black;
   margin: 0;
   font-family: 'Raleway', sans-serif;
-  color: black;
+  color: white;
 }
 
 h1, h2, h3, h4 {
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
-  color: black;
+  color: white;
   margin: 0;
 }
 
 a:not(.image) {
-  color: black;
+  color: white;
   text-decoration: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
   line-height: 1.5em;
 
   &:hover {
-    color: black;
+    color: white;
     text-decoration: none;
-    border-bottom: 4px solid black;
+    border-bottom: 4px solid white;
   }
 }
 
