@@ -117,7 +117,7 @@
 
 #portfolio-home {
   @include flex($direction: column);
-	display: block;
+	// display: block;
   font-family: 'Crimson Text', serif;
   font-size: 50px;
   height: 100vh;
