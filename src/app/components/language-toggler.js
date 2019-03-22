@@ -1,5 +1,5 @@
-import React from 'react'
-import { withLocalize } from 'react-localize-redux'
+import React from 'react';
+import { withLocalize } from 'react-localize-redux';
 
 const LanguageToggler = ({ languages, activeLanguage, setActiveLanguage, open}) => (
 
@@ -9,10 +9,10 @@ const LanguageToggler = ({ languages, activeLanguage, setActiveLanguage, open}) 
         return (
           <li key={lang.code}
           onClick={() => setActiveLanguage(lang.code)}>{lang.name}</li>
-        )
+        );
       })
     }
   </ul>
-)
+);
 
-export default withLocalize(LanguageToggler)
+export default withLocalize(LanguageToggler);

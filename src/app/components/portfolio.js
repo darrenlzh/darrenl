@@ -1,32 +1,32 @@
-import React from 'react'
-import { Transition } from 'react-transition-group'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Transition } from 'react-transition-group';
+import { Link } from 'react-router-dom';
 
-import { scrollTo } from '../utils/scrollTo'
-import { ITEMS } from '../includes/portfolio-items'
+import { scrollTo } from '../utils/scrollTo';
+import { ITEMS } from '../includes/portfolio-items';
 
 export class Portfolio extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       current: -1,
       view: false
-    }
-    this.handleClick = this.handleClick.bind(this)
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
   handleClick(i) {
-    let temp = !this.state.view
-    this.setState({ current: i, view: temp })
+    let temp = !this.state.view;
+    this.setState({ current: i, view: temp });
 
     const view = document.getElementById('view-container'),
           vHeight = view.offsetHeight,
-          vpHeight = window.innerHeight
+          vpHeight = window.innerHeight;
 
-    let  vOffset = 0
-    if (vHeight < vpHeight) vOffset = (vpHeight - vHeight) / 2
+    let  vOffset = 0;
+    if (vHeight < vpHeight) vOffset = (vpHeight - vHeight) / 2;
 
-    let scrollToValue = view.offsetTop - vOffset
-    scrollTo(document.documentElement, scrollToValue, 600)
+    let scrollToValue = view.offsetTop - vOffset;
+    scrollTo(document.documentElement, scrollToValue, 600);
   }
   render() {
     return (
@@ -64,13 +64,13 @@ export class Portfolio extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 class Item extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
   render() {
     return (
@@ -83,6 +83,6 @@ class Item extends React.Component {
           </article>
         )}
       </Transition>
-    )
+    );
   }
 }
