@@ -1,14 +1,14 @@
-import React from 'react'
-import { scrollTo } from '../utils/scrollTo'
-import { withLocalize, Translate } from 'react-localize-redux'
+import React from 'react';
+import { scrollTo } from '../utils/scrollTo';
+import { withLocalize, Translate } from 'react-localize-redux';
 
-const querystring = require('querystring')
-const axios = require('axios')
+const querystring = require('querystring');
+const axios = require('axios');
 const config = {
 	headers: {
 		'Content-Type': 'application/x-www-form-urlencoded'
 	}
-}
+};
 
 class ContactForm extends React.Component {
 	constructor(props) {
@@ -21,16 +21,16 @@ class ContactForm extends React.Component {
 			loading: false
 		};
 
-		this.handleWait = this.handleWait.bind(this)
-		this.handleFormReset = this.handleFormReset.bind(this)
-		this.handleChange = this.handleChange.bind(this)
-		this.handleSubmit = this.handleSubmit.bind(this)
+		this.handleWait = this.handleWait.bind(this);
+		this.handleFormReset = this.handleFormReset.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleWait(state) {
 		this.setState({
 			loading: state
-		})
+		});
 	}
 
 	handleFormReset() {
@@ -39,21 +39,21 @@ class ContactForm extends React.Component {
 			email: '',
 			company: '',
 			message: ''
-	})
+	});
 	}
 
 	handleChange(event) {
-		const target = event.target
-		const value = target.value
-		const name = target.name
+		const target = event.target;
+		const value = target.value;
+		const name = target.name;
 
 		this.setState({
 			[name]: value
-		})
+		});
 	}
 
 	handleSubmit(event) {
-		this.handleWait(true)
+		this.handleWait(true);
 			axios.post(
 				'https://darrenl.im/api/contact',
 				querystring.stringify({
@@ -66,16 +66,16 @@ class ContactForm extends React.Component {
 			.then((response) => {
 				if (response.data.success) {
 					// alert('Your message was sent!')
-			this.handleWait(false)
-			this.handleFormReset()
+			this.handleWait(false);
+			this.handleFormReset();
 				} else {
-					alert('There was a problem with the server. Please try again later?')
+					alert('There was a problem with the server. Please try again later?');
 				}
 			})
 			.catch((error) => {
-				alert('There was a problem submitting your form. Please try again?')
-			})
-		event.preventDefault()
+				alert('There was a problem submitting your form. Please try again?');
+			});
+		event.preventDefault();
 	}
 
   render() {
@@ -117,8 +117,8 @@ class ContactForm extends React.Component {
 				}
 			</Translate>
 		</form>
-		)
+	);
 	}
 }
 
-export default withLocalize(ContactForm)
+export default withLocalize(ContactForm);

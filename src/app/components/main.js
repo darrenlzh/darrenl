@@ -1,20 +1,20 @@
-import React from 'react'
-import { Transition } from 'react-transition-group'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Transition } from 'react-transition-group';
+import { Link } from 'react-router-dom';
 
-import { renderToStaticMarkup } from 'react-dom/server'
-import { withLocalize, Translate } from 'react-localize-redux'
-import globalTranslations from '../translations/global.json'
+import { renderToStaticMarkup } from 'react-dom/server';
+import { withLocalize, Translate } from 'react-localize-redux';
+import globalTranslations from '../translations/global.json';
 
-import { Portfolio } from './portfolio.js'
-import ContactForm from './contact-form.js'
-import LanguageToggler from './language-toggler.js'
+import { Portfolio } from './portfolio.js';
+import ContactForm from './contact-form.js';
+import LanguageToggler from './language-toggler.js';
 
-import skills from '../content/skills.json'
+import skills from '../content/skills.json';
 
 class Main extends React.Component {
 	constructor(props) {
-		super(props)
+		super(props);
 
 		const defaultLanguage = window.localStorage.getItem("languageCode") || 'en';
 
@@ -29,66 +29,66 @@ class Main extends React.Component {
 			],
 			translation: globalTranslations,
 			options: { renderToStaticMarkup, defaultLanguage }
-		})
-		this.handleLangMenuClick = this.handleLangMenuClick.bind(this)
-		this.handleCloseLangMenuClick = this.handleCloseLangMenuClick.bind(this)
-		this.handleLangClick = this.handleLangClick.bind(this)
-		this.mouseLeave = this.mouseLeave.bind(this)
-		this.handleScroll = this.handleScroll.bind(this)
+		});
+		this.handleLangMenuClick = this.handleLangMenuClick.bind(this);
+		this.handleCloseLangMenuClick = this.handleCloseLangMenuClick.bind(this);
+		this.handleLangClick = this.handleLangClick.bind(this);
+		this.mouseLeave = this.mouseLeave.bind(this);
+		this.handleScroll = this.handleScroll.bind(this);
 		this.state = {
 			currentLanguage: 'en',
 			langMenuOpen: false,
 			initialLoading: true
-		}
+		};
 	}
 
 	handleLangMenuClick() {
-		var temp = !this.state.langMenuOpen
-		this.setState({ langMenuOpen: temp })
+		var temp = !this.state.langMenuOpen;
+		this.setState({ langMenuOpen: temp });
 	}
 
 	handleCloseLangMenuClick() {
-		this.setState({ langMenuOpen: false })
+		this.setState({ langMenuOpen: false });
 	}
 
 	handleLangClick(i) {
-		this.setState({ language: i, words: WORDS[i] })
+		this.setState({ language: i, words: WORDS[i] });
 	}
 
 	mouseLeave(mouseLeft) {
 		if (mouseLeft) {
 			timeout = setTimeout(() => {
 				this.setState({ langMenuOpen: false })
-			}, 1500)
+			}, 1500);
 		}
 		else {
-			clearTimeout(timeout)
+			clearTimeout(timeout);
 		}
 	}
 
 	handleScroll() {
-		console.log('hello')
+		console.log('hello');
 	}
 
 	componentDidUpdate() {
-		const langCode = this.props.activeLanguage.code
+		const langCode = this.props.activeLanguage.code;
 		if (langCode != this.state.currentLanguage) {
-			window.localStorage.setItem("languageCode", langCode)
+			window.localStorage.setItem("languageCode", langCode);
 			this.setState({
 				currentLanguage: langCode
-			})
+			});
 		}
 		else {
-			return
+			return;
 		}
 	}
 
 	componentDidMount() {
-		let self = this
+		let self = this;
 		setTimeout(() => {
 			self.setState({ initialLoading: false })
-		}, 2500)
-		document.body.addEventListener('scroll', this.handleScroll)
+		}, 2500);
+		document.body.addEventListener('scroll', this.handleScroll);
 	}
 
 	render() {
@@ -98,7 +98,7 @@ class Main extends React.Component {
 				<div className="loader initial-loading">
 					<div className="lds-ring"><div></div><div></div><div></div><div></div></div>
 				</div>
-			)
+			);
 		} else {
 			return (
 				<div className="main">
@@ -213,9 +213,9 @@ class Main extends React.Component {
 						</div>
 					</section>
 				</div>
-			)
+			);
 		}
 	}
 }
-var timeout
-export default withLocalize(Main)
+var timeout;
+export default withLocalize(Main);
