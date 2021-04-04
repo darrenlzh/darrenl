@@ -37,7 +37,7 @@ export class MainPortfolio extends React.Component {
   render() {
     return (
 		  <div id="portfolio-home">
-		    Still working on this to showcase my work :)
+		    Please check back later for more :)
 				<a href="/">Back to Home</a>
 
 		  </div>

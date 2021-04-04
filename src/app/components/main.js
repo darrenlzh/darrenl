@@ -124,7 +124,7 @@ class Main extends React.Component {
 												<h1>{translate('intro.hello')}.<br/>
 												{translate('intro.im')} <span>Darren Lim</span>.</h1>
 												<p>
-												{translate('intro.iam')} <span>{translate('intro.job.developer')}</span> {translate('intro.and')} <span>{translate('intro.job.designer')}</span>{translate('intro.job.end')}
+												{translate('intro.iam')} <span>{translate('intro.job.developer')}</span>{translate('intro.job.end')}
 												</p>
 											</div>
 										)

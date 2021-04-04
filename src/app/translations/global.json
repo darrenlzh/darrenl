@@ -2,11 +2,9 @@
 	"intro": {
 		"hello": ["Hello", "Salut", "Hej", "Hej", "Hello", "你好"],
 		"im": ["I'm", "Je m'appelle", "Jag heter", "Jeg heder", "Saya", "我叫"],
-		"iam": ["I am a", "Je suis", "Jag är", "Jeg er", "Saya seorang", "我是"],
-		"and": ["and", "et", "och", "og", "dan", "及"],
+		"iam": ["I am a", "Je suis", "Jag är", "Jeg er", "Saya seorang", "我是一名"],
 		"job": {
-			"developer": ["developer", "développeur", "webbutvecklare", "webudvikler", "developer", "网络开发者"],
-			"designer": ["designer", "concepteur", "designer", "designer", "pereka web", "设计师"],
+			"developer": ["creator", "créateur", "webbutvecklare", "webudvikler", "developer web", "网络工程师"],
 			"end": [" for all things web.", " pour le web.", ".", ".", ".", "."]
 		}
 	},
