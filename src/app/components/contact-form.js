@@ -1,14 +1,7 @@
 import React from 'react';
 import { scrollTo } from '../utils/scrollTo';
 import { withLocalize, Translate } from 'react-localize-redux';
-
-const querystring = require('querystring');
-const axios = require('axios');
-const config = {
-	headers: {
-		'Content-Type': 'application/x-www-form-urlencoded'
-	}
-};
+import * as emailjs from 'emailjs-com';
 
 class ContactForm extends React.Component {
 	constructor(props) {
@@ -18,10 +11,12 @@ class ContactForm extends React.Component {
 			email: '',
 			company: '',
 			message: '',
-			loading: false
+			loading: false,
+			confirm: false
 		};
 
 		this.handleWait = this.handleWait.bind(this);
+		this.handleConfirm = this.handleConfirm.bind(this);
 		this.handleFormReset = this.handleFormReset.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,6 +25,12 @@ class ContactForm extends React.Component {
 	handleWait(state) {
 		this.setState({
 			loading: state
+		});
+	}
+
+	handleConfirm(state) {
+		this.setState({
+			confirm: state
 		});
 	}
 
@@ -53,40 +54,47 @@ class ContactForm extends React.Component {
 	}
 
 	handleSubmit(event) {
-		this.handleWait(true);
-			axios.post(
-				'https://darrenl.im/api/contact',
-				querystring.stringify({
-				name: this.state.name,
-				email: this.state.email,
-				company: this.state.company,
-					message: this.state.message
-				}),
-				config)
-			.then((response) => {
-				if (response.data.success) {
-					// alert('Your message was sent!')
-			this.handleWait(false);
-			this.handleFormReset();
-				} else {
-					alert('There was a problem with the server. Please try again later?');
-				}
-			})
-			.catch((error) => {
-				alert('There was a problem submitting your form. Please try again?');
-			});
 		event.preventDefault();
+		this.handleWait(true);
+
+		const { name, email, company, message } = this.state;
+		const templateParams = {
+			from_name: name,
+			from_email: email,
+			to_name: 'Darren Lim',
+			company,
+			message
+		};
+
+		emailjs.send(
+			'service_6gflrag',
+			'template_ia6a9oa',
+			templateParams,
+			'user_AC1jjhyumMkVdeR7cQWaY'
+		).then((res) => {
+			this.handleConfirm(true);
+			setTimeout(() => {
+				this.handleWait(false);
+			}, 500);
+			this.handleFormReset();
+			setTimeout(() => {
+				this.handleConfirm(false);
+			}, 6000);
+		}, (err) => {
+			console.log(err);
+			alert('There was a problem submitting your form. Please try again later.');
+		});
 	}
 
-  render() {
-    return (
+	render() {
+	return (
 		<form onSubmit={this.handleSubmit} id="contact-form" role="form">
 			<Translate>
 				{
 					({ translate }) => (
 						<div >
 							<h3>{translate('contactForm.heading')}</h3>
-							<div className={`form-inner ${this.state.loading? 'loading' : ''}`}>
+							<div className={`form-inner ${this.state.loading? 'loading' : ''} ${this.state.confirm? 'confirm' : ''}`} >
 								<fieldset>
 									<input id="name" className={this.state.name? '' : 'empty'} name="name" type="text" required="required" value={this.state.name || ''} onChange={this.handleChange}/>
 									<label htmlFor="name">{translate('contactForm.name')}</label>
@@ -107,9 +115,12 @@ class ContactForm extends React.Component {
 									<label htmlFor="message">{translate('contactForm.message')}</label>
 									<div className="line"></div>
 								</fieldset>
-								<button type="submit">{this.state.loading? '' : translate('contactForm.send')}</button>
-								<div className="loader">
-								<div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+								<div className="button-wrapper">
+									<button type="submit">{this.state.loading? '' : translate('contactForm.send')}</button>
+									<div className="loader">
+										<div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+									</div>
+									<div className={`submit-confirm ${this.state.confirm? 'show' : ''}`}><i className="far fa-check"></i></div>
 								</div>
 							</div>
 						</div>

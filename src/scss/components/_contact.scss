@@ -111,6 +111,12 @@
 			right: 0;
 		}
 
+		&.loading, &.confirm {
+			button {
+				background: $pink;
+			}
+		}
+
 		&.loading {
 			.loader {
 				display: block;
@@ -120,10 +126,6 @@
 					border-color: white transparent transparent transparent;
 					animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 				}
-			}
-
-			button {
-				background: $pink;
 			}
 		}
 	}
@@ -194,13 +196,19 @@
 		}
 	}
 
+	button, .button-wrapper, .submit-confirm {
+		border-radius: 10px;
+	}
+
+	button, .submit-confirm {
+		border: 3px solid $pink;
+	}
+
 	button {
 		background: none;
-		border: 3px solid $pink;
-		border-radius: 10px;
 		color: white;
 		font-size: 18px;
-		height: 70px;
+		height: 100%;
 		padding: 15px 60px;
 		transition: all .25s ease;
 		width: 100%;
@@ -212,6 +220,34 @@
 		&:focus {
 			background: $pink;
 			outline: none;
+		}
+	}
+
+	.button-wrapper {
+		height: 70px;
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.submit-confirm {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 100%;
+		width: 100%;
+		background: $pink;
+		color: white;
+		font-size: 4rem;
+		line-height: 70px;
+		margin: 0 auto;
+		text-align: center;
+		transform: translateY(100px);
+		transition: transform .3s ease;
+
+		&.show {
+			transform: translateY(0);
 		}
 	}
 
